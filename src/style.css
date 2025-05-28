@@ -1,1 +1,35 @@
-/* CSS 스타일을 작성해 주세요. */ 
+:root {
+  /* Color styles */
+  --primary: #0056b8;
+  --secondary: #3f8ae2;
+  --content: #454545;
+  --black: #242424;
+  --white: #ffffff;
+  --gray-100: #f9f9f9;
+  --gray-200: #dddddd;
+  --gray-300: #ababab;
+  --gray-400: #898989;
+
+  /* Text-size styles */
+  --font-size-XXS: 12px;
+  --font-size-XS: 14px;
+  --font-size-S: 16px;
+  --font-size-M: 18px;
+  --font-size-L: 24px;
+  --font-size-XL: 28px;
+  --font-size-XXL: 36px;
+  --font-size-XXXL: 50px;
+
+  /* Spacing */
+  --spacing-XXXS: 8px;
+  --spacing-XXS: 12px;
+  --spacing-XS: 20px;
+  --spacing-S: 30px;
+  --spacing-M: 44px;
+  --spacing-L: 60px;
+  --spacing-XL: 80px;
+  --spacing-XXL: 100px;
+  --spacing-XXXL: 130px;
+}
+
+/* CSS 스타일을 작성해 주세요. */
