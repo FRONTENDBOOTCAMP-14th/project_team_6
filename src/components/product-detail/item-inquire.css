@@ -1,0 +1,22 @@
+.header__inquire {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 1050px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+  .header__inquire--title {
+  }
+
+  .header__inquire--button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    justify-self: end;
+    align-self: start;
+  }
+
+  .header__inquire--description {
+    width: 100%;
+  }
+}
