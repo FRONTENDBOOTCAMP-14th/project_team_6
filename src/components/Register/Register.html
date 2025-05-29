@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인페이지</title>
+    <link rel="preload" as="font" href="/font/woff2/PretendardVariable.woff2" />
+    <link rel="stylesheet" href="/font/pretendardvariable.css" />
+    <link rel="stylesheet" href="/src/components/Register/Register.css" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <!--타이틀 -->
+    <div class="title">회원가입</div>
+    <hr />
+    <!-- 기본 인풋 폼 컴포넌트 -->
+    <div class="input" style="background: yellow">
+      <div class="label-wrapper">
+        <label for="inputId">아이디<span aria-hidden="">*</span></label>
+      </div>
+      <input type="text" id="inputId" required placeholder="플레이스 홀더 내용이 들어갑니다." />
+      <button type="button" onclick="location.href='#'">중복확인</button>
+    </div>
+    <hr />
+    <!-- 주소검색 컴포넌트 -->
+    <div class="input" style="background: yellow">
+      <div class="label-wrapper">
+        <label for="inputId">주소<span aria-hidden="">*</span></label>
+      </div>
+      <div class="address-wrapper">
+        <button class="address" type="button" onclick="location.href='#'">주소검색</button>
+        <p class="address-text">배송지에 따라 상품 정보가 달라질 수 있습니다.</p>
+      </div>
+    </div>
+    <hr />
+    <!-- 성별 컴포넌트 -->
+    <div class="input" style="background: pink">
+      <div class="label-wrapper">
+        <label for="inputId">성별<span aria-hidden="">*</span></label>
+      </div>
+      <div class="radio-wrapper">
+        <input type="radio" name="gender" id="" />
+      </div>
+    </div>
+  </body>
+</html>
