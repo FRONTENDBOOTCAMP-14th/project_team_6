@@ -40,9 +40,10 @@ function addServerUrlButton(terminal) {
   const button = document.createElement('button');
   button.className = 'vscode__terminal-url-button';
   button.textContent = 'http://localhost:6th-Sense/';
-  button.onclick = () => {
-    // Additional functionality can be added here
-    console.log('Server URL clicked');
+  button.onclick = (e) => {
+    e.preventDefault();
+    // Open landing_output.html in a new tab
+    window.open('/src/utils/landing_output.html', '_blank');
   };
   terminal.appendChild(button);
   return button;
