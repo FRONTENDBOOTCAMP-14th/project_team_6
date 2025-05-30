@@ -1,5 +1,6 @@
 input,
-button {
+button,
+select {
   appearance: none;
   border: none;
   background: none;
@@ -13,6 +14,7 @@ footer {
   background: var(--gray-100);
   font-size: var(--font-size-XXS);
   position: relative;
+  line-height: 150%;
 
   &::before {
     content: '';
@@ -25,32 +27,85 @@ footer {
   }
 
   .footer__container {
-    max-inline-size: 1200px;
-    margin: 0 auto;
+    /* max-inline-size: 1200px; */
+    /* margin: 0 auto; */
   }
   .footer__policy {
     display: flex;
     justify-content: space-between;
     align-items: center;
     block-size: 90px;
+    .footer__policy-link a {
+      margin-inline-end: var(--spacing-S);
+
+      &:first-child {
+        font-weight: 600;
+      }
+    }
   }
   .footer__info {
     display: flex;
+    justify-content: space-between;
 
     padding-block: var(--spacing-M);
+
     dl {
+      padding-inline: var(--spacing-S);
+      flex: 1 0;
       display: flex;
       flex-flow: column nowrap;
       gap: 24px;
+      border-right: 1px solid var(--gray-200);
+
+      &.footer__info-shopping {
+        gap: 0;
+
+        & dt {
+          margin-block-end: 24px;
+        }
+      }
+
+      &:first-child {
+        padding-inline-start: 0;
+        flex: 0 0 352px;
+      }
+      &:last-child {
+        border: none;
+      }
       dt {
         color: var(--black);
+        font-weight: 600;
       }
       dd {
-        a.tel {
-          background: url(/src/assets/svg/);
-          font-size: var(--font-size-XL);
-        }
         color: var(--gray-400);
+        a.tel {
+          font-size: var(--font-size-XL);
+          position: relative;
+          padding-left: calc(29px + 9px);
+          color: var(--black);
+          font-weight: 500;
+
+          &::before {
+            content: '';
+            inline-size: 29px;
+            aspect-ratio: 1/1;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translate(0%, -50%);
+            background: url(/src/assets/svg/phone.svg) no-repeat;
+          }
+        }
+
+        select {
+          border: 1px solid var(--gray-200);
+          color: var(--gray-400);
+          font-weight: 300;
+          font-size: var(--font-size-XS);
+          line-height: 24px;
+          padding: 0 var(--spacing-XS) 0 var(--spacing-XXXS);
+          background: url(/src/assets/svg/Down.svg) no-repeat right center;
+        }
       }
     }
   }
