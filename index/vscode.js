@@ -17,7 +17,7 @@ function initVSCode() {
       return;
     }
 
-    // Get the file name from the active tab
+    // Get the file path from the active tab
     const fileName = activeTab.dataset.file;
     if (!fileName) {
       console.warn('No file associated with the active tab');
@@ -31,23 +31,31 @@ function initVSCode() {
     }
 
     try {
-      // Get the file content from the editor
-      const editor = document.querySelector('.vscode__editor-content');
-      if (!editor) {
-        throw new Error('Editor content not found');
+      // Get the current active file's full path
+      // First check if we have a data-fullpath, otherwise construct the path
+      let fullPath = activeTab.dataset.fullpath || `src/pages/Components/${fileName}`;
+      
+      // Ensure the path starts with 'src/'
+      if (!fullPath.startsWith('src/') && !fullPath.startsWith('/src/')) {
+        fullPath = `src/${fullPath}`;
       }
       
-      const content = editor.textContent || '';
-      
-      // Open a new window and write the content
-      const previewWindow = window.open('about:blank', '_blank');
-      if (!previewWindow) {
-        throw new Error('Popup was blocked. Please allow popups for this site.');
+      // Remove leading slash if present
+      if (fullPath.startsWith('/')) {
+        fullPath = fullPath.substring(1);
       }
       
-      previewWindow.document.open();
-      previewWindow.document.write(content);
-      previewWindow.document.close();
+      // For Vite, we need to keep the 'src/' in the path
+      // as Vite serves files from the project root
+      let previewPath = fullPath;
+      
+      // Ensure the path starts with 'src/'
+      if (!previewPath.startsWith('src/')) {
+        previewPath = `src/${previewPath}`;
+      }
+      
+      console.log('Opening preview:', previewPath);
+      const previewWindow = window.open(previewPath, '_blank');
       
       // Focus the new window
       previewWindow.focus();

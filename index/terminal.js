@@ -4,6 +4,9 @@ let terminalContent = [
   { user: '6thSense@Desktop', path: '~/likelion/bootcamp', command: '', isPrompt: true },
 ];
 
+// Track the current active input to prevent duplicates
+let currentInput = null;
+
 function addTerminalLine(terminal, line) {
   const lineElement = document.createElement('div');
   lineElement.className = 'vscode__terminal-line';
@@ -46,13 +49,22 @@ function addServerUrlButton(terminal) {
 }
 
 function handleCommand(terminal, inputElement) {
+  // Prevent multiple command processing
+  if (inputElement.dataset.processing === 'true') return;
+  
   const command = inputElement.value.trim();
   if (!command) return;
 
-  // Disable current input
+  // Mark as processing and disable input
+  inputElement.dataset.processing = 'true';
   inputElement.disabled = true;
+  
+  // Clear current input reference
+  if (currentInput === inputElement) {
+    currentInput = null;
+  }
 
-  // Add command to history
+  // Add command to history without showing it again (it's already visible in the input)
   const newLine = {
     user: '6thSense@Desktop',
     path: '~/likelion/bootcamp',
@@ -60,23 +72,12 @@ function handleCommand(terminal, inputElement) {
     isPrompt: false,
   };
 
-  // Add command to terminal
-  addTerminalLine(terminal, newLine);
-  terminalContent = [...terminalContent.filter(l => !l.isPrompt), newLine];
+  // Update terminal content without re-adding the command line
+  terminalContent = [...terminalContent.filter((l) => !l.isPrompt), newLine];
 
   // Process command
   if (command === 'npm run dev') {
-    const outputLines = [
-      '> dev',
-      '> vite',
-      '',
-      '',
-      '  VITE v6.3.5  ready in 222 ms',
-      '',
-      '  ➜  Local:   ',
-      '  ➜  Network: use --host to expose',
-      ''
-    ];
+    const outputLines = ['> dev', '> vite', '', '', '  VITE v6.3.5  ready in 222 ms', '', '  ➜  Local:   ', '  ➜  Network: use --host to expose', ''];
 
     outputLines.forEach((line) => {
       if (line.includes('Local:')) {
@@ -93,46 +94,63 @@ function handleCommand(terminal, inputElement) {
     addOutput(terminal, "hint: type 'npm run dev' accurately");
   }
 
-  // Add new prompt only if not 'npm run dev'
+  // Add a new prompt after command execution, except for 'npm run dev'
   if (command !== 'npm run dev') {
-    addNewPrompt(terminal);
+    setTimeout(() => {
+      addNewPrompt(terminal);
+    }, 0);
   }
 }
 
 function addNewPrompt(terminal) {
+  // Don't add a new prompt if one already exists
+  if (currentInput) return;
+  
   const newPrompt = {
     user: '6thSense@Desktop',
     path: '~/likelion/bootcamp',
     command: '',
-    isPrompt: true
+    isPrompt: true,
   };
-  
+
   // Add to history and UI
   terminalContent = [...terminalContent, newPrompt];
   const promptLine = addTerminalLine(terminal, newPrompt);
   const newInput = promptLine.querySelector('.vscode__terminal-input');
-  
+
   if (newInput) {
+    // Store reference to current input
+    currentInput = newInput;
     newInput.focus();
-    
+
     // Add event listener to the new input
-    newInput.addEventListener('keydown', (e) => {
+    const handleKeyDown = (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
-        handleCommand(terminal, newInput);
+        // Only process if not already processing
+        if (newInput.dataset.processing !== 'true') {
+          handleCommand(terminal, newInput);
+        }
       }
-    });
+    };
+    
+    // Remove any existing listeners and add new one
+    newInput.removeEventListener('keydown', handleKeyDown);
+    newInput.addEventListener('keydown', handleKeyDown);
   }
 }
 
-function renderTerminal(terminal) {
+function renderTerminal(terminal, isInitialRender = false) {
   if (!terminal) {
     console.error('Terminal element is null or undefined');
     return;
   }
 
-  terminal.innerHTML = '';
-  terminalContent.forEach((line) => addTerminalLine(terminal, line));
+  // Only clear and re-render if it's not the initial render
+  if (!isInitialRender) {
+    terminal.innerHTML = '';
+    terminalContent.forEach((line) => addTerminalLine(terminal, line));
+  }
 
   // Set up input handling for the last input
   const inputs = terminal.querySelectorAll('.vscode__terminal-input');
@@ -140,10 +158,14 @@ function renderTerminal(terminal) {
     const lastInput = inputs[inputs.length - 1];
     lastInput.focus();
 
-    lastInput.addEventListener('keydown', (e) => {
+    // Remove any existing event listeners to prevent duplicates
+    const newLastInput = lastInput.cloneNode(true);
+    lastInput.parentNode.replaceChild(newLastInput, lastInput);
+
+    newLastInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
-        handleCommand(terminal, lastInput);
+        handleCommand(terminal, newLastInput);
       }
     });
   }
@@ -153,7 +175,12 @@ export function initTerminal() {
   try {
     const terminal = document.querySelector('.vscode__terminal');
     if (terminal) {
-      renderTerminal(terminal);
+      // Initial render with isInitialRender flag
+      terminal.innerHTML = '';
+      terminalContent.forEach((line) => addTerminalLine(terminal, line));
+
+      // Set up initial input handling
+      renderTerminal(terminal, true);
       console.log('Terminal initialized successfully');
       return true;
     } else {
