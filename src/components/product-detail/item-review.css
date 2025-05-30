@@ -7,16 +7,16 @@ hr {
   margin-bottom: 20px;
 }
 
-.container__review {
+.review {
   width: 1050px;
 
-  .header__review {
+  .review__header {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     width: 100%;
 
-    .header__review-title {
+    .review__header-title {
       font-size: var(--font-size-XL);
       span {
         font-size: var(--font-size-XS);
@@ -26,7 +26,7 @@ hr {
       }
     }
 
-    .header__review-button {
+    .review__header-button {
       border: none;
       background-color: transparent;
       cursor: pointer;
@@ -41,7 +41,7 @@ hr {
       font-weight: 400;
     }
 
-    .header__review-description {
+    .review__header-description {
       width: 100%;
       font-size: var(--font-size-XXS);
       color: var(--content);
@@ -56,12 +56,12 @@ hr {
     }
   }
 
-  .content__review {
+  .review__content {
     width: 100%;
     margin-top: var(--spacing-XS);
     margin-bottom: var(--spacing-XS);
 
-    .header__content {
+    .review__content-header {
       display: flex;
       flex-flow: row wrap;
       justify-content: space-between;
@@ -69,14 +69,14 @@ hr {
       padding-bottom: var(--spacing-XS);
       border-bottom: 1px solid var(--gray-200);
 
-      .header__review-count {
+      .review__content-count {
         font-size: var(--font-size-XXS);
         color: var(--black);
         font-weight: 600;
         line-height: 150%;
       }
 
-      .header__review-order {
+      .review__content-order {
         color: var(--gray-300);
 
         button {
@@ -85,13 +85,13 @@ hr {
           cursor: pointer;
         }
 
-        .recommend-button {
+        .review__recommend-button {
           font-size: var(--font-size-XS);
           color: var(--black);
           font-weight: 600;
           line-height: 150%;
         }
-        .recent-button {
+        .review__recent-button {
           font-size: var(--font-size-XS);
           color: var(--gray-300);
           font-weight: 600;
@@ -100,17 +100,17 @@ hr {
       }
     }
 
-    .list__content {
+    .review__list {
       width: 100%;
 
-      .list__content--notice,
-      .list__content--best {
+      .review__list--notice,
+      .review__list--best {
         width: 100%;
         align-items: center;
         border-bottom: 1px solid var(--gray-200);
       }
 
-      .list__content--notice {
+      .review__list--notice {
         position: relative;
         display: inline-flex;
         padding-left: 76px;
@@ -133,14 +133,14 @@ hr {
         }
       }
 
-      .list__content--best {
+      .review__list--best {
         display: flex;
         flex-flow: row wrap;
         align-items: start;
         height: 158px;
         padding-top: var(--spacing-XS);
 
-        .list__best--info {
+        .review__best-info {
           display: flex;
           align-items: center;
           gap: var(--spacing-XXXS);
@@ -151,7 +151,7 @@ hr {
           line-height: 165%;
           width: 148px;
 
-          .badge {
+          .review__badge {
             height: 18px;
             display: inline-block;
             background: contain;
@@ -159,39 +159,39 @@ hr {
             background-position: center;
           }
 
-          .list__info-badge--blue {
+          .review__info-badge--blue {
             background-image: url('/src/assets/svg/badge-blue.svg');
             width: 37px;
           }
 
-          .list__info-badge--best {
+          .review__info-badge--best {
             background-image: url('/src/assets/svg/badge-best.svg');
             width: 48px;
           }
         }
 
-        .list__best--content {
+        .review__best-content {
           margin-left: 86px;
           display: flex;
           flex-flow: column wrap;
           align-items: left;
           gap: var(--spacing-XS);
 
-          .list__best-item {
+          .review__best-item {
             font-size: var(--font-size-XXS);
             color: var(--gray-400);
             font-weight: 600;
             line-height: 165%;
           }
 
-          .list__best-comment {
+          .review__best-comment {
             font-size: var(--font-size-XXS);
             color: var(--content);
             font-weight: 400;
             line-height: 165%;
           }
 
-          .list__best-date {
+          .review__best-date {
             font-size: var(--font-size-XXS);
             color: var(--gray-400);
             font-weight: 400;
@@ -201,7 +201,7 @@ hr {
       }
     }
   }
-  .button__inquire {
+  .review__pagination {
     display: flex;
     width: 100%;
     flex-flow: row nowrap;

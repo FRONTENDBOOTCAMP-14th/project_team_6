@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const titleButtons = document.querySelectorAll('.content__inquire-row button');
+  const titleButtons = document.querySelectorAll('.inquire__row button');
 
   titleButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const currentRow = e.target.closest('tr');
       let detailRow = currentRow.nextElementSibling;
 
-      while (detailRow && !detailRow.classList.contains('inquire-detail-row')) {
+      while (detailRow && !detailRow.classList.contains('inquire__detail-row')) {
         detailRow = detailRow.nextElementSibling;
       }
 
       if (detailRow) {
         const isAlreadyOpen = !detailRow.hidden;
 
-        document.querySelectorAll('.inquire-detail-row').forEach((row) => {
+        document.querySelectorAll('.inquire__detail-row').forEach((row) => {
           row.hidden = true;
         });
 
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const passwordInputs = document.querySelectorAll('input.detail-content.secret');
+  const passwordInputs = document.querySelectorAll('input.inquire__password-input');
 
   passwordInputs.forEach((input) => {
     input.addEventListener('keydown', (e) => {
