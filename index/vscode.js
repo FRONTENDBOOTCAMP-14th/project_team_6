@@ -8,6 +8,26 @@ function initVSCode() {
     return;
   }
 
+  // Helper function to find file in project structure
+  function findFileInStructure(structure, targetName) {
+    if (!structure) return null;
+    
+    // If this is a file, check if it matches
+    if (structure.type === 'file' && structure.name === targetName) {
+      return structure;
+    }
+    
+    // If it's a directory, search its children
+    if (structure.children && Array.isArray(structure.children)) {
+      for (const child of structure.children) {
+        const found = findFileInStructure(child, targetName);
+        if (found) return found;
+      }
+    }
+    
+    return null;
+  }
+
   // Add click event to the preview button
   previewButton.addEventListener('click', () => {
     // Get the active tab
@@ -31,27 +51,22 @@ function initVSCode() {
     }
 
     try {
-      // Get the current active file's full path
-      // First check if we have a data-fullpath, otherwise construct the path
-      let fullPath = activeTab.dataset.fullpath || `src/pages/Components/${fileName}`;
+      // Try to find the file in the project structure
+      const fileData = findFileInStructure(window.projectStructure, fileName);
+      let previewPath = fileData?.actualPath;
       
-      // Ensure the path starts with 'src/'
-      if (!fullPath.startsWith('src/') && !fullPath.startsWith('/src/')) {
-        fullPath = `src/${fullPath}`;
+      if (!previewPath) {
+        throw new Error(`No actualPath found for file: ${fileName}`);
       }
       
-      // Remove leading slash if present
-      if (fullPath.startsWith('/')) {
-        fullPath = fullPath.substring(1);
-      }
-      
-      // For Vite, we need to keep the 'src/' in the path
-      // as Vite serves files from the project root
-      let previewPath = fullPath;
-      
-      // Ensure the path starts with 'src/'
+      // Ensure the path starts with 'src/' for Vite
       if (!previewPath.startsWith('src/')) {
         previewPath = `src/${previewPath}`;
+      }
+      
+      // Remove any leading slashes
+      if (previewPath.startsWith('/')) {
+        previewPath = previewPath.substring(1);
       }
       
       console.log('Opening preview:', previewPath);

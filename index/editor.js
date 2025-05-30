@@ -169,7 +169,7 @@ function getLanguageFromFileName(fileName) {
 }
 
 // Function to load file content into editor
-function loadFileContent(fileName, content) {
+function loadFileContent(fileName, content, actualPath) {
   // Add or update the file in the files object
   files[fileName] = content;
   
@@ -200,7 +200,7 @@ function loadFileContent(fileName, content) {
       editorTabs.appendChild(tabsContainer);
     }
 
-    tab = createTab(fileName, true);
+    tab = createTab(fileName, true, actualPath);
     tabsContainer.appendChild(tab);
   }
 
@@ -247,16 +247,19 @@ function loadFileContent(fileName, content) {
 
 // Listen for file selection events from sidebar
 document.addEventListener('fileSelected', (e) => {
-  const { path, type, content } = e.detail;
+  const { path, type, content, actualPath } = e.detail;
   if (type === 'file' && content) {
-    loadFileContent(path, content);
+    loadFileContent(path, content, actualPath);
   }
 });
 
-function createTab(fileName, isActive = false) {
+function createTab(fileName, isActive = false, actualPath = '') {
   const tab = document.createElement('div');
   tab.className = `vscode__tab ${isActive ? 'vscode__tab--active' : ''}`;
   tab.dataset.file = fileName;
+  if (actualPath) {
+    tab.dataset.actualPath = actualPath;
+  }
 
   const tabTitle = document.createElement('span');
   tabTitle.className = 'vscode__tab-title';

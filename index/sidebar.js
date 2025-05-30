@@ -1,20 +1,26 @@
-// Default project structure
-const defaultProjectStructure = {
+// Global variable to store project structure
+window.projectStructure = {
   name: '6th Sense',
   type: 'directory',
   children: [
     {
       name: 'Members',
       type: 'directory',
-      children: [{ name: 'dongsik.md', type: 'file', actualPath: 'dongsik.html' }],
+      children: [
+        { name: 'dongsik.md', type: 'file', actualPath: 'src/pages/Members/dongsik.html' }
+      ],
     },
     {
       name: 'Components',
       type: 'directory',
       children: [
-        { name: 'landing.html', type: 'file' },
-        { name: 'landing_copy.html', type: 'file' },
-        { name: 'landing_copy_2.html', type: 'file' },
+        { name: 'footer.html', type: 'file', actualPath: 'src/components/footer/footer.html' },
+        { name: 'header.html', type: 'file', actualPath: 'src/components/header/header.html' },
+        { name: 'login.html', type: 'file', actualPath: 'src/components/login/login.html' },
+        { name: 'register.html', type: 'file', actualPath: 'src/components/Register/Register.html' },
+        { name: 'product-list.html', type: 'file', actualPath: 'src/components/Product-list/list-category.html' },
+        { name: 'item-inquire.html', type: 'file', actualPath: 'src/components/product-detail/item-inquire.html' },
+        { name: 'item-review.html', type: 'file', actualPath: 'src/components/product-detail/item-review.html' },
       ],
     },
   ],
@@ -24,8 +30,33 @@ const defaultProjectStructure = {
 export function initSidebar() {
   console.log('Initializing sidebar...');
 
-  // Initialize project structure
-  const projectStructure = { ...defaultProjectStructure };
+  // Initialize project structure if not already set
+  if (!window.projectStructure.name) {
+    window.projectStructure = {
+      name: '6th Sense',
+      type: 'directory',
+      children: [
+        {
+          name: 'Members',
+          type: 'directory',
+          children: [{ name: 'dongsik.md', type: 'file', actualPath: 'src/pages/Members/dongsik.html' }]
+        },
+        {
+          name: 'Components',
+          type: 'directory',
+          children: [
+            { name: 'footer.html', type: 'file', actualPath: 'src/components/footer/footer.html' },
+            { name: 'header.html', type: 'file', actualPath: 'src/components/header/header.html' },
+            { name: 'login.html', type: 'file', actualPath: 'src/components/login/login.html' },
+            { name: 'register.html', type: 'file', actualPath: 'src/components/Register/Register.html' },
+            { name: 'product-list.html', type: 'file', actualPath: 'src/components/Product-list/list-category.html' },
+            { name: 'item-inquire.html', type: 'file', actualPath: 'src/components/product-detail/item-inquire.html' },
+            { name: 'item-review.html', type: 'file', actualPath: 'src/components/product-detail/item-review.html' },
+          ],
+        },
+      ],
+    };
+  }
 
   // Get sidebar element
   const sidebar = document.querySelector('.vscode__explorer');
@@ -82,7 +113,7 @@ export function initSidebar() {
     const container = document.createElement('div');
     container.className = 'vscode__file-tree-container';
 
-    projectStructure.children.forEach((item) => {
+    projectStructure.children.forEach(item => {
       container.appendChild(createFileTreeItem(item));
     });
 
@@ -97,7 +128,7 @@ export function initSidebar() {
     const displayName = item.name;
     const fullPath = parentPath ? `${parentPath}/${displayName}` : displayName;
     itemElement.dataset.path = fullPath;
-    
+
     // Add actualPath if it exists
     if (item.actualPath) {
       itemElement.dataset.actualPath = item.actualPath;
@@ -139,7 +170,7 @@ export function initSidebar() {
     // 자식 요소가 있으면 컨테이너에 추가
     if (item.children && item.children.length > 0) {
       const parentPath = itemElement.dataset.path;
-      item.children.forEach((child) => {
+      item.children.forEach(child => {
         childrenContainer.appendChild(createFileTreeItem(child, depth + 1, parentPath));
       });
 
@@ -151,7 +182,7 @@ export function initSidebar() {
       itemElement.appendChild(childrenContainer);
 
       // 클릭 핸들러
-      const toggleHandler = (e) => {
+      const toggleHandler = e => {
         e.stopPropagation();
         const isExpanded = childrenContainer.style.display !== 'none';
         childrenContainer.style.display = isExpanded ? 'none' : 'block';
@@ -178,7 +209,7 @@ export function initSidebar() {
     const fileNameElement = itemElement.querySelector('.vscode__file-name');
     if (fileNameElement) {
       fileNameElement.style.cursor = 'pointer';
-      fileNameElement.addEventListener('click', (e) => {
+      fileNameElement.addEventListener('click', e => {
         e.stopPropagation();
         handleFileClick.call(itemElement, e);
       });
@@ -186,7 +217,7 @@ export function initSidebar() {
 
     // Also add click handler to the container for better UX
     itemElement.style.cursor = 'pointer';
-    itemElement.addEventListener('click', (e) => {
+    itemElement.addEventListener('click', e => {
       // Only handle if the click is directly on the item, not on child elements
       if (e.target === itemElement) {
         handleFileClick.call(itemElement, e);
@@ -194,11 +225,14 @@ export function initSidebar() {
     });
   }
 
-  async function handleFileClick() {
+  async function handleFileClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
     console.log('File item clicked');
 
     // Remove active class from all items
-    document.querySelectorAll('.vscode__file-item').forEach((el) => {
+    document.querySelectorAll('.vscode__file-item').forEach(el => {
       el.classList.remove('active');
     });
 
@@ -207,61 +241,30 @@ export function initSidebar() {
 
     try {
       console.log('Handling file click for:', this.dataset.path);
-      // Get full path and file name
-      const fullPath = this.dataset.path;
-      const fileName = fullPath.split('/').pop();
-      const fileExt = fileName.split('.').pop().toLowerCase();
+      
+      // Get the actual path from data-actual-path or use the displayed path
+      const actualPath = this.dataset.actualPath || this.dataset.path;
+      const fileName = actualPath.split('/').pop();
 
-      // Determine the base directory based on the path
-      let basePath = '';
-      if (fullPath.includes('Members/')) {
-        basePath = '../../src/pages/Members/';
-      } else if (fullPath.includes('Components/')) {
-        basePath = '../../src/pages/Components/';
-      } else {
-        basePath = '../../';
-      }
-
-      // Handle markdown files (which are actually HTML files)
-      if (fileExt === 'md') {
-        // Use actualPath if available, otherwise use the filename
-        const actualFileName = this.dataset.actualPath || fileName.replace(/\.md$/, '.html');
-        const response = await fetch(`${basePath}${actualFileName}`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const content = await response.text();
-        
-        document.dispatchEvent(
-          new CustomEvent('fileSelected', {
-            detail: {
-              path: fileName, // Show .md in the UI
-              type: 'file',
-              content: content,
-            },
-          })
-        );
-        return;
-      }
-
-      // For other file types (like HTML)
-      const response = await fetch(`${basePath}${fileName}`);
+      // Use the actualPath directly for fetching
+      const response = await fetch(actualPath);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
+      
       const content = await response.text();
-
-      // Emit custom event for file selection with content
+      // Dispatch file selected event with actualPath
       const event = new CustomEvent('fileSelected', {
         detail: {
-          path: fileName,
+          path: this.dataset.path.split('/').pop(),
           type: 'file',
           content: content,
-        },
+          actualPath: this.dataset.actualPath || ''
+        }
       });
       document.dispatchEvent(event);
     } catch (error) {
-      console.error('파일을 불러오는 중 오류가 발생했습니다:', error);
+      console.error('Error loading file:', error);
       alert(`파일을 불러올 수 없습니다: ${error.message}`);
     }
   }
@@ -290,7 +293,7 @@ export function initSidebar() {
       fileTreeContainer.style.display = 'block';
 
       // 프로젝트 헤더 클릭 이벤트
-      const toggleDirectory = (e) => {
+      const toggleDirectory = e => {
         e.stopPropagation();
         const isExpanded = fileTreeContainer.style.display !== 'none';
         fileTreeContainer.style.display = isExpanded ? 'none' : 'block';
@@ -305,7 +308,7 @@ export function initSidebar() {
 }
 
 // Listen for file selection events
-document.addEventListener('fileSelected', (e) => {
+document.addEventListener('fileSelected', e => {
   const { path, type } = e.detail;
   console.log(`File selected: ${path}, Type: ${type}`);
   // Here you can add logic to open the file in the editor
