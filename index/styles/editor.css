@@ -26,10 +26,14 @@
 
 /* Editor Tabs */
 .vscode__editor-tabs {
-  background-color: var(--color-bg-tertiary);
   display: flex;
-  height: 35px;
-  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-panel-tab-bg);
+  border-bottom: 1px solid var(--color-panel-border);
+  height: 2.5rem;
+  align-items: center;
+  padding: 0 0.75rem;
+  user-select: none;
+  font-size: 1rem;
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none; /* Firefox */
@@ -41,30 +45,32 @@
 }
 
 .vscode__tab {
+  padding: 0 1.125rem;
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 15px;
-  color: var(--color-text-secondary);
-  font-size: 12px;
-  border-right: 1px solid var(--color-border);
+  color: var(--color-tab-inactive);
   cursor: pointer;
-  user-select: none;
+  border: 1px solid transparent;
+  border-bottom: none;
+  margin-right: 0.25rem;
+  background: transparent;
+  transition: all var(--transition-speed) var(--transition-easing);
+  font-size: 0.875rem;
   white-space: nowrap;
-  position: relative;
-  background-color: var(--color-bg-tertiary);
-  transition: background-color 0.2s var(--transition-easing);
+  line-height: 1.5;
 }
 
 .vscode__tab:hover {
-  background-color: var(--color-hover);
-  color: var(--color-text);
+  color: var(--color-tab-active);
+  background-color: var(--color-panel-bg-hover);
 }
 
 .vscode__tab--active {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  border-top: 1px solid var(--color-accent);
+  color: var(--color-tab-active);
+  background-color: var(--color-panel-bg);
+  border-color: var(--color-panel-border);
+  border-bottom-color: var(--color-panel-bg);
   margin-top: -1px;
 }
 
@@ -90,11 +96,33 @@
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: 'Consolas', 'Courier New', monospace;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 1rem; /* Increased from 0.875rem */
+  line-height: 1.8; /* Increased from 1.5 */
   white-space: pre;
-  padding: 8px 16px;
+  padding: 0.75rem 1.25rem; /* Increased padding */
   outline: none;
+  tab-size: 4; /* Ensure consistent tab sizing */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-bg-tertiary) var(--color-bg);
+}
+
+/* Scrollbar styling - Match terminal style */
+.vscode__editor-content::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.vscode__editor-content::-webkit-scrollbar-thumb {
+  background-color: var(--color-bg-tertiary);
+  border-radius: 5px;
+}
+
+.vscode__editor-content::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.vscode__editor-content::-webkit-scrollbar-track {
+  background-color: var(--color-bg);
 }
 
 /* Editor Line Numbers */
@@ -103,19 +131,20 @@
   left: 0;
   top: 0;
   bottom: 0;
-  width: 40px;
+  width: 3rem; /* Increased from 2.5rem */
   background-color: var(--color-bg-secondary);
   color: var(--color-text-secondary);
   text-align: right;
-  padding: 8px 4px;
+  padding: 0.75rem 0.5rem; /* Increased padding */
   user-select: none;
   font-family: 'Consolas', 'Courier New', monospace;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 1rem; /* Increased from 0.875rem */
+  line-height: 1.8; /* Match editor line height */
 }
 
 .vscode__editor-line-number {
-  height: 21px;
+  height: 1.8rem; /* Increased from 1.3125rem to match line height */
   display: block;
-  padding-right: 8px;
+  padding-right: 0.75rem; /* Increased from 0.5rem */
+  line-height: 1.8; /* Ensure line numbers align with text */
 }

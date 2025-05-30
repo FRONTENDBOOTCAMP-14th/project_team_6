@@ -2,26 +2,29 @@
 .vscode__panel {
   display: flex;
   flex-direction: column;
-  height: 200px;
+  height: 15rem; /* Increased from 12.5rem for better visibility */
   background-color: var(--color-panel-bg);
   border-top: 1px solid var(--color-panel-border);
   font-family: 'Consolas', 'Courier New', monospace;
   color: var(--terminal-foreground);
   z-index: var(--z-panel);
+  font-size: 1rem; /* Increased from 0.875rem for better readability */
+  line-height: 1.6; /* Improved line spacing */
 }
 
 .vscode__panel-tabs {
   display: flex;
   background-color: var(--color-panel-tab-bg);
   border-bottom: 1px solid var(--color-panel-border);
-  height: 35px;
+  height: 2.5rem; /* Increased from 2.1875rem for better touch targets */
   align-items: center;
-  padding: 0 8px;
+  padding: 0 0.75rem; /* Increased from 0.5rem for better spacing */
   user-select: none;
+  font-size: 1rem; /* Increased from 0.75rem */
 }
 
 .vscode__panel-tab {
-  padding: 0 15px;
+  padding: 0 1.125rem; /* Increased from 0.9375rem */
   height: 100%;
   display: flex;
   align-items: center;
@@ -29,11 +32,12 @@
   cursor: pointer;
   border: 1px solid transparent;
   border-bottom: none;
-  margin-right: 2px;
+  margin-right: 0.25rem; /* Increased from 0.125rem */
   background: transparent;
   transition: all var(--transition-speed) var(--transition-easing);
-  font-size: 12px;
+  font-size: 0.875rem; /* Increased from 0.75rem */
   white-space: nowrap;
+  line-height: 1.5; /* Improved line height */
 }
 
 .vscode__panel-tab--active {
@@ -46,9 +50,9 @@
 /* Terminal Content */
 .vscode__terminal {
   flex: 1;
-  padding: 8px 16px;
+  padding: 0.5rem 1rem; /* 8px 16px / 16px = 0.5rem 1rem */
   overflow-y: auto;
-  font: 14px/1.5 'Consolas', monospace;
+  font: 0.875rem/1.5 'Consolas', monospace; /* 14px / 16px = 0.875rem */
   white-space: pre-wrap;
   word-break: break-word;
   color: var(--terminal-foreground);

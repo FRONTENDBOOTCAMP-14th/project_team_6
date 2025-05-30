@@ -9,11 +9,16 @@
 @import './styles/terminal.css';
 @import './styles/status-bar.css';
 
+/* Set base font size to 150% (16px * 1.5 = 24px) */
+html {
+  font-size: 150%;
+}
+
 /* Main app container */
 .vscode {
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
-  font-size: 14px;
+  font-size: 1rem; /* Use rem for better scaling */
   line-height: 1.5;
   color: var(--color-text);
   background-color: var(--color-bg);
@@ -27,4 +32,5 @@
   padding: 0;
   height: 100vh;
   overflow: hidden;
+  font-size: 1rem; /* Ensure consistent base font size */
 }

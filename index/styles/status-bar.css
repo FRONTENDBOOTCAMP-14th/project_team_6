@@ -6,18 +6,40 @@
   display: flex;
   align-items: center;
   justify-content: right;
-  padding: 0 10px;
-  font-size: 12px;
-  height: 22px;
+  padding: 0 1rem; /* Increased from 10px */
+  font-size: 0.9375rem; /* Increased from 12px */
+  height: 2.5rem; /* Increased from 22px */
+  line-height: 1.5;
+}
+
+.vscode__status-bar-section {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .vscode__status-bar-item {
-  margin-right: 15px;
+  margin-right: 1.25rem; /* Increased from 15px */
   cursor: pointer;
+  padding: 0 0.5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.vscode__status-bar-item:last-child {
+  margin-right: 0;
 }
 
 .vscode__status-bar-item:hover {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.vscode__status-bar-item .codicon {
+  font-size: 1rem;
+  margin-right: 0.25rem;
 }
 
 /* Utilities */
