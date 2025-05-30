@@ -2,7 +2,7 @@ body {
   margin: 50px;
 }
 
-.c-product-card {
+.product-card {
   --rounded-img: 20px;
   --font-weight-400: 400;
   --font-weight-600: 600;
@@ -27,7 +27,7 @@ body {
     }
   }
 
-  .c-product-card__image {
+  .product-card__image-wrapper {
     --img-height: 300px;
     --img-width: 285px;
     height: var(--img-height);
@@ -48,7 +48,7 @@ body {
     }
   }
 
-  .c-product-card__maker {
+  .product-card__brand {
     --img-spacing: 16px;
     --line-height: 150%;
     color: var(--gray-400);
@@ -59,7 +59,7 @@ body {
     margin-bottom: var(--spacing-XXXS);
   }
 
-  .c-product-card__discount {
+  .product-card__discount-label {
     --p-t: 12px;
     --p-r: 6px;
     --p-b: 14px;
@@ -78,7 +78,7 @@ body {
     line-height: var(--line-height);
   }
 
-  .c-product-card__cart-button {
+  .product-card__cart-button {
     --position-top: 235px;
     --position-left: 221px;
     position: absolute;
@@ -91,7 +91,7 @@ body {
     }
   }
 
-  .c-product-card__modal {
+  .product-card__modal {
     --rounded-modal: 3px;
     --width-modal: 280px;
     position: fixed;
@@ -108,20 +108,20 @@ body {
     display: none;
     z-index: 9999;
 
-    .c-product-card__modal-text {
+    .product-card__modal-text {
       margin-bottom: var(--spacing-XS);
       font-size: var(--font-size-S);
       font-weight: var(--font-weight-600);
     }
 
-    .c-product-card__modal-buttons {
+    .product-card__modal-buttons {
       --width-button: 80px;
       --rounded-button: 6px;
       display: flex;
       gap: var(--spacing-XXS);
       justify-content: center;
 
-      .c-product-card__modal-button {
+      .product-card__modal-button {
         transition: transform 0.1s ease;
         padding: var(--spacing-XXXS) 0;
         width: var(--width-button);
@@ -144,7 +144,7 @@ body {
     }
   }
 
-  .c-product-card__name {
+  .product-card__name {
     --line-height: 100%;
     --letter-spacing: -0.54px;
     font-size: var(--font-size-M);
@@ -154,13 +154,13 @@ body {
     margin-bottom: var(--spacing-XXS);
   }
 
-  .c-product-card__price {
+  .product-card__price {
     display: flex;
     flex-flow: row nowrap;
     align-items: flex-start;
     gap: var(--spacing-XS);
 
-    .c-product-card__dc-price {
+    .product-card__price-discounted {
       --line-height: 100%;
       --letter-spacing: 0.54px;
       font-size: var(--font-size-M);
@@ -169,7 +169,7 @@ body {
       letter-spacing: var(--letter-spacing);
     }
 
-    .c-product-card__original-price {
+    .product-card__price-original {
       --line-height: 150%;
       color: var(--gray-400);
       font-size: var(--font-size-XS);
