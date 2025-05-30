@@ -50,10 +50,45 @@
   overflow-y: auto;
   font: 14px/1.5 'Consolas', monospace;
   white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--terminal-foreground);
   background: var(--terminal-bg);
   margin: 0;
-  color: var(--terminal-foreground);
-  font-family: 'Consolas', 'Courier New', monospace;
+}
+
+/* Terminal output */
+.vscode__terminal-output {
+  margin: 4px 0;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+/* URL Button */
+.vscode__terminal-url-button {
+  display: inline-block;
+  background: transparent;
+  color: #4d9bf1;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font: inherit;
+  text-decoration: underline;
+  outline: none;
+}
+
+.vscode__terminal-url-button:hover {
+  color: #7ab7ff;
+}
+
+.vscode__terminal-url-button:focus {
+  outline: 1px solid #4d9bf1;
+  outline-offset: 1px;
 }
 
 .vscode__terminal-line {
