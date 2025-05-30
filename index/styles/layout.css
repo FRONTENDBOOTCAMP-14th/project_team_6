@@ -1,0 +1,117 @@
+/* App Layout */
+.vscode__app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Main Content Area */
+.vscode__main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Activity Bar */
+.vscode__activity-bar {
+  width: var(--activitybar-width);
+  background-color: var(--color-activitybar-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+}
+
+/* Editor Container */
+.vscode__editor-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.vscode__sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--color-sidebar-bg);
+  color: var(--color-sidebar-foreground);
+  overflow: auto;
+}
+
+/* Editor Group */
+.vscode__editor-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Editor */
+.vscode__editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Tabs */
+.vscode__tabs {
+  display: flex;
+  background-color: var(--color-editor-tab-bg);
+  border-bottom: 1px solid var(--color-editor-border);
+  height: 35px;
+  overflow-x: auto;
+}
+
+.vscode__tab {
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--color-editor-border);
+  color: var(--color-tab-inactive);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.vscode__tab--active {
+  background-color: var(--color-editor-bg);
+  color: var(--color-tab-active);
+}
+
+/* Editor Content */
+.vscode__editor-content {
+  flex: 1;
+  display: flex;
+  overflow: auto;
+  background-color: var(--color-editor-bg);
+}
+
+/* Terminal Panel */
+.vscode__panel {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-panel-bg);
+  border-top: 1px solid var(--color-panel-border);
+}
+
+.vscode__panel-tabs {
+  display: flex;
+  height: 35px;
+  background-color: var(--color-panel-tab-bg);
+  border-bottom: 1px solid var(--color-panel-border);
+}
+
+.vscode__panel-tab {
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  color: var(--color-tab-inactive);
+  cursor: pointer;
+  border-right: 1px solid var(--color-panel-border);
+}
+
+.vscode__panel-tab--active {
+  background-color: var(--color-panel-bg);
+  color: var(--color-tab-active);
+}

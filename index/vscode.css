@@ -1,0 +1,30 @@
+/* Import all component styles */
+@import './styles/variables.css';
+@import './styles/reset.css';
+@import './styles/layout.css';
+@import './styles/menubar.css';
+@import './styles/activity-bar.css';
+@import './styles/sidebar.css';
+@import './styles/editor.css';
+@import './styles/terminal.css';
+@import './styles/status-bar.css';
+
+/* Main app container */
+.vscode {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure the body takes full viewport height */
+.vscode__body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}

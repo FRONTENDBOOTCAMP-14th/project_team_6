@@ -1,0 +1,26 @@
+/* Status Bar */
+.vscode__status-bar {
+  grid-column: 1 / -1;
+  background-color: var(--color-black);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding: 0 10px;
+  font-size: 12px;
+  height: 22px;
+}
+
+.vscode__status-bar-item {
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.vscode__status-bar-item:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Utilities */
+.hidden {
+  display: none !important;
+}

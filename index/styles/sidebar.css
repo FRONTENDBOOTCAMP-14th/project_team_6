@@ -1,0 +1,176 @@
+/* Sidebar */
+.vscode__sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--color-bg-secondary);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: var(--z-sidebar);
+}
+
+.vscode__sidebar-header {
+  padding: 8px 20px;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 35px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.vscode__sidebar-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.vscode__sidebar-action {
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.vscode__sidebar-action:hover {
+  color: var(--color-text);
+}
+
+.vscode__explorer {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 0;
+}
+
+.vscode__file-explorer {
+  list-style: none;
+  padding-left: 0;
+}
+
+.vscode__file-tree {
+  width: 100%;
+  overflow-y: auto;
+}
+
+.vscode__file-tree-container {
+  display: block;
+  width: 100%;
+}
+
+.vscode__file-item {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 22px;
+  font-size: 13px;
+  box-sizing: border-box;
+  position: relative;
+  padding: 0;
+}
+
+.vscode__file-item.directory {
+  padding-bottom: 3px;
+}
+
+.vscode__file-item .file-item-content {
+  display: flex;
+  align-items: center;
+  padding: 3px 10px 3px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.vscode__file-item:hover {
+  background-color: var(--color-hover-bg);
+}
+
+.vscode__file-item.active {
+  background-color: var(--color-selection-bg);
+  color: var(--color-selection-fg);
+}
+
+.vscode__file-children {
+  display: none;
+  width: 100%;
+  overflow: hidden;
+  padding-left: 16px;
+  box-sizing: border-box;
+}
+
+/* Remove this rule as we're handling padding differently */
+
+.vscode__toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 4px 0 0;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  line-height: 1;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 10px;
+  text-align: center;
+}
+
+.vscode__file-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vscode__file-item:hover {
+  background-color: var(--color-hover);
+}
+
+.vscode__file-item--active {
+  background-color: var(--color-active);
+}
+
+.vscode__file-icon {
+  margin-right: 6px;
+  color: var(--color-text-secondary);
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vscode__file-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vscode__file-actions {
+  display: none;
+  margin-left: auto;
+}
+
+.vscode__file-item:hover .vscode__file-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.vscode__file-action {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  padding: 0 2px;
+}
+
+.vscode__file-action:hover {
+  color: var(--color-text);
+}

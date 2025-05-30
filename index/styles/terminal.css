@@ -1,0 +1,168 @@
+/* Terminal Panel */
+.vscode__panel {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  background-color: var(--color-panel-bg);
+  border-top: 1px solid var(--color-panel-border);
+  font-family: 'Consolas', 'Courier New', monospace;
+  color: var(--terminal-foreground);
+  z-index: var(--z-panel);
+}
+
+.vscode__panel-tabs {
+  display: flex;
+  background-color: var(--color-panel-tab-bg);
+  border-bottom: 1px solid var(--color-panel-border);
+  height: 35px;
+  align-items: center;
+  padding: 0 8px;
+  user-select: none;
+}
+
+.vscode__panel-tab {
+  padding: 0 15px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: var(--color-tab-inactive);
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-bottom: none;
+  margin-right: 2px;
+  background: transparent;
+  transition: all var(--transition-speed) var(--transition-easing);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.vscode__panel-tab--active {
+  color: var(--color-tab-active);
+  background-color: var(--color-panel-bg);
+  border-color: var(--color-panel-border);
+  border-bottom-color: var(--color-panel-bg);
+}
+
+/* Terminal Content */
+.vscode__terminal {
+  flex: 1;
+  padding: 8px 16px;
+  overflow-y: auto;
+  font: 14px/1.5 'Consolas', monospace;
+  white-space: pre-wrap;
+  background: var(--terminal-bg);
+  margin: 0;
+  color: var(--terminal-foreground);
+  font-family: 'Consolas', 'Courier New', monospace;
+}
+
+.vscode__terminal-line {
+  margin: 0 0 20px 0;
+  padding: 0;
+  color: inherit;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vscode__terminal-user {
+  color: var(--terminal-cursor);
+  font-weight: bold;
+}
+
+.vscode__terminal-path {
+  color: var(--terminal-path);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.vscode__terminal-command-line {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  align-items: center;
+  gap: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vscode__terminal-command {
+  display: inline;
+  white-space: nowrap;
+}
+
+.vscode__terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--terminal-foreground);
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+.vscode__terminal-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.vscode__terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: var(--terminal-cursor);
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  from,
+  to {
+    background-color: transparent;
+  }
+  50% {
+    background-color: var(--terminal-cursor);
+  }
+}
+
+/* Terminal prompt */
+.vscode__terminal-prompt {
+  display: flex;
+  align-items: center;
+}
+
+.vscode__terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--terminal-foreground);
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Scrollbar styling */
+.vscode__terminal::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.vscode__terminal::-webkit-scrollbar-thumb {
+  background-color: var(--color-bg-tertiary);
+  border-radius: 5px;
+}
+
+.vscode__terminal::-webkit-scrollbar-track {
+  background-color: var(--color-bg);
+}
