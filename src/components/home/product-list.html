@@ -44,31 +44,11 @@
     </div>
     <hr />
     <!-- home: product list 컴포넌트  -->
-    <span class="list-text">
-      <strong>추천 상품 텍스트</strong>
-      <p>보조 설명을 적어주세요</p>
-    </span>
-    <div class="list-content">
-      <div class="product-card" data-price="5900" data-discount="24">
-        <button class="product-link" data-url="" tabindex="0" aria-label="탱탱쫄면 4개입 상품 페이지로 이동">
-          <picture class="product-img">
-            <source srcset="/src/assets/webp/product01.webp" type="image/webp" />
-            <img src="/src/assets/png/product01.png" alt="" />
-          </picture>
-        </button>
-        <p class="product-maker">[풀무원]</p>
-        <p class="product-discount"><span class="discount-rate"></span>%</p>
-        <button class="cart-button" tabindex="0" aria-label="장바구니에 담기">
-          <img src="/src/assets/svg/cart-off.svg" alt="" />
-        </button>
-        <div class="cart-modal modal">
-          <div class="modal-content">
-            <p class="modal-text">장바구니에 담으시겠습니까?</p>
-            <div class="modal-button">
-              <button class="button-no">취소하기</button>
-              <button class="button-yes">담기</button>
-            </div>
-          </div>
+    <div class="product-list">
+      <div class="product-list__container">
+        <div class="product-list__header">
+          <strong class="product-list__title">추천 상품 텍스트</strong>
+          <p class="product-list__description">보조 설명을 적어주세요</p>
         </div>
         <div class="product-list__items">
           <div class="product-card" data-price="5900" data-discount="24">
