@@ -1,0 +1,109 @@
+input,
+button {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+}
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+.header__container {
+  max-inline-size: 100%;
+  position: relative;
+  color: var(--black);
+  border-bottom: 1px solid var(--gray-200);
+
+  .header__top {
+    max-inline-size: 1200px;
+    display: flex;
+    block-size: 120px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+
+    &::before {
+      content: '';
+      inline-size: 100%;
+      block-size: 1px;
+      background: var(--gray-200);
+      position: absolute;
+      top: 120px;
+      left: 0;
+    }
+
+    .header__user-action {
+      button {
+        margin-inline-start: 40px;
+        position: relative;
+
+        span {
+          font-size: var(--font-size-XXXS);
+          position: absolute;
+          right: -12px;
+          bottom: -12px;
+          background: var(--primary);
+          color: var(--white);
+          padding: calc(var(--spacing-XXXS) / 2) calc(var(--spacing-XXXS) / 1);
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+  .header__nav {
+    font-size: var(--font-size-M);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-inline-size: 1200px;
+    margin: 0 auto;
+
+    .header__menu {
+      display: flex;
+      block-size: 80px;
+      align-items: center;
+      li {
+        margin-inline-end: var(--spacing-XL);
+        &:hover a {
+          color: var(--primary);
+        }
+      }
+      li a {
+        display: inline-block;
+        block-size: 100%;
+      }
+    }
+    .header__search-bar {
+      background: var(--gray-100);
+      padding-inline: var(--spacing-XS) var(--spacing-XXS);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      inline-size: 300px;
+      border-radius: 22px;
+
+      input {
+        inline-size: calc(100% - 36px);
+        block-size: 44px;
+        font-size: var(--font-size-S);
+        &::placeholder {
+          color: var(--gray-200);
+        }
+      }
+      button {
+        inline-size: 36px;
+        aspect-ratio: 1/1;
+        position: relative;
+
+        img {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+}
