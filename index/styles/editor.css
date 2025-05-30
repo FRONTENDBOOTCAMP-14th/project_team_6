@@ -28,16 +28,18 @@
 .vscode__editor-tabs {
   display: flex;
   background-color: var(--color-panel-tab-bg);
-  border-bottom: 1px solid var(--color-panel-border);
   height: 2.5rem;
-  align-items: center;
-  padding: 0 0.75rem;
+  align-items: flex-end;
+  padding: 0 0.5rem 0 0.75rem;
   user-select: none;
   font-size: 1rem;
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid var(--color-bg);
 }
 
 .vscode__editor-tabs::-webkit-scrollbar {
@@ -45,28 +47,39 @@
 }
 
 .vscode__tab {
-  padding: 0 1.125rem;
-  height: 100%;
+  padding: 0 1.25rem;
+  height: calc(100% - 1px);
   display: flex;
   align-items: center;
   color: var(--color-tab-inactive);
+  font-size: 0.8rem;
   cursor: pointer;
+  position: relative;
   border: 1px solid transparent;
   border-bottom: none;
-  margin-right: 0.25rem;
-  background: transparent;
-  transition: all var(--transition-speed) var(--transition-easing);
-  font-size: 0.875rem;
+  background-color: var(--color-panel-tab-bg);
+  transition: all 0.2s ease;
   white-space: nowrap;
-  line-height: 1.5;
+  margin: 0 0.125rem;
+  border-radius: 4px 4px 0 0;
+  box-sizing: border-box;
+}
+
+.vscode__tab:hover {
+  color: var(--color-tab-hover);
+  background-color: var(--color-panel-hover);
 }
 
 .vscode__tab--active {
   color: var(--color-tab-active);
   background-color: var(--color-panel-bg);
   border-color: var(--color-panel-border);
-  border-bottom-color: var(--color-panel-bg);
-  margin-top: -1px;
+  border-bottom: 1px solid var(--color-panel-bg);
+  margin-bottom: -1px;
+  z-index: 2;
+  height: calc(100% + 1px);
+  position: relative;
+  top: 1px;
 }
 
 .vscode__tab-close {
@@ -83,41 +96,44 @@
   color: var(--color-text);
 }
 
+/* Editor Container */
+.vscode__editor {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: var(--color-panel-bg);
+  border: 1px solid var(--color-panel-border);
+  border-top: none; /* Remove top border to connect with tabs */
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+  position: relative;
+}
+
 /* Editor Content */
 .vscode__editor-content {
   flex: 1;
-  overflow: auto;
+  overflow: hidden;
   position: relative;
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: 'Consolas', 'Courier New', monospace;
-  font-size: 1rem; /* Increased from 0.875rem */
-  line-height: 1.8; /* Increased from 1.5 */
+  font-size: 1rem;
+  line-height: 1.8;
   white-space: pre;
-  padding: 0.75rem 1.25rem; /* Increased padding */
+  padding: 0 1.25rem;
   outline: none;
-  tab-size: 4; /* Ensure consistent tab sizing */
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-bg-tertiary) var(--color-bg);
+  tab-size: 4;
 }
 
-/* Scrollbar styling - Match terminal style */
-.vscode__editor-content::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-.vscode__editor-content::-webkit-scrollbar-thumb {
-  background-color: var(--color-bg-tertiary);
-  border-radius: 5px;
-}
-
-.vscode__editor-content::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-bg-secondary);
-}
-
-.vscode__editor-content::-webkit-scrollbar-track {
-  background-color: var(--color-bg);
+/* Monaco Editor container */
+#editor-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 /* Editor Line Numbers */

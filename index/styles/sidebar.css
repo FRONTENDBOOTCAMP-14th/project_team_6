@@ -49,6 +49,10 @@
   padding-left: 0;
 }
 
+.vscode__explorer-header {
+  margin: 10px 0 10px 20px;
+}
+
 .vscode__file-tree {
   width: 100%;
   overflow-y: auto;
