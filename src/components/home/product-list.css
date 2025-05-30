@@ -1,0 +1,192 @@
+body {
+  margin: 50px;
+}
+
+.product-card {
+  --rounded-img: 20px;
+  --font-weight-400: 400;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
+
+  button {
+    all: unset;
+    cursor: pointer;
+    display: inline-block;
+    user-select: none;
+
+    &:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+      border-radius: var(--rounded-img);
+    }
+  }
+
+  color: var(--black);
+  display: inline-flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  position: relative;
+
+  .product-img {
+    --img-height: 300px;
+    --img-width: 285px;
+
+    height: var(--img-height);
+    width: var(--img-width);
+    border-radius: var(--rounded-img);
+
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  .product-maker {
+    --img-spacing: 16px;
+    --line-height: 150%;
+
+    color: var(--gray-400);
+    font-size: var(--font-size-XXS);
+    font-weight: var(--font-weight-600);
+    line-height: var(--line-height);
+    margin-top: var(--img-spacing);
+    margin-bottom: var(--spacing-XXXS);
+  }
+
+  .product-discount {
+    --p-t: 12px;
+    --p-r: 6px;
+    --p-b: 14px;
+    --p-l: 5px;
+    --line-height: 140%;
+
+    position: absolute;
+    display: inline-flex;
+    background-color: var(--primary);
+    padding: var(--p-t) var(--p-r) var(--p-b) var(--p-l);
+    border-radius: var(--rounded-img) 0;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    font-size: var(--font-size-M);
+    font-weight: var(--font-weight-700);
+    line-height: var(--line-height);
+  }
+
+  .cart-button {
+    --position-top: 235px;
+    --position-left: 221px;
+
+    position: absolute;
+    top: var(--position-top);
+    left: var(--position-left);
+    transition: transform 0.1s ease;
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  .cart-modal {
+    --rounded-modal: 3px;
+    --width-modal: 280px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--white);
+    padding: var(--spacing-S);
+    border-radius: var(--rounded-modal);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    width: var(--width-modal);
+    text-align: center;
+    justify-content: center;
+    display: none;
+    z-index: 9999;
+
+    .modal-text {
+      margin-bottom: var(--spacing-XS);
+      font-size: var(--font-size-S);
+      font-weight: var(--font-weight-600);
+    }
+
+    .modal-button {
+      --width-button: 80px;
+      --rounded-button: 6px;
+
+      display: flex;
+      gap: var(--spacing-XXS);
+      justify-content: center;
+
+      button {
+        transition: transform 0.1s ease;
+        padding: var(--spacing-XXXS) 0;
+        width: var(--width-button);
+        border-radius: var(--rounded-button);
+        font-weight: var(--font-weight-600);
+
+        &.button-no {
+          background: var(--gray-200);
+        }
+
+        &.button-yes {
+          background: var(--primary);
+          color: var(--white);
+        }
+
+        &:active {
+          transform: scale(0.96);
+        }
+      }
+    }
+  }
+
+  .product-name {
+    --line-height: 100%;
+    --letter-spacing: -0.54px;
+
+    font-size: var(--font-size-M);
+    font-weight: var(--font-weight-400);
+    line-height: var(--line-height);
+    letter-spacing: var(--letter-spacing);
+    margin-bottom: var(--spacing-XXS);
+  }
+
+  .price-content {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    gap: var(--spacing-XS);
+
+    .product-dc-price {
+      --line-height: 100%;
+      --letter-spacing: 0.54px;
+
+      font-size: var(--font-size-M);
+      font-weight: var(--font-weight-600);
+      line-height: var(--line-height);
+      letter-spacing: var(--letter-spacing);
+    }
+
+    .product-price {
+      --line-height: 150%;
+
+      color: var(--gray-400);
+      font-size: var(--font-size-XS);
+      font-weight: var(--font-weight-400);
+      line-height: var(--line-height);
+      text-decoration: line-through;
+    }
+  }
+}

@@ -6,7 +6,7 @@
 body {
 }
 /* 타이틀 컴포넌트 */
-.title {
+.register__title {
   font-size: 18px;
   font-style: normal;
   font-weight: 600; /* 18px */
@@ -14,7 +14,7 @@ body {
   text-align: center;
 }
 /* 아이템 컴포넌트 */
-.item {
+.register__item {
   max-width: 640px;
   padding: 20px 0;
   display: flex;
@@ -22,19 +22,19 @@ body {
   gap: 8px;
   position: relative;
 
-  &.terms {
+  &.register__item--terms {
     align-items: flex-start;
   }
 
   /* 항목명 */
-  .label-wrapper {
+  .register__label-wrapper {
     min-width: 139px;
     height: 44px;
     padding: 4px;
     display: flex;
     align-items: center;
 
-    label {
+    .register__label {
       color: var(--black);
       font-size: 14px;
       font-weight: 600;
@@ -42,7 +42,7 @@ body {
       position: relative;
       padding: 4px;
 
-      span {
+      .register__label-required {
         color: #f03f40;
         position: absolute;
         right: -8px;
@@ -52,7 +52,7 @@ body {
   }
 
   /* 기본 인풋 */
-  input {
+  .register__input {
     flex-grow: 1;
     max-width: 335px;
     height: 44px;
@@ -72,11 +72,11 @@ body {
     }
   }
 
-  input:user-invalid + .error-message {
+  .register__input:user-invalid + .register__error-message {
     visibility: visible;
   }
 
-  .error-message {
+  .register__error-message {
     position: absolute;
     color: red;
     font-size: 12px;
@@ -86,7 +86,7 @@ body {
   }
 
   /* 중복확인 / 인증번호 받기 버튼 */
-  button {
+  .register__button {
     width: 145px;
     height: 44px;
     border: 1px solid var(--primary);
@@ -112,12 +112,12 @@ body {
   }
 
   /* 주소 검색 */
-  button.address {
+  .register__button--address {
     width: 335px;
     margin-bottom: 4px;
   }
 
-  .address-text {
+  .register__address-text {
     margin: 0;
     line-height: 1.65;
     font-size: var(--font-size-XXS);
@@ -126,19 +126,19 @@ body {
   }
 
   /* 라디오 버튼 */
-  .radio-wrapper {
+  .register__radio-wrapper {
     width: 335px;
     height: 44px;
     display: flex;
     justify-content: space-between;
   }
 
-  .radio-button {
+  .register__radio {
     display: flex;
     align-items: center;
     position: relative;
 
-    input {
+    .register__radio-input {
       position: absolute;
       inline-size: 24px;
       block-size: 24px;
@@ -153,11 +153,11 @@ body {
       }
     }
 
-    input:checked + label {
+    .register__radio-input:checked + .register__radio-label {
       background-image: url(/src/assets/svg/radio-off.svg);
     }
 
-    label {
+    .register__radio-label {
       color: var(--black);
       font-size: var(--font-size-XS);
       font-weight: 600;
@@ -172,20 +172,20 @@ body {
   }
 
   /* 체크박스 */
-  .checkbox-wrapper {
+  .register__checkbox-wrapper {
     width: 430px;
     display: flex;
     flex-flow: column nowrap;
 
-    .checkbox-allagree {
+    .register__checkbox-allagree {
       display: flex;
       padding-bottom: 12px;
 
-      .checkbox-text {
+      .register__checkbox-text {
         width: 100%;
       }
 
-      .checkbox-text label {
+      .register__checkbox-text label {
         font-size: var(--font-size-M);
         font-weight: 600;
       }
@@ -201,14 +201,14 @@ body {
       }
     }
 
-    .checkbox-agree {
+    .register__checkbox-agree {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-block: 12px;
     }
 
-    .checkbox-text {
+    .register__checkbox-text {
       display: flex;
       align-items: center;
       position: relative;
@@ -244,7 +244,7 @@ body {
         background-size: 24px;
       }
     }
-    .checkbox-button {
+    .register__checkbox-button {
       width: 60px;
       height: 20px;
 
@@ -265,7 +265,7 @@ body {
 }
 
 /* 가입하기 버튼 */
-.join-button {
+.register__join-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -290,7 +290,7 @@ body {
 }
 
 /* 가입하기 버튼 클릭 시 모달팝업 */
-.modal {
+.register__modal {
   display: none;
   position: fixed;
   left: 0;
@@ -303,19 +303,19 @@ body {
   z-index: 1;
 }
 
-.modal:target {
+.register__modal:target {
   display: flex; /* 모달 활성화 */
 }
 
-.modal-content {
+.register__modal-content {
   background: white;
   padding: 40px 80px;
   border-radius: 20px;
   text-align: center;
 }
 
-.confirm-button,
-.close-button {
+.register__confirm-button,
+.register__close-button {
   display: inline-block;
   margin-top: 10px;
   padding: 16px 28px;
@@ -323,39 +323,39 @@ body {
   border-radius: 4px;
 }
 
-.confirm-button {
+.register__confirm-button {
   background: var(--primary);
   color: var(--white);
 }
 
-.close-button {
+.register__close-button {
   background: gray;
   color: white;
 }
 
 /* 페이지 조립 */
 
-.join-wrapper {
+.register__wrapper {
   width: 640px;
   margin: 0 auto;
   position: relative;
 
-  .form-wrapper {
+  .register__form {
     margin-top: var(--spacing-M);
     border-top: 2px solid var(--black);
 
-    .item + .terms {
+    .register__item + .register__item--terms {
       border-top: 1px solid var(--black);
       border-bottom: 1px solid var(--gray-200);
       margin-bottom: 40px;
     }
 
-    .join-button {
+    .register__join-button {
       margin: 0 auto;
     }
   }
 
-  .required-field {
+  .register__required-field {
     position: absolute;
     right: 0;
     top: 40px;
