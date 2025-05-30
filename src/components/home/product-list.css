@@ -2,12 +2,17 @@ body {
   margin: 50px;
 }
 
-.product-card {
+.c-product-card {
   --rounded-img: 20px;
   --font-weight-400: 400;
   --font-weight-600: 600;
   --font-weight-700: 700;
   --font-weight-800: 800;
+  color: var(--black);
+  display: inline-flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  position: relative;
 
   button {
     all: unset;
@@ -22,20 +27,12 @@ body {
     }
   }
 
-  color: var(--black);
-  display: inline-flex;
-  flex-flow: column nowrap;
-  align-items: flex-start;
-  position: relative;
-
-  .product-img {
+  .c-product-card__image {
     --img-height: 300px;
     --img-width: 285px;
-
     height: var(--img-height);
     width: var(--img-width);
     border-radius: var(--rounded-img);
-
     overflow: hidden;
 
     img {
@@ -51,10 +48,9 @@ body {
     }
   }
 
-  .product-maker {
+  .c-product-card__maker {
     --img-spacing: 16px;
     --line-height: 150%;
-
     color: var(--gray-400);
     font-size: var(--font-size-XXS);
     font-weight: var(--font-weight-600);
@@ -63,13 +59,12 @@ body {
     margin-bottom: var(--spacing-XXXS);
   }
 
-  .product-discount {
+  .c-product-card__discount {
     --p-t: 12px;
     --p-r: 6px;
     --p-b: 14px;
     --p-l: 5px;
     --line-height: 140%;
-
     position: absolute;
     display: inline-flex;
     background-color: var(--primary);
@@ -83,10 +78,9 @@ body {
     line-height: var(--line-height);
   }
 
-  .cart-button {
+  .c-product-card__cart-button {
     --position-top: 235px;
     --position-left: 221px;
-
     position: absolute;
     top: var(--position-top);
     left: var(--position-left);
@@ -97,10 +91,9 @@ body {
     }
   }
 
-  .cart-modal {
+  .c-product-card__modal {
     --rounded-modal: 3px;
     --width-modal: 280px;
-
     position: fixed;
     top: 50%;
     left: 50%;
@@ -115,47 +108,45 @@ body {
     display: none;
     z-index: 9999;
 
-    .modal-text {
+    .c-product-card__modal-text {
       margin-bottom: var(--spacing-XS);
       font-size: var(--font-size-S);
       font-weight: var(--font-weight-600);
     }
 
-    .modal-button {
+    .c-product-card__modal-buttons {
       --width-button: 80px;
       --rounded-button: 6px;
-
       display: flex;
       gap: var(--spacing-XXS);
       justify-content: center;
 
-      button {
+      .c-product-card__modal-button {
         transition: transform 0.1s ease;
         padding: var(--spacing-XXXS) 0;
         width: var(--width-button);
         border-radius: var(--rounded-button);
         font-weight: var(--font-weight-600);
 
-        &.button-no {
+        &:active {
+          transform: scale(0.96);
+        }
+
+        &--cancel {
           background: var(--gray-200);
         }
 
-        &.button-yes {
+        &--confirm {
           background: var(--primary);
           color: var(--white);
-        }
-
-        &:active {
-          transform: scale(0.96);
         }
       }
     }
   }
 
-  .product-name {
+  .c-product-card__name {
     --line-height: 100%;
     --letter-spacing: -0.54px;
-
     font-size: var(--font-size-M);
     font-weight: var(--font-weight-400);
     line-height: var(--line-height);
@@ -163,30 +154,36 @@ body {
     margin-bottom: var(--spacing-XXS);
   }
 
-  .price-content {
+  .c-product-card__price {
     display: flex;
     flex-flow: row nowrap;
     align-items: flex-start;
     gap: var(--spacing-XS);
 
-    .product-dc-price {
+    .c-product-card__dc-price {
       --line-height: 100%;
       --letter-spacing: 0.54px;
-
       font-size: var(--font-size-M);
       font-weight: var(--font-weight-600);
       line-height: var(--line-height);
       letter-spacing: var(--letter-spacing);
     }
 
-    .product-price {
+    .c-product-card__original-price {
       --line-height: 150%;
-
       color: var(--gray-400);
       font-size: var(--font-size-XS);
       font-weight: var(--font-weight-400);
       line-height: var(--line-height);
       text-decoration: line-through;
     }
+  }
+
+  .discount-rate,
+  .discounted-price,
+  .original-price {
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
   }
 }

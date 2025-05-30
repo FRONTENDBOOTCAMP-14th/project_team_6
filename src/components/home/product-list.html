@@ -13,32 +13,39 @@
     <h1>product list</h1>
     <hr />
     <!-- product-card component -->
-    <div class="product-card">
-      <button class="product-link" data-url="" tabindex="0" aria-label="탱탱쫄면 4개입 상품 페이지로 이동">
-        <picture class="product-img">
-          <source srcset="/src/assets/webp/product01.webp" type="image/webp" />
-          <img src="/src/assets/png/product01.png" alt="" />
-        </picture>
-      </button>
-      <p class="product-maker">[풀무원]</p>
-      <p class="product-discount"><span class="discount-rate"></span>%</p>
-      <button class="cart-button" tabindex="0" aria-label="장바구니에 담기">
-        <img src="/src/assets/svg/cart-off.svg" alt="" />
-      </button>
-      <div class="cart-modal modal">
-        <div class="modal-content">
-          <p class="modal-text">장바구니에 담으시겠습니까?</p>
-          <div class="modal-button">
-            <button class="button-no">취소하기</button>
-            <button class="button-yes">담기</button>
-          </div>
-        </div>
-      </div>
-      <button class="product-name" data-url="" tabindex="-1" aria-hidden="true">탱탱쫄면(4개입)</button>
-      <div class="price-content">
-        <p class="product-dc-price"><span class="discounted-price"></span>원</p>
-        <p class="product-price"><span class="original-price"></span>원</p>
+    <div class="c-product-card" data-price="5900" data-discount="24">
+  <button class="c-product-card__link" data-url="" tabindex="0" aria-label="탱탱쫄면 4개입 상품 페이지로 이동">
+    <picture class="c-product-card__image">
+      <source srcset="/src/assets/webp/product01.webp" type="image/webp" />
+      <img src="/src/assets/png/product01.png" alt="" />
+    </picture>
+  </button>
+
+  <p class="c-product-card__maker">[풀무원]</p>
+  <p class="c-product-card__discount"><span class="discount-rate"></span>%</p>
+
+  <button class="c-product-card__cart-button" tabindex="0" aria-label="장바구니에 담기">
+    <img src="/src/assets/svg/cart-off.svg" alt="" />
+  </button>
+
+  <div class="c-product-card__modal">
+    <div class="c-product-card__modal-content">
+      <p class="c-product-card__modal-text">장바구니에 담으시겠습니까?</p>
+      <div class="c-product-card__modal-buttons">
+        <button class="c-product-card__modal-button c-product-card__modal-button--cancel">취소하기</button>
+        <button class="c-product-card__modal-button c-product-card__modal-button--confirm">담기</button>
       </div>
     </div>
+  </div>
+
+  <button class="c-product-card__name" data-url="" tabindex="-1" aria-hidden="true">
+    탱탱쫄면(4개입)
+  </button>
+
+  <div class="c-product-card__price">
+    <p class="c-product-card__dc-price"><span class="discounted-price"></span>원</p>
+    <p class="c-product-card__original-price"><span class="original-price"></span>원</p>
+  </div>
+</div>
   </body>
 </html>
