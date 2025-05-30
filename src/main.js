@@ -7,7 +7,7 @@ import '../index/vscode.js'; // Import vscode.js
 console.log('main.js: Starting initialization...');
 
 // Function to initialize the app
-function initApp() {
+async function initApp() {
   console.log('main.js: Starting app initialization...');
 
   try {
@@ -19,10 +19,11 @@ function initApp() {
       console.error('main.js: initTerminal function not found');
     }
 
-    // Initialize editor
+    // Initialize editor (async)
     if (typeof initEditor === 'function') {
       console.log('main.js: Initializing editor...');
-      initEditor();
+      await initEditor();
+      console.log('main.js: Editor initialization complete');
     } else {
       console.error('main.js: initEditor function not found');
     }

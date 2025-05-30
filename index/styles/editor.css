@@ -61,11 +61,6 @@
   line-height: 1.5;
 }
 
-.vscode__tab:hover {
-  color: var(--color-tab-active);
-  background-color: var(--color-panel-bg-hover);
-}
-
 .vscode__tab--active {
   color: var(--color-tab-active);
   background-color: var(--color-panel-bg);
