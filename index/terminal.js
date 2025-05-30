@@ -52,14 +52,14 @@ function addServerUrlButton(terminal) {
 function handleCommand(terminal, inputElement) {
   // Prevent multiple command processing
   if (inputElement.dataset.processing === 'true') return;
-  
+
   const command = inputElement.value.trim();
   if (!command) return;
 
   // Mark as processing and disable input
   inputElement.dataset.processing = 'true';
   inputElement.disabled = true;
-  
+
   // Clear current input reference
   if (currentInput === inputElement) {
     currentInput = null;
@@ -80,6 +80,7 @@ function handleCommand(terminal, inputElement) {
   if (command === 'npm run dev') {
     const outputLines = ['> dev', '> vite', '', '', '  VITE v6.3.5  ready in 222 ms', '', '  ➜  Local:   ', '  ➜  Network: use --host to expose', ''];
 
+    // Add output lines to terminal
     outputLines.forEach((line) => {
       if (line.includes('Local:')) {
         const container = document.createElement('div');
@@ -91,6 +92,21 @@ function handleCommand(terminal, inputElement) {
         addOutput(terminal, line);
       }
     });
+
+    // Add output to terminalContent for history
+    outputLines.forEach(line => {
+      terminalContent = [...terminalContent, {
+        user: '',
+        path: '',
+        command: line,
+        isPrompt: false
+      }];
+    });
+
+    // Scroll to bottom after rendering
+    setTimeout(() => {
+      terminal.scrollTop = terminal.scrollHeight;
+    }, 0);
   } else if (command) {
     addOutput(terminal, "hint: type 'npm run dev' accurately");
   }
@@ -106,7 +122,7 @@ function handleCommand(terminal, inputElement) {
 function addNewPrompt(terminal) {
   // Don't add a new prompt if one already exists
   if (currentInput) return;
-  
+
   const newPrompt = {
     user: '6thSense@Desktop',
     path: '~/likelion/bootcamp',
@@ -134,7 +150,7 @@ function addNewPrompt(terminal) {
         }
       }
     };
-    
+
     // Remove any existing listeners and add new one
     newInput.removeEventListener('keydown', handleKeyDown);
     newInput.addEventListener('keydown', handleKeyDown);
