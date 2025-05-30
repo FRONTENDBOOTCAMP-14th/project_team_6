@@ -7,20 +7,20 @@ hr {
   margin-bottom: 20px;
 }
 
-.container__inquire {
+.inquire {
   width: 1050px;
 
-  .header__inquire {
+  .inquire__header {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     width: 100%;
 
-    .header__inquire-title {
+    .inquire__header-title {
       font-size: var(--font-size-XL);
     }
 
-    .header__inquire-button {
+    .inquire__header-button {
       border: none;
       background-color: transparent;
       cursor: pointer;
@@ -35,7 +35,7 @@ hr {
       font-weight: 400;
     }
 
-    .header__inquire-description {
+    .inquire__header-description {
       width: 100%;
       font-size: var(--font-size-XXS);
       color: var(--content);
@@ -50,13 +50,13 @@ hr {
     }
   }
 
-  .content__inquire {
+  .inquire__table {
     width: 100%;
     border-collapse: collapse;
     margin-top: var(--spacing-L);
     margin-bottom: var(--spacing-XS);
 
-    .content__inquire-title-badge {
+    .inquire__badge {
       background-color: var(--gray-200);
       color: var(--black);
       padding: 0 8px;
@@ -77,22 +77,22 @@ hr {
       height: 58px;
     }
 
-    .content__inquire-header {
+    .inquire__table-header {
       border-top: 2px solid var(--black) !important;
       border-bottom: 1px solid var(--black) !important;
     }
 
-    .content__inquire-row {
+    .inquire__row {
       border-bottom: 1px solid var(--gray-200) !important;
     }
 
-    .detail-content {
+    .inquire__detail-content-box {
       display: flex;
       flex-flow: row wrap;
       padding: var(--spacing-XS);
       background-color: var(--gray-100);
 
-      .detail-content__question {
+      .inquire__question {
         width: 100%;
         display: flex;
         flex-flow: row nowrap;
@@ -107,7 +107,7 @@ hr {
         }
       }
 
-      .detail-content__answer {
+      .inquire__answer {
         width: 100%;
         display: flex;
         flex-flow: row nowrap;
@@ -172,7 +172,7 @@ hr {
       }
     }
 
-    .content__inquire-secret {
+    .inquire__secret {
       color: var(--gray-400) !important;
       background-image: url('/src/assets/svg/lock.svg');
       background-repeat: no-repeat;
@@ -180,12 +180,12 @@ hr {
       background-size: 12px;
       padding-right: 32px;
     }
-    .content__inquire-answer--complete {
+    .inquire__answer--complete {
       color: var(--primary);
     }
   }
 
-  .button__inquire {
+  .inquire__pagination {
     display: flex;
     width: 100%;
     flex-flow: row nowrap;
