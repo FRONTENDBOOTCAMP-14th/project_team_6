@@ -3,6 +3,10 @@ document.querySelectorAll('.product-card').forEach((card) => {
   const discountRate = parseInt(card.dataset.discount, 10);
   const discountedPrice = price * (1 - discountRate / 100);
 
+  card.querySelector('.discount-rate').textContent = discountRate;
+  card.querySelector('.discounted-price').textContent = Math.round(discountedPrice).toLocaleString();
+  card.querySelector('.original-price').textContent = price.toLocaleString();
+
   // 가격 텍스트 삽입
   const discountRateText = card.querySelector('.discount-rate');
   const discountedPriceText = card.querySelector('.discounted-price');
