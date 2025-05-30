@@ -6,7 +6,7 @@ const defaultProjectStructure = {
     {
       name: 'Members',
       type: 'directory',
-      children: [{ name: 'dongsik.md', type: 'file' }],
+      children: [{ name: 'dongsik.md', type: 'file', actualPath: 'dongsik.html' }],
     },
     {
       name: 'Components',
@@ -92,10 +92,16 @@ export function initSidebar() {
   function createFileTreeItem(item, depth = 0, parentPath = '') {
     const itemElement = document.createElement('div');
     itemElement.className = `vscode__file-item ${item.type} depth-${depth}`;
-    
+
     // Construct full path
-    const fullPath = parentPath ? `${parentPath}/${item.name}` : item.name;
+    const displayName = item.name;
+    const fullPath = parentPath ? `${parentPath}/${displayName}` : displayName;
     itemElement.dataset.path = fullPath;
+    
+    // Add actualPath if it exists
+    if (item.actualPath) {
+      itemElement.dataset.actualPath = item.actualPath;
+    }
 
     // Create content wrapper
     const contentWrapper = document.createElement('div');
@@ -133,7 +139,7 @@ export function initSidebar() {
     // 자식 요소가 있으면 컨테이너에 추가
     if (item.children && item.children.length > 0) {
       const parentPath = itemElement.dataset.path;
-      item.children.forEach(child => {
+      item.children.forEach((child) => {
         childrenContainer.appendChild(createFileTreeItem(child, depth + 1, parentPath));
       });
 
@@ -168,10 +174,29 @@ export function initSidebar() {
   }
 
   function setupFileItem(itemElement) {
-    itemElement.addEventListener('click', handleFileClick);
+    // Add click event to the file name
+    const fileNameElement = itemElement.querySelector('.vscode__file-name');
+    if (fileNameElement) {
+      fileNameElement.style.cursor = 'pointer';
+      fileNameElement.addEventListener('click', (e) => {
+        e.stopPropagation();
+        handleFileClick.call(itemElement, e);
+      });
+    }
+
+    // Also add click handler to the container for better UX
+    itemElement.style.cursor = 'pointer';
+    itemElement.addEventListener('click', (e) => {
+      // Only handle if the click is directly on the item, not on child elements
+      if (e.target === itemElement) {
+        handleFileClick.call(itemElement, e);
+      }
+    });
   }
 
   async function handleFileClick() {
+    console.log('File item clicked');
+
     // Remove active class from all items
     document.querySelectorAll('.vscode__file-item').forEach((el) => {
       el.classList.remove('active');
@@ -181,9 +206,11 @@ export function initSidebar() {
     this.classList.add('active');
 
     try {
+      console.log('Handling file click for:', this.dataset.path);
       // Get full path and file name
       const fullPath = this.dataset.path;
       const fileName = fullPath.split('/').pop();
+      const fileExt = fileName.split('.').pop().toLowerCase();
 
       // Determine the base directory based on the path
       let basePath = '';
@@ -195,7 +222,29 @@ export function initSidebar() {
         basePath = '../../';
       }
 
-      // Fetch file content from server
+      // Handle markdown files (which are actually HTML files)
+      if (fileExt === 'md') {
+        // Use actualPath if available, otherwise use the filename
+        const actualFileName = this.dataset.actualPath || fileName.replace(/\.md$/, '.html');
+        const response = await fetch(`${basePath}${actualFileName}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const content = await response.text();
+        
+        document.dispatchEvent(
+          new CustomEvent('fileSelected', {
+            detail: {
+              path: fileName, // Show .md in the UI
+              type: 'file',
+              content: content,
+            },
+          })
+        );
+        return;
+      }
+
+      // For other file types (like HTML)
       const response = await fetch(`${basePath}${fileName}`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
