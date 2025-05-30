@@ -13,35 +13,30 @@
     <h1>product list</h1>
     <hr />
     <!-- product-card component -->
-    <div class="product-card" data-price="5900" data-discount="24">
+     <div class="product-card" data-price="5900" data-discount="24">
+      <div class="product-card__media-container">
       <button class="product-card__link" data-url="" tabindex="0" aria-label="탱탱쫄면 4개입 상품 페이지로 이동">
         <picture class="product-card__image-wrapper">
           <source srcset="/src/assets/webp/product01.webp" type="image/webp" />
           <img src="/src/assets/png/product01.png" alt="" />
         </picture>
       </button>
-
-      <p class="product-card__brand">[풀무원]</p>
       <p class="product-card__discount-label"><span class="discount-rate"></span>%</p>
-
-      <button class="product-card__cart-button" tabindex="0" aria-label="장바구니에 담기">
+       <button class="product-card__cart-button" tabindex="0" aria-label="장바구니에 담기">
         <img src="/src/assets/svg/cart-off.svg" alt="" />
       </button>
-
       <div class="product-card__modal">
+        <div class="product-card__modal-text">장바구니에 담으시겠습니까?</div>
         <div class="product-card__modal-buttons">
-          <p class="product-card__modal-text">장바구니에 담으시겠습니까?</p>
-          <div class="product-card__modal-buttons">
-            <button class="product-card__modal-button product-card__modal-button--cancel">취소하기</button>
-            <button class="product-card__modal-button product-card__modal-button--confirm">담기</button>
-          </div>
+          <button class="product-card__modal-button product-card__modal-button--cancel">취소하기</button>
+          <button class="product-card__modal-button product-card__modal-button--confirm">담기</button>
         </div>
       </div>
-
-      <button class="product-card__name" data-url="" tabindex="-1" aria-hidden="true">
-        탱탱쫄면(4개입)
-      </button>
-
+      </div>
+      <p class="product-card__brand">[풀무원]</p>
+     
+      
+      <button class="product-card__name" data-url="" tabindex="-1" aria-hidden="true">탱탱쫄면(4개입)</button>
       <div class="product-card__price">
         <p class="product-card__price-discounted"><span class="discounted-price"></span>원</p>
         <p class="product-card__price-original"><span class="original-price"></span>원</p>

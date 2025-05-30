@@ -1,7 +1,3 @@
-body {
-  margin: 50px;
-}
-
 .product-card {
   --rounded-img: 20px;
   --font-weight-400: 400;
@@ -12,22 +8,24 @@ body {
   display: inline-flex;
   flex-flow: column nowrap;
   align-items: flex-start;
-  position: relative;
-
+  
   button {
     all: unset;
     cursor: pointer;
     display: inline-block;
     user-select: none;
-
+    
     &:focus-visible {
       outline: 2px solid var(--primary);
       outline-offset: 2px;
       border-radius: var(--rounded-img);
     }
   }
-
-  .product-card__image-wrapper {
+  
+  .product-card__media-container{
+    position: relative;
+    
+    .product-card__image-wrapper {
     --img-height: 300px;
     --img-width: 285px;
     height: var(--img-height);
@@ -48,24 +46,18 @@ body {
     }
   }
 
-  .product-card__brand {
-    --img-spacing: 16px;
-    --line-height: 150%;
-    color: var(--gray-400);
-    font-size: var(--font-size-XXS);
-    font-weight: var(--font-weight-600);
-    line-height: var(--line-height);
-    margin-top: var(--img-spacing);
-    margin-bottom: var(--spacing-XXXS);
-  }
-
   .product-card__discount-label {
     --p-t: 12px;
     --p-r: 6px;
     --p-b: 14px;
     --p-l: 5px;
     --line-height: 140%;
+     --position-top: 0px;
+    --position-left: 0px;
+    
     position: absolute;
+    top: var(--position-top);
+    left: var(--position-left);
     display: inline-flex;
     background-color: var(--primary);
     padding: var(--p-t) var(--p-r) var(--p-b) var(--p-l);
@@ -79,11 +71,12 @@ body {
   }
 
   .product-card__cart-button {
-    --position-top: 235px;
-    --position-left: 221px;
+    --position-bottom: 25px;
+    --position-right: 25px;
+   
     position: absolute;
-    top: var(--position-top);
-    left: var(--position-left);
+    bottom: var(--position-bottom);
+    right: var(--position-right);
     transition: transform 0.1s ease;
 
     &:active {
@@ -103,46 +96,64 @@ body {
     border-radius: var(--rounded-modal);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
     width: var(--width-modal);
+    flex-direction: column;
     text-align: center;
     justify-content: center;
     display: none;
     z-index: 9999;
-
+  
     .product-card__modal-text {
       margin-bottom: var(--spacing-XS);
       font-size: var(--font-size-S);
       font-weight: var(--font-weight-600);
     }
-
-    .product-card__modal-buttons {
-      --width-button: 80px;
-      --rounded-button: 6px;
-      display: flex;
-      gap: var(--spacing-XXS);
-      justify-content: center;
-
-      .product-card__modal-button {
-        transition: transform 0.1s ease;
-        padding: var(--spacing-XXXS) 0;
-        width: var(--width-button);
-        border-radius: var(--rounded-button);
-        font-weight: var(--font-weight-600);
-
-        &:active {
-          transform: scale(0.96);
+  
+   .product-card__modal-buttons {
+        --width-button: 80px;
+        --rounded-button: 6px;
+        display: flex;
+        gap: var(--spacing-XXS);
+        justify-content: center;
+  
+        .product-card__modal-button {
+          transition: transform 0.1s ease;
+          padding: var(--spacing-XXXS) 0;
+          width: var(--width-button);
+          border-radius: var(--rounded-button);
+          font-weight: var(--font-weight-600);
+  
+          &:active {
+            transform: scale(0.96);
+          }
         }
-
-        &--cancel {
-          background: var(--gray-200);
-        }
-
-        &--confirm {
-          background: var(--primary);
-          color: var(--white);
-        }
+         .product-card__modal-button--cancel {
+            background: var(--gray-200);
+          }
+  
+          .product-card__modal-button--confirm {
+            background: var(--primary);
+            color: var(--white);
+          }
       }
-    }
   }
+}
+
+  
+
+  .product-card__brand {
+    --img-spacing: 16px;
+    --line-height: 150%;
+    color: var(--gray-400);
+    font-size: var(--font-size-XXS);
+    font-weight: var(--font-weight-600);
+    line-height: var(--line-height);
+    margin-top: var(--img-spacing);
+    margin-bottom: var(--spacing-XXXS);
+  }
+
+  
+
+  
 
   .product-card__name {
     --line-height: 100%;
@@ -153,6 +164,8 @@ body {
     letter-spacing: var(--letter-spacing);
     margin-bottom: var(--spacing-XXS);
   }
+
+   
 
   .product-card__price {
     display: flex;
