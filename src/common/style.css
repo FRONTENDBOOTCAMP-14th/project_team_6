@@ -48,3 +48,9 @@ body {
   border-width: 0;
   white-space: nowrap;
 }
+
+/* layout */
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
