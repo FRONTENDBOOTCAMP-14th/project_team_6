@@ -29,64 +29,164 @@ function findAllHtmlFiles(directory) {
 
 export default defineConfig({
   // Base public path when served in development or production
-  base: '',
-  
-  // Configure server
+  base: '/',
+
+  // Root directory to serve from
+  root: __dirname,
+
+  // Configure development server
   server: {
-    // Enable CORS in development
+    port: 5173,
+    open: '/',
+    fs: {
+      // Allow serving files from the project root and output directory
+      allow: ['..'],
+    },
+    // Enable CORS
+    cors: true,
+    // Configure proxy to handle requests to /output
+    proxy: {
+      '^/output/.*': {
+        target: 'http://localhost:5173',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/output\//, ''),
+      },
+    },
+  },
+
+  // Configure build
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+    // Copy output directory to dist
+    assetsDir: 'assets',
+    rollupOptions: {
+      // Main entry point
+      input: 'index.html',
+      output: {
+        // Keep original file names for easier debugging
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: assetInfo => {
+          // Preserve directory structure for assets
+          const dir = path.dirname(assetInfo.name).replace(/^src\//, '');
+          return `assets/${dir}/[name]-[hash][extname]`;
+        },
+      },
+    },
+  },
+
+  // Configure development server
+  server: {
+    port: 5173,
+    open: '/',
+    fs: {
+      // Allow serving files from the project root and output directory
+      allow: ['..'],
+    },
+    // Enable CORS
     cors: true,
   },
-  
+
+  // Configure build
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+    // Copy output directory to dist
+    assetsDir: 'assets',
+    rollupOptions: {
+      // Main entry point
+      input: 'index.html',
+      output: {
+        // Keep original file names for easier debugging
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: assetInfo => {
+          // Preserve directory structure for assets
+          const dir = path.dirname(assetInfo.name).replace(/^src\//, '');
+          return `assets/${dir}/[name]-[hash][extname]`;
+        },
+      },
+    },
+  },
+
   // Resolve options
   resolve: {
-    // Alias configuration if needed
     alias: {
       '@': path.resolve(__dirname, './src'),
+      // Alias for output directory
+      '@output': path.resolve(__dirname, './output'),
     },
   },
-  
+
   // Build configuration
   build: {
-    // Copy page-specific JS files to the root of the dist directory
-    assetsInlineLimit: 0, // Ensure files are not inlined
+    outDir: 'dist',
+    emptyOutDir: false, // Prevent deleting the output directory
+    copyPublicDir: false, // Prevent copying public directory
     rollupOptions: {
       input: {
-        index: path.resolve(__dirname, 'index.html'),
-        ...findAllHtmlFiles(path.resolve(__dirname, 'src')),
+        main: path.resolve(__dirname, 'index.html'),
+        output: path.resolve(__dirname, 'output/output-index.html'),
       },
       output: {
-        // 해시 제거 - 파일명 그대로 유지
-        entryFileNames: '[name].js',
-        chunkFileNames: '[name].js',
-        assetFileNames: (assetInfo) => {
+        // Keep original file names for easier debugging
+        entryFileNames: chunkInfo => {
+          // Output files in their original directory structure
+          if (chunkInfo.facadeModuleId && chunkInfo.facadeModuleId.includes('output')) {
+            return 'output/[name].js';
+          }
+          return 'assets/js/[name]-[hash].js';
+          // Output files directly in the output directory without hashing for easier reference
+          if (chunkInfo.facadeModuleId && chunkInfo.facadeModuleId.includes('output/')) {
+            return 'output/[name].js';
+          }
+          return 'assets/js/[name]-[hash].js';
+        },
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: assetInfo => {
           const filename = assetInfo.name || '';
-          
-          // Keep CSS files in root
+
+          // Handle CSS files in output directory
+          if (filename.endsWith('.css') && assetInfo.source.toString().includes('.output')) {
+            return 'output/[name][extname]';
+          }
+
+          // Handle CSS files
           if (filename.endsWith('.css')) {
-            return '[name].[ext]';
+            return 'assets/css/[name]-[hash][extname]';
           }
-          
-          // Keep page-specific JS files in root
-          if (filename.match(/\.js$/) && filename.startsWith('src/pages/output-page/')) {
-            const baseName = path.basename(filename);
-            return baseName;
+
+          // Handle images
+          if (
+            ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp'].some(ext => filename.endsWith(ext))
+          ) {
+            return 'assets/images/[name]-[hash][extname]';
           }
-          
-          // Other assets go to assets directory
-          return 'assets/[name].[ext]';
-        }
-      }
+
+          // Handle fonts
+          if (['.woff', '.woff2', '.ttf', '.eot', '.otf'].some(ext => filename.endsWith(ext))) {
+            return 'assets/fonts/[name]-[hash][extname]';
+          }
+
+          // Default asset path
+          return 'assets/[name]-[hash][extname]';
+        },
+      },
     },
-    // 출력 디렉토리
-    outDir: 'dist',
-    // 초기화
-    emptyOutDir: true,
+    // Copy output directory to dist
+    copyPublicDir: true,
   },
+
+  // App type (Multi-Page Application)
   appType: 'mpa',
-  // 상대경로 사용
-  base: './',
-  // 개발 서버 설정
-  server: {
-    cors: true,
+
+  // Public directory for static assets
+  publicDir: 'public',
+
+  // Configure development server
+  preview: {
+    port: 5173,
+    open: '/output/index.html',
   },
 });

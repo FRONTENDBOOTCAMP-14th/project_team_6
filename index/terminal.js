@@ -1,6 +1,14 @@
 let terminalContent = [
-  { user: '6thSense@Desktop', path: '~/likelion/bootcamp', command: 'Welcome to 6thSense Portfolio' },
-  { user: '6thSense@Desktop', path: '~/likelion/bootcamp', command: "Type 'npm run dev' to start the development server" },
+  {
+    user: '6thSense@Desktop',
+    path: '~/likelion/bootcamp',
+    command: 'Welcome to 6thSense Portfolio',
+  },
+  {
+    user: '6thSense@Desktop',
+    path: '~/likelion/bootcamp',
+    command: "Type 'npm run dev' to start the development server",
+  },
   { user: '6thSense@Desktop', path: '~/likelion/bootcamp', command: '', isPrompt: true },
 ];
 
@@ -17,11 +25,15 @@ function addTerminalLine(terminal, line) {
     </div>
     <div class="vscode__terminal-command-line">
       <span class="vscode__terminal-prompt">$</span>
-      ${line.isPrompt ? '<input type="text" class="vscode__terminal-input" autofocus />' : `<span class="vscode__terminal-command">${line.command}</span>`}
+      ${
+        line.isPrompt
+          ? '<input type="text" class="vscode__terminal-input" autofocus />'
+          : `<span class="vscode__terminal-command">${line.command}</span>`
+      }
     </div>
   `
     .split('\n')
-    .map((s) => s.trim())
+    .map(s => s.trim())
     .join('');
 
   terminal.appendChild(lineElement);
@@ -40,10 +52,10 @@ function addServerUrlButton(terminal) {
   const button = document.createElement('button');
   button.className = 'vscode__terminal-url-button';
   button.textContent = 'http://localhost:6th-Sense/';
-  button.onclick = (e) => {
+  button.onclick = e => {
     e.preventDefault();
-    // Open landing_output.html in a new tab
-    window.open('/src/utils/landing_output.html', '_blank');
+    // Open output-index.html in a new tab using direct path
+    window.open('/output/output-index.html', '_blank');
   };
   terminal.appendChild(button);
   return button;
@@ -74,14 +86,24 @@ function handleCommand(terminal, inputElement) {
   };
 
   // Update terminal content without re-adding the command line
-  terminalContent = [...terminalContent.filter((l) => !l.isPrompt), newLine];
+  terminalContent = [...terminalContent.filter(l => !l.isPrompt), newLine];
 
   // Process command
   if (command === 'npm run dev') {
-    const outputLines = ['> dev', '> vite', '', '', '  VITE v6.3.5  ready in 222 ms', '', '  ➜  Local:   ', '  ➜  Network: use --host to expose', ''];
+    const outputLines = [
+      '> dev',
+      '> vite',
+      '',
+      '',
+      '  VITE v6.3.5  ready in 222 ms',
+      '',
+      '  ➜  Local:   ',
+      '  ➜  Network: use --host to expose',
+      '',
+    ];
 
     // Add output lines to terminal
-    outputLines.forEach((line) => {
+    outputLines.forEach(line => {
       if (line.includes('Local:')) {
         const container = document.createElement('div');
         container.className = 'vscode__terminal-output';
@@ -95,12 +117,15 @@ function handleCommand(terminal, inputElement) {
 
     // Add output to terminalContent for history
     outputLines.forEach(line => {
-      terminalContent = [...terminalContent, {
-        user: '',
-        path: '',
-        command: line,
-        isPrompt: false
-      }];
+      terminalContent = [
+        ...terminalContent,
+        {
+          user: '',
+          path: '',
+          command: line,
+          isPrompt: false,
+        },
+      ];
     });
 
     // Scroll to bottom after rendering
@@ -141,7 +166,7 @@ function addNewPrompt(terminal) {
     newInput.focus();
 
     // Add event listener to the new input
-    const handleKeyDown = (e) => {
+    const handleKeyDown = e => {
       if (e.key === 'Enter') {
         e.preventDefault();
         // Only process if not already processing
@@ -166,7 +191,7 @@ function renderTerminal(terminal, isInitialRender = false) {
   // Only clear and re-render if it's not the initial render
   if (!isInitialRender) {
     terminal.innerHTML = '';
-    terminalContent.forEach((line) => addTerminalLine(terminal, line));
+    terminalContent.forEach(line => addTerminalLine(terminal, line));
   }
 
   // Set up input handling for the last input
@@ -179,7 +204,7 @@ function renderTerminal(terminal, isInitialRender = false) {
     const newLastInput = lastInput.cloneNode(true);
     lastInput.parentNode.replaceChild(newLastInput, lastInput);
 
-    newLastInput.addEventListener('keydown', (e) => {
+    newLastInput.addEventListener('keydown', e => {
       if (e.key === 'Enter') {
         e.preventDefault();
         handleCommand(terminal, newLastInput);
@@ -194,7 +219,7 @@ export function initTerminal() {
     if (terminal) {
       // Initial render with isInitialRender flag
       terminal.innerHTML = '';
-      terminalContent.forEach((line) => addTerminalLine(terminal, line));
+      terminalContent.forEach(line => addTerminalLine(terminal, line));
 
       // Set up initial input handling
       renderTerminal(terminal, true);

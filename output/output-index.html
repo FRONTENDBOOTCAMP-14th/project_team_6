@@ -16,11 +16,15 @@
         font-family: 'Noto Sans KR', sans-serif;
       }
     </style>
+    <!-- Common styles -->
     <link rel="stylesheet" href="/src/common/index.css" />
-    <link rel="stylesheet" href="/src/pages/output-page/footer.css" />
-    <link rel="stylesheet" href="/src/pages/output-page/header.css" />
-    <!-- Page-specific styles will be loaded dynamically -->
+    <!-- Header/Footer styles -->
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="header.css" />
+    <!-- Dynamic styles will be loaded here -->
     <link id="dynamic-css" rel="stylesheet" href="" />
+    <!-- Main script -->
+    <script type="module" src="output-index.js"></script>
   </head>
   <body>
     <header>
@@ -119,28 +123,6 @@
         </div>
       </div>
     </footer>
-    <script type="module">
-      import { loadPage } from '/src/utils/loadPage.js';
-      
-      // 로그인/회원가입 링크 이벤트 처리
-      document.addEventListener('click', (e) => {
-        const loginBtn = e.target.closest('[data-page="login"]');
-        const registerBtn = e.target.closest('[data-page="register"]');
-        
-        if (loginBtn) {
-          e.preventDefault();
-          window.location.hash = 'login';
-        } else if (registerBtn) {
-          e.preventDefault();
-          window.location.hash = 'register';
-        }
-      });
-      
-      // 초기 페이지 로드
-      window.addEventListener('DOMContentLoaded', () => {
-        const initialPage = window.location.hash.replace('#', '') || 'login';
-        loadPage(initialPage);
-      });
-    </script>
+
   </body>
 </html>

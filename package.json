@@ -3,6 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "serve:output": "node server.js",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist",

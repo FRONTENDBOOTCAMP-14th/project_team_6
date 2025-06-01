@@ -22,34 +22,38 @@ function isProductionBuild() {
 
 // 페이지 경로 생성 함수
 function getPagePath(pageName, ext) {
-  const prod = isProductionBuild(); // Call once to ensure consistent logging
-  // console.log(`[DEBUG] getPagePath: pageName=${pageName}, ext=${ext}, isProd=${prod}`); // Log reduced for clarity
-
-  let path;
-  if (prod) { // Production environment
-    if (ext === 'html') {
-      // HTML files are in dist/src/pages/output-page/
-      // Path relative to server root
-      path = `/src/pages/output-page/${pageName}.html`;
-    } else if (ext === 'css') {
-      // CSS files are in dist/ (e.g., dist/login.css)
-      // Path relative to server root
-      path = `/${pageName}.css`;
-    /* JS path resolution is no longer needed here for production,
-       as JS is bundled and included via script tags in the HTML. */
-    } else {
-      // Fallback for unknown extensions
-      console.warn(`[WARN] getPagePath: Unknown extension '${ext}' for page '${pageName}' in production.`);
-      // Path relative to server root
-      path = `/${pageName}.${ext}`;
-    }
-  } else { // Development environment
-    // These are already root-relative for the dev server
-    path = `/src/pages/output-page/${pageName}.${ext}`;
-  }
+  console.log(`[DEBUG] getPagePath: pageName=${pageName}, ext=${ext}`);
+  // Always use absolute paths from the output directory
+  const path = `/output/${pageName}.${ext}`;
   console.log(`[DEBUG] getPagePath resolved to: ${path}`);
   return path;
 }
+
+// 로그인/회원가입 링크 이벤트 처리
+document.addEventListener('click', (e) => {
+  const loginBtn = e.target.closest('[data-page="login"]');
+  const registerBtn = e.target.closest('[data-page="register"]');
+  
+  if (loginBtn) {
+    e.preventDefault();
+    window.location.hash = 'login';
+  } else if (registerBtn) {
+    e.preventDefault();
+    window.location.hash = 'register';
+  }
+});
+
+// URL 해시 변경 시 페이지 로드
+window.addEventListener('hashchange', () => {
+  const page = window.location.hash.replace('#', '') || 'login';
+  loadPage(page);
+});
+
+// 초기 페이지 로드
+document.addEventListener('DOMContentLoaded', () => {
+  const initialPage = window.location.hash.replace('#', '') || 'login';
+  loadPage(initialPage);
+});
 
 export async function loadPage(pageName) {
   // Try to find the container with common class names
@@ -133,8 +137,8 @@ export async function loadPage(pageName) {
       // This ensures Vite's HMR tracks the module and the module's code (event listeners) runs.
       // The actual initialization logic within the module should still be triggered by the 'pageReady' event.
       try {
-        // In Vite dev server, we can use an absolute path from the project root
-        const jsPath = `/src/pages/output-page/${pageName}.js`;
+        // In Vite dev server, use the correct path to the output directory
+        const jsPath = `/output/${pageName}.js`;
         console.log(`[DEBUG] DEV: Dynamically importing JS module: ${jsPath}`);
         
         // Use dynamic import with the correct path
