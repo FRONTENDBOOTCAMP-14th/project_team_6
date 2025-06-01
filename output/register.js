@@ -27,13 +27,15 @@ function initRegisterPage() {
   }
 
   // 전체 동의 체크박스 이벤트
-  const allAgreement = form.querySelector('#allAgreement');
-  const consentCheckboxes = form.querySelectorAll('.consentcheckbox');
+  const allAgreement = form.querySelector('#allAgree');
+  const consentCheckboxes = form.querySelectorAll('.register__checkbox:not(#allAgree)');
   
   if (allAgreement) {
     allAgreement.addEventListener('change', function () {
       consentCheckboxes.forEach(checkbox => {
-        checkbox.checked = this.checked;
+        if (checkbox !== allAgreement) { // Prevent self-triggering
+          checkbox.checked = this.checked;
+        }
       });
     });
   }
@@ -43,7 +45,10 @@ function initRegisterPage() {
     consentCheckboxes.forEach(checkbox => {
       checkbox.addEventListener('change', function () {
         if (!allAgreement) return;
-        const allChecked = Array.from(consentCheckboxes).every(cb => cb.checked);
+        // Check if all checkboxes except allAgree are checked
+        const allChecked = Array.from(consentCheckboxes)
+          .filter(cb => cb !== allAgreement)
+          .every(cb => cb.checked);
         allAgreement.checked = allChecked;
       });
     });
