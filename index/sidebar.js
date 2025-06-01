@@ -44,7 +44,6 @@ window.projectStructure = {
 
 // Main sidebar initialization
 export function initSidebar() {
-  console.log('Initializing sidebar...');
 
   // Initialize project structure if not already set
   if (!window.projectStructure.name) {
@@ -95,7 +94,6 @@ export function initSidebar() {
   // Get sidebar element
   const sidebar = document.querySelector('.vscode__explorer');
   if (!sidebar) {
-    console.error('Sidebar element not found');
     return false;
   }
 
@@ -111,7 +109,6 @@ export function initSidebar() {
   // Set up event listeners
   setupEventListeners(fileTree);
 
-  console.log('Sidebar initialized successfully');
   return true;
 
   // ===== Helper Functions =====
@@ -344,7 +341,6 @@ export function initSidebar() {
 // Listen for file selection events
 document.addEventListener('fileSelected', e => {
   const { path, type } = e.detail;
-  console.log(`File selected: ${path}, Type: ${type}`);
   // Here you can add logic to open the file in the editor
   // For example: openFileInEditor(path);
 });

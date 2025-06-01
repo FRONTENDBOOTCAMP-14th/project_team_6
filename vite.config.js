@@ -1,114 +1,152 @@
 import { defineConfig } from 'vite';
 import path from 'path';
 import fs from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-// findAllHtmlFiles 함수 정의 추가
-function findAllHtmlFiles(directory) {
-  const htmlFiles = {};
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-  function scanDirectory(dir) {
-    const files = fs.readdirSync(dir);
+// 디렉토리 복사 함수
+async function copyDir(src, dest) {
+  await fs.promises.mkdir(dest, { recursive: true });
+  const entries = await fs.promises.readdir(src, { withFileTypes: true });
 
-    for (const file of files) {
-      const filePath = path.join(dir, file);
-      const stat = fs.statSync(filePath);
+  for (const entry of entries) {
+    const srcPath = path.join(src, entry.name);
+    const destPath = path.join(dest, entry.name);
 
-      if (stat.isDirectory()) {
-        scanDirectory(filePath);
-      } else if (file.endsWith('.html')) {
-        // 키 이름을 경로에서 추출 (확장자 제외)
-        const key = path.relative(__dirname, filePath).replace('.html', '');
-        htmlFiles[key] = filePath;
-      }
+    if (entry.isDirectory()) {
+      await copyDir(srcPath, destPath);
+    } else {
+      await fs.promises.copyFile(srcPath, destPath);
     }
   }
-
-  scanDirectory(directory);
-  return htmlFiles;
 }
 
-export default defineConfig({
-  // Base public path when served in development or production
-  base: './',
-
-  // Configure server
-  server: {
-    cors: true,
-    port: 4444,
-    open: '/index.html',
+// 빌드 후 디렉토리 복사 플러그인
+const copyDirsPlugin = () => ({
+  name: 'copy-dirs',
+  async closeBundle() {
+    try {
+      const dirsToCopy = ['/output', '/src', '/index'];
+      
+      for (const dir of dirsToCopy) {
+        const sourcePath = path.resolve(__dirname, `.${dir}`);
+        const destPath = path.resolve(__dirname, 'dist', `.${dir}`);
+        
+        try {
+          await fs.promises.access(sourcePath);
+          await copyDir(sourcePath, destPath);
+          console.log(`Copied ${dir} directory to dist`);
+        } catch (err) {
+          console.warn(`Warning: Could not copy ${dir} directory: ${err.message}`);
+        }
+      }
+    } catch (err) {
+      console.error('Error copying directories:', err);
+    }
   },
+});
 
-  // Resolve options
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-      // Alias for output directory
-      '@output': path.resolve(__dirname, './output'),
+export default defineConfig(({ mode }) => {
+  const isProduction = mode === 'production';
+
+  return {
+    // Base public path when served in development or production
+    base: './',
+
+    // Development server configuration
+    server: {
+      host: true,
+      port: 4444, // 개발 서버 포트 (변경하지 않음)
+      open: '/index.html',
+      cors: true,
     },
-  },
 
-  // Build configuration
-  build: {
-    outDir: 'dist',
-    emptyOutDir: true,
-    rollupOptions: {
-      input: {
-        main: path.resolve(__dirname, 'index.html'),
-        output: path.resolve(__dirname, 'output/index.html'),
-      },
-      output: {
-        // Keep original file names for easier debugging
-        entryFileNames: chunkInfo => {
-          // Output files directly in the output directory without hashing for easier reference
-          if (chunkInfo.facadeModuleId && chunkInfo.facadeModuleId.includes('output/')) {
-            return 'output/[name].js';
-          }
-          return 'assets/js/[name]-[hash].js';
-        },
-        chunkFileNames: 'assets/js/[name]-[hash].js',
-        assetFileNames: assetInfo => {
-          const filename = assetInfo.name || '';
+    // Preview server configuration (npm run preview 시 사용)
+    preview: {
+      port: 7777, // 프리뷰 서버 포트 (변경하지 않음)
+      open: true,
+      cors: true,
+    },
 
-          // Handle CSS files in output directory
-          if (filename.endsWith('.css') && assetInfo.source.toString().includes('.output')) {
-            return 'output/[name][extname]';
-          }
-
-          // Handle CSS files
-          if (filename.endsWith('.css')) {
-            return 'assets/css/[name]-[hash][extname]';
-          }
-
-          // Handle images
-          if (
-            ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp'].some(ext => filename.endsWith(ext))
-          ) {
-            return 'assets/images/[name]-[hash][extname]';
-          }
-
-          // Handle fonts
-          if (['.woff', '.woff2', '.ttf', '.eot', '.otf'].some(ext => filename.endsWith(ext))) {
-            return 'assets/fonts/[name]-[hash][extname]';
-          }
-
-          // Default asset path
-          return 'assets/[name]-[hash][extname]';
-        },
+    // Resolve options
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+        '@output': path.resolve(__dirname, './output'),
       },
     },
-    // Copy output directory to dist
-    copyPublicDir: true,
-  },
 
-  // App type (Multi-Page Application)
-  appType: 'mpa',
+    // Plugin configuration
+    plugins: [
+      copyDirsPlugin()
+    ],
 
-  // Public directory for static assets
-  publicDir: 'public',
+    // Build configuration
+    build: {
+      outDir: 'dist',
+      emptyOutDir: true,
+      sourcemap: !isProduction, // 프로덕션 빌드 시 소스맵 비활성화
+      minify: isProduction ? 'terser' : false, // 프로덕션 빌드 시에만 코드 최적화
+      rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, 'index.html'),
+          ...(fs.existsSync(path.resolve(__dirname, 'output/index.html'))
+            ? { output: path.resolve(__dirname, 'output/index.html') }
+            : {}),
+        },
+        output: {
+          entryFileNames: 'assets/js/[name]-[hash].js',
+          chunkFileNames: 'assets/js/[name]-[hash].js',
+          assetFileNames: assetInfo => {
+            const info = assetInfo.name.split('.');
+            const ext = info[info.length - 1];
 
-  // Configure development server
-  preview: {
-    port: 7777,
-    open: '/index.html',
-  },
+            if (ext === 'css') {
+              return 'assets/css/[name]-[hash][extname]';
+            }
+            if (['png', 'jpe?g', 'gif', 'svg', 'webp'].includes(ext)) {
+              return 'assets/images/[name]-[hash][extname]';
+            }
+            if (['woff2?', 'ttf', 'eot', 'otf'].some(font => ext.includes(font))) {
+              return 'assets/fonts/[name]-[hash][extname]';
+            }
+            return 'assets/[name]-[hash][extname]';
+          },
+        },
+      },
+      copyPublicDir: true,
+      terserOptions: isProduction
+        ? {
+            compress: {
+              drop_console: true,
+              drop_debugger: true,
+            },
+          }
+        : undefined,
+    },
+
+    // App type (Multi-Page Application)
+    appType: 'mpa',
+
+    // Public directory for static assets
+    publicDir: 'public',
+
+    // CSS configuration
+    css: {
+      devSourcemap: !isProduction,
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "./src/styles/variables.scss";`,
+        },
+      },
+    },
+
+    // Environment variables
+    define: {
+      __APP_ENV__: JSON.stringify(mode),
+    },
+  };
 });

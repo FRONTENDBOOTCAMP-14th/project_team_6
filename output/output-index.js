@@ -3,18 +3,31 @@
  * 사용법: loadPage('login') 또는 loadPage('register')
  */
 
-// 개발/프로덕션 환경 감지 함수 (캐싱 및 import.meta.env.PROD 사용)
+// 개발/프로덕션 환경 감지 함수 (여러 방법으로 환경 감지)
 let _isProdEnvironment = null; // Module-level cache for environment detection
 
 function isProductionBuild() {
   if (_isProdEnvironment === null) {
-    // Vite's recommended way to check for production mode.
-    // import.meta.env.PROD is true if 'mode' is 'production', false otherwise.
-    _isProdEnvironment = import.meta.env.PROD;
-    if (_isProdEnvironment) {
-      console.log('[DEBUG] isProductionBuild: Detected PROD environment (via import.meta.env.PROD).');
-    } else {
-      console.log('[DEBUG] isProductionBuild: Detected DEV environment (via import.meta.env.PROD).');
+    try {
+      // 1. Vite 환경 변수 확인 (Vite 빌드 시)
+      if (typeof import.meta !== 'undefined' && import.meta.env) {
+        _isProdEnvironment = import.meta.env.PROD === true;
+      } 
+      // 2. Node.js 환경 변수 확인 (빌드 타임)
+      else if (typeof process !== 'undefined' && process.env) {
+        _isProdEnvironment = process.env.NODE_ENV === 'production';
+      }
+      // 3. URL을 통한 확인 (런타임)
+      else if (typeof window !== 'undefined' && window.location) {
+        _isProdEnvironment = !window.location.hostname.includes('localhost') && 
+                           !window.location.hostname.includes('127.0.0.1');
+      }
+      // 4. 기본값 (안전하게 개발 모드로 설정)
+      else {
+        _isProdEnvironment = false;
+      }
+    } catch (e) {
+      _isProdEnvironment = false;
     }
   }
   return _isProdEnvironment;
@@ -22,11 +35,8 @@ function isProductionBuild() {
 
 // 페이지 경로 생성 함수
 function getPagePath(pageName, ext) {
-  console.log(`[DEBUG] getPagePath: pageName=${pageName}, ext=${ext}`);
   // Always use absolute paths from the output directory
-  const path = `/output/${pageName}.${ext}`;
-  console.log(`[DEBUG] getPagePath resolved to: ${path}`);
-  return path;
+  return `/output/${pageName}.${ext}`;
 }
 
 // 로그인/회원가입 링크 이벤트 처리
@@ -77,8 +87,6 @@ export async function loadPage(pageName) {
   try {
     // HTML 경로 가져오기
     const htmlPath = getPagePath(pageName, 'html');
-    console.log('[DEBUG] HTML 파일 경로:', htmlPath);
-    
     // HTML 파일 로드
     const response = await fetch(htmlPath);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -102,7 +110,6 @@ export async function loadPage(pageName) {
     const cssLink = document.createElement('link');
     cssLink.rel = 'stylesheet';
     cssLink.href = getPagePath(pageName, 'css');
-    console.log('[DEBUG] CSS 경로:', cssLink.href);
     document.head.appendChild(cssLink);
 
     // Dispatch a custom event indicating the page content is ready (after a brief timeout)
@@ -115,23 +122,26 @@ export async function loadPage(pageName) {
       document.dispatchEvent(pageReadyEvent);
     }, 0); // Timeout to allow injected scripts to register listeners
 
-    // Handle page-specific JavaScript
-    if (isProductionBuild()) {
+        // Handle page-specific JavaScript
+    const isProd = isProductionBuild();
+    
+    if (isProd) {
       // In PROD, we'll use the bundled version of the JS
-      // The page-specific code should be included in the main bundle
-      console.log(`[DEBUG] PROD: Using bundled JavaScript for ${pageName}`);
-      
-      // Dispatch pageReady with a small delay to ensure the bundle is loaded
-      // The actual initialization will be handled by the event listener in the bundle
-      console.log(`[DEBUG] PROD: Dispatching 'pageReady' for ${pageName}`);
-      
-      // Add a small delay to ensure the bundle has time to register its event listeners
+      // Add a small delay to ensure the bundle has time to initialize
+      // This helps with race conditions in production builds
       setTimeout(() => {
-        const pageReadyEvent = new CustomEvent('pageReady', { 
-          detail: { pageName: pageName } 
-        });
-        document.dispatchEvent(pageReadyEvent);
-      }, 50);
+        try {
+          const pageReadyEvent = new CustomEvent('pageReady', { 
+            detail: { 
+              pageName: pageName,
+              isProduction: true
+            } 
+          });
+          document.dispatchEvent(pageReadyEvent);
+        } catch (e) {
+          // Silent error in production
+        }
+      }, 100);
     } else {
       // In DEV, explicitly import the page-specific JS module.
       // This ensures Vite's HMR tracks the module and the module's code (event listeners) runs.
@@ -139,18 +149,15 @@ export async function loadPage(pageName) {
       try {
         // In Vite dev server, use the correct path to the output directory
         const jsPath = `/output/${pageName}.js`;
-        console.log(`[DEBUG] DEV: Dynamically importing JS module: ${jsPath}`);
-        
-        // Use dynamic import with the correct path
+          // Use dynamic import with the correct path
         const module = await import(/* @vite-ignore */ jsPath);
-        console.log(`[DEBUG] DEV: Module ${pageName}.js imported successfully.`);
         
         // If the module has a default export, call it
         if (module && typeof module.default === 'function') {
           module.default();
         }
       } catch (e) {
-        console.error(`[ERROR] DEV: Failed to dynamically import ${pageName}.js:`, e);
+        // Silent error in production
       }
     }
 
