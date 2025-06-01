@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>장바구니</title>
+    <link rel="preload" as="font" href="/font/woff2/PretendardVariable.woff2" />
+    <link rel="stylesheet" href="/font/pretendardvariable.css" />
+    <link rel="stylesheet" href="/src/components/cart/cart.css" />
+    <link rel="stylesheet" href="/src/common/index.css" />
+  </head>
+  <body>
+    <!-- 전체선택 / 전체삭제 -->
+    <div class="cart__checkbox-allagree">
+      <div class="cart__checkbox-content">
+        <input type="checkbox" name="terms" id="allAgreement" />
+        <label for="allAgreement"
+          >전체 선택 <span>(<span id="checkedCount">3</span>/<span id="totalCount">3</span>)</span></label
+        >
+        <div class="line"></div>
+        <button>선택삭제</button>
+      </div>
+    </div>
+    <!-- 아코디언 -->
+    <div class="cart__accordion">
+      <div class="cart__accordion-item">
+        <button class="cart__accordion-header" aria-expanded="false" type="button">
+          <img src="/src/assets/svg/fridge.svg" alt="" />
+          <span>냉장 식품</span>
+          <img class="button__down" src="/src/assets/svg/Down.svg" alt="" />
+        </button>
+        <div class="cart__accordion-content hidden">
+          <div class="cart__checkbox-content">
+            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement1" />
+            <label for="Agreement1">내용1</label>
+          </div>
+          <div class="cart__checkbox-content">
+            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement2" />
+            <label for="Agreement2">내용2</label>
+          </div>
+          <div class="cart__checkbox-content">
+            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement3" />
+            <label for="Agreement3">내용3</label>
+          </div>
+        </div>
+      </div>
+      <div class="cart__accordion-item">
+        <button class="cart__accordion-header" aria-expanded="false" type="button">
+          <img src="/src/assets/svg/freeze.svg" alt="" />
+          <span>냉동 식품</span>
+          <img class="button__down" src="/src/assets/svg/Down.svg" alt="" />
+        </button>
+        <div class="cart__accordion-content hidden">
+          <div class="cart__checkbox-content">
+            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement1" />
+            <label for="Agreement1">내용1</label>
+          </div>
+          <div class="cart__checkbox-content">
+            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement2" />
+            <label for="Agreement2">내용2</label>
+          </div>
+          <div class="cart__checkbox-content">
+            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement3" />
+            <label for="Agreement3">내용3</label>
+          </div>
+        </div>
+      </div>
+      <div class="cart__accordion-item">
+        <button class="cart__accordion-header" aria-expanded="false" type="button">
+          <img src="/src/assets/svg/room.svg" alt="" />
+          <span>상온 식품</span>
+          <img class="button__down" src="/src/assets/svg/Down.svg" alt="" />
+        </button>
+        <div class="cart__accordion-content hidden">
+          <div class="cart__checkbox-content">
+            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement1" />
+            <label for="Agreement1">내용1</label>
+          </div>
+          <div class="cart__checkbox-content">
+            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement2" />
+            <label for="Agreement2">내용2</label>
+          </div>
+          <div class="cart__checkbox-content">
+            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement3" />
+            <label for="Agreement3">내용3</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <!-- 배송지 변경-->
+    <div class="cart__location">
+      <div class="cart__location-title">
+        <img src="/src/assets/svg/Location.svg" alt="" />
+        <h2>배송지</h2>
+      </div>
+      <p class="cart__location-content">서울 중랑구 면목로 42길 11 (행운빌딩) 603호</p>
+      <p class="cart__location-text">샛별배송</p>
+      <!-- 버튼 컴포넌트 -->
+      <a class="cart__button --line" href="#modalCart">배송지 변경</a>
+      <!-- 버튼 클릭 시 모달팝업 -->
+      <div class="location__button-modal" id="modalCart">
+        <div class="location__button-modal-content">
+          <h2>배송지 변경 기능은 준비중입니다.</h2>
+          <p>조금만 기다려주시면 자바스크립트 배우고 돌아오겠습니다.</p>
+          <a href="#" class="location__confirm-button">확인</a>
+          <a href="#" class="location__close-button">닫기</a>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <!-- 버튼 컴포넌트 -->
+    <a class="cart__button" href="#modalOder">주문하기</a>
+    <!-- 버튼 클릭 시 모달팝업 -->
+    <div class="location__button-modal" id="modalOder">
+      <div class="location__button-modal-content">
+        <h2>주문하기 기능은 준비중입니다.</h2>
+        <p>조금만 기다려주시면 자바스크립트 배우고 돌아오겠습니다.</p>
+        <a href="#" class="location__confirm-button">확인</a>
+        <a href="#" class="location__close-button">닫기</a>
+      </div>
+    </div>
+    <hr />
+    <!-- 주문 안내 사항 -->
+    <ul class="cart__order-info">
+      <li>쿠폰/적립금은 주문서에서 사용 가능합니다</li>
+      <li>[주문완료] 상태일 경우에만 주문 취소 가능합니다.</li>
+      <li>[마이컬리 > 주문내역 상세페이지] 에서 직접 취소하실 수 있습니다.</li>
+      <li>쿠폰, 적립금 사용 금액을 제외한 실 결제 금액 기준으로 최종 산정됩니다.</li>
+      <li>상품별로 적립금 지급 기준이 다를 수 있습니다. (상품 상세 페이지에서 확인 가능합니다)</li>
+    </ul>
+    <script>
+      // 아코디언 토글 기능
+      document.querySelectorAll('.cart__accordion-header').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const content = btn.parentElement.querySelector('.cart__accordion-content');
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !expanded);
+          content.classList.toggle('hidden');
+
+          // Down/Up 아이콘 변경
+          const arrowImg = btn.querySelector('.button__down');
+          if (arrowImg) {
+            arrowImg.src = expanded ? '/src/assets/svg/Down.svg' : '/src/assets/svg/Up.svg';
+          }
+        });
+      });
+
+      // 전체 선택 체크박스와 내부 체크박스 동기화
+      const allAgreement = document.getElementById('allAgreement');
+      const consentCheckboxes = document.querySelectorAll('.consentcheckbox');
+      const checkedCountSpan = document.getElementById('checkedCount');
+      const totalCountSpan = document.getElementById('totalCount');
+
+      // 전체 선택 클릭 시 모든 아코디언 펼치기/접기 + 아이콘 Up/Down으로 변경
+      document.querySelectorAll('.cart__accordion-item').forEach(function (item) {
+        const header = item.querySelector('.cart__accordion-header');
+        const content = item.querySelector('.cart__accordion-content');
+        const arrowImg = header.querySelector('.button__down');
+
+        allAgreement.addEventListener('change', function () {
+          if (allAgreement.checked) {
+            // 펼치기
+            content.classList.remove('hidden');
+            header.setAttribute('aria-expanded', 'true');
+            if (arrowImg) arrowImg.src = '/src/assets/svg/Up.svg';
+          } else {
+            // 접기
+            content.classList.add('hidden');
+            header.setAttribute('aria-expanded', 'false');
+            if (arrowImg) arrowImg.src = '/src/assets/svg/Down.svg';
+          }
+        });
+      });
+
+      // 전체 선택 클릭 시 내부 체크박스 모두 체크/해제
+      allAgreement.addEventListener('change', function () {
+        consentCheckboxes.forEach(function (cb) {
+          cb.checked = allAgreement.checked;
+        });
+        updateCheckedCount();
+      });
+
+      // 내부 체크박스 변경 시 전체 선택 체크박스 상태 동기화
+      consentCheckboxes.forEach(function (cb) {
+        cb.addEventListener('change', function () {
+          const allChecked = Array.from(consentCheckboxes).every(function (c) {
+            return c.checked;
+          });
+          allAgreement.checked = allChecked;
+          updateCheckedCount();
+        });
+      });
+
+      // 체크된 개수 표시 업데이트 함수
+      function updateCheckedCount() {
+        const checkedCount = Array.from(consentCheckboxes).filter((cb) => cb.checked).length;
+        checkedCountSpan.textContent = checkedCount;
+        totalCountSpan.textContent = consentCheckboxes.length;
+      }
+
+      // 페이지 로드 시 개수 초기화
+      updateCheckedCount();
+    </script>
+  </body>
+</html>
