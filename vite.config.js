@@ -29,85 +29,13 @@ function findAllHtmlFiles(directory) {
 
 export default defineConfig({
   // Base public path when served in development or production
-  base: '/',
+  base: './',
 
-  // Root directory to serve from
-  root: __dirname,
-
-  // Configure development server
+  // Configure server
   server: {
-    port: 5173,
-    open: '/',
-    fs: {
-      // Allow serving files from the project root and output directory
-      allow: ['..'],
-    },
-    // Enable CORS
     cors: true,
-    // Configure proxy to handle requests to /output
-    proxy: {
-      '^/output/.*': {
-        target: 'http://localhost:5173',
-        changeOrigin: true,
-        rewrite: path => path.replace(/^\/output\//, ''),
-      },
-    },
-  },
-
-  // Configure build
-  build: {
-    outDir: 'dist',
-    emptyOutDir: true,
-    // Copy output directory to dist
-    assetsDir: 'assets',
-    rollupOptions: {
-      // Main entry point
-      input: 'index.html',
-      output: {
-        // Keep original file names for easier debugging
-        entryFileNames: 'assets/js/[name]-[hash].js',
-        chunkFileNames: 'assets/js/[name]-[hash].js',
-        assetFileNames: assetInfo => {
-          // Preserve directory structure for assets
-          const dir = path.dirname(assetInfo.name).replace(/^src\//, '');
-          return `assets/${dir}/[name]-[hash][extname]`;
-        },
-      },
-    },
-  },
-
-  // Configure development server
-  server: {
-    port: 5173,
-    open: '/',
-    fs: {
-      // Allow serving files from the project root and output directory
-      allow: ['..'],
-    },
-    // Enable CORS
-    cors: true,
-  },
-
-  // Configure build
-  build: {
-    outDir: 'dist',
-    emptyOutDir: true,
-    // Copy output directory to dist
-    assetsDir: 'assets',
-    rollupOptions: {
-      // Main entry point
-      input: 'index.html',
-      output: {
-        // Keep original file names for easier debugging
-        entryFileNames: 'assets/js/[name]-[hash].js',
-        chunkFileNames: 'assets/js/[name]-[hash].js',
-        assetFileNames: assetInfo => {
-          // Preserve directory structure for assets
-          const dir = path.dirname(assetInfo.name).replace(/^src\//, '');
-          return `assets/${dir}/[name]-[hash][extname]`;
-        },
-      },
-    },
+    port: 4444,
+    open: '/index.html',
   },
 
   // Resolve options
@@ -122,21 +50,15 @@ export default defineConfig({
   // Build configuration
   build: {
     outDir: 'dist',
-    emptyOutDir: false, // Prevent deleting the output directory
-    copyPublicDir: false, // Prevent copying public directory
+    emptyOutDir: true,
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
-        output: path.resolve(__dirname, 'output/output-index.html'),
+        output: path.resolve(__dirname, 'output/index.html'),
       },
       output: {
         // Keep original file names for easier debugging
         entryFileNames: chunkInfo => {
-          // Output files in their original directory structure
-          if (chunkInfo.facadeModuleId && chunkInfo.facadeModuleId.includes('output')) {
-            return 'output/[name].js';
-          }
-          return 'assets/js/[name]-[hash].js';
           // Output files directly in the output directory without hashing for easier reference
           if (chunkInfo.facadeModuleId && chunkInfo.facadeModuleId.includes('output/')) {
             return 'output/[name].js';
@@ -186,7 +108,7 @@ export default defineConfig({
 
   // Configure development server
   preview: {
-    port: 5173,
-    open: '/output/index.html',
+    port: 7777,
+    open: '/index.html',
   },
 });
