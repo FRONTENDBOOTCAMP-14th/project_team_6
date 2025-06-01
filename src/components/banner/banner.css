@@ -86,3 +86,32 @@ a {
     }
   }
 }
+.line-banner {
+  position: relative;
+  height: 200px;
+  border-radius: 20px;
+  overflow: hidden;
+  .line-banner__image {
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .line-banner__text {
+    position: absolute;
+    left: 70px;
+    top: 50%;
+    transform: translate(0, -50%);
+    color: var(--white);
+    line-height: 100%;
+    & p:nth-child(1) {
+      font-size: var(--font-size-XXL);
+      margin-block-end: var(--spacing-S);
+    }
+    & p:nth-child(2) {
+      font-size: var(--font-size-M);
+      font-weight: 300;
+    }
+  }
+}
