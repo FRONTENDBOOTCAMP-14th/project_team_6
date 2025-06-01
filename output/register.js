@@ -18,27 +18,36 @@ function closeModal() {
 
 // 회원가입 페이지 초기화 함수
 function initRegisterPage() {
+  console.log('Setting up register page...');
+  // 폼 요소 찾기
+  const form = document.querySelector('.register__form');
+  if (!form) {
+    console.log('Register form not found');
+    return;
+  }
+
   // 전체 동의 체크박스 이벤트
-  const allAgreement = document.getElementById('allAgreement');
+  const allAgreement = form.querySelector('#allAgreement');
+  const consentCheckboxes = form.querySelectorAll('.consentcheckbox');
+  
   if (allAgreement) {
     allAgreement.addEventListener('change', function () {
-      const checkboxes = document.querySelectorAll('.consentcheckbox');
-      checkboxes.forEach(checkbox => {
+      consentCheckboxes.forEach(checkbox => {
         checkbox.checked = this.checked;
       });
     });
   }
 
   // 개별 체크박스 이벤트
-  const consentCheckboxes = document.querySelectorAll('.consentcheckbox');
-  consentCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', function () {
-      const allChecked = Array.from(consentCheckboxes).every(cb => cb.checked);
-      if (allAgreement) {
+  if (consentCheckboxes.length > 0) {
+    consentCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', function () {
+        if (!allAgreement) return;
+        const allChecked = Array.from(consentCheckboxes).every(cb => cb.checked);
         allAgreement.checked = allChecked;
-      }
+      });
     });
-  });
+  }
 
   // 모달 관련 이벤트
   const closeButton = document.querySelector('.register__close-button');
@@ -77,15 +86,19 @@ function initRegisterPage() {
   };
 
   // 주소 검색 버튼 이벤트
-  const addressButton = document.querySelector('.register__button--address');
-  if (addressButton) {
-    addressButton.addEventListener('click', e => {
-      e.preventDefault();
-      // 주소 검색 API 연동 코드 추가
+  const addressSearchBtn = document.querySelector('.register__button--address');
+  if (addressSearchBtn) {
+    addressSearchBtn.addEventListener('click', () => {
+      // 주소 검색 기능 구현
       alert('주소 검색 기능은 준비 중입니다.');
     });
   }
+  
+  console.log('Register page setup complete');
 }
+
+// 전역에 함수 노출
+window.initRegisterPage = initRegisterPage;
 
 // 모듈 내보내기
 export default initRegisterPage;
