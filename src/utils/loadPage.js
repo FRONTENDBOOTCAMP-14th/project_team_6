@@ -113,9 +113,21 @@ export async function loadPage(pageName) {
 
     // Handle page-specific JavaScript
     if (isProductionBuild()) {
-      // In PROD, JS is bundled by Vite and included in the HTML entry points.
-      // The 'pageReady' event will trigger initialization if the bundled JS has a listener.
-      console.log(`[DEBUG] PROD: JavaScript for ${pageName} is expected to be bundled with its HTML. Initialization via 'pageReady' event.`);
+      // In PROD, we'll use the bundled version of the JS
+      // The page-specific code should be included in the main bundle
+      console.log(`[DEBUG] PROD: Using bundled JavaScript for ${pageName}`);
+      
+      // Dispatch pageReady with a small delay to ensure the bundle is loaded
+      // The actual initialization will be handled by the event listener in the bundle
+      console.log(`[DEBUG] PROD: Dispatching 'pageReady' for ${pageName}`);
+      
+      // Add a small delay to ensure the bundle has time to register its event listeners
+      setTimeout(() => {
+        const pageReadyEvent = new CustomEvent('pageReady', { 
+          detail: { pageName: pageName } 
+        });
+        document.dispatchEvent(pageReadyEvent);
+      }, 50);
     } else {
       // In DEV, explicitly import the page-specific JS module.
       // This ensures Vite's HMR tracks the module and the module's code (event listeners) runs.

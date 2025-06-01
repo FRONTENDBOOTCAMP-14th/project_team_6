@@ -47,6 +47,8 @@ export default defineConfig({
   
   // Build configuration
   build: {
+    // Copy page-specific JS files to the root of the dist directory
+    assetsInlineLimit: 0, // Ensure files are not inlined
     rollupOptions: {
       input: {
         index: path.resolve(__dirname, 'index.html'),
@@ -57,11 +59,20 @@ export default defineConfig({
         entryFileNames: '[name].js',
         chunkFileNames: '[name].js',
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name?.endsWith('.css')) {
-            // CSS 파일은 해시 없이 유지
+          const filename = assetInfo.name || '';
+          
+          // Keep CSS files in root
+          if (filename.endsWith('.css')) {
             return '[name].[ext]';
           }
-          // 기타 에셋
+          
+          // Keep page-specific JS files in root
+          if (filename.match(/\.js$/) && filename.startsWith('src/pages/output-page/')) {
+            const baseName = path.basename(filename);
+            return baseName;
+          }
+          
+          // Other assets go to assets directory
           return 'assets/[name].[ext]';
         }
       }
