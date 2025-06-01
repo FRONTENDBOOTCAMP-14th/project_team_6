@@ -28,16 +28,54 @@ function findAllHtmlFiles(directory) {
 }
 
 export default defineConfig({
+  // Base public path when served in development or production
+  base: '',
+  
+  // Configure server
+  server: {
+    // Enable CORS in development
+    cors: true,
+  },
+  
+  // Resolve options
+  resolve: {
+    // Alias configuration if needed
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
+  
+  // Build configuration
   build: {
     rollupOptions: {
       input: {
         index: path.resolve(__dirname, 'index.html'),
         ...findAllHtmlFiles(path.resolve(__dirname, 'src')),
       },
+      output: {
+        // 해시 제거 - 파일명 그대로 유지
+        entryFileNames: '[name].js',
+        chunkFileNames: '[name].js',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name?.endsWith('.css')) {
+            // CSS 파일은 해시 없이 유지
+            return '[name].[ext]';
+          }
+          // 기타 에셋
+          return 'assets/[name].[ext]';
+        }
+      }
     },
+    // 출력 디렉토리
+    outDir: 'dist',
+    // 초기화
+    emptyOutDir: true,
   },
-  appType: 'mpa', // fallback 사용안함
+  appType: 'mpa',
+  // 상대경로 사용
+  base: './',
+  // 개발 서버 설정
   server: {
-    // open: 'src/pages/main/index.html', // 서버 시작 시 브라우저에서 지정페이지 자동으로 열기
+    cors: true,
   },
 });

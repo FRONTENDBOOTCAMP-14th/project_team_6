@@ -3,6 +3,54 @@
  * 사용법: loadPage('login') 또는 loadPage('register')
  */
 
+// 개발/프로덕션 환경 감지 함수 (캐싱 및 import.meta.env.PROD 사용)
+let _isProdEnvironment = null; // Module-level cache for environment detection
+
+function isProductionBuild() {
+  if (_isProdEnvironment === null) {
+    // Vite's recommended way to check for production mode.
+    // import.meta.env.PROD is true if 'mode' is 'production', false otherwise.
+    _isProdEnvironment = import.meta.env.PROD;
+    if (_isProdEnvironment) {
+      console.log('[DEBUG] isProductionBuild: Detected PROD environment (via import.meta.env.PROD).');
+    } else {
+      console.log('[DEBUG] isProductionBuild: Detected DEV environment (via import.meta.env.PROD).');
+    }
+  }
+  return _isProdEnvironment;
+}
+
+// 페이지 경로 생성 함수
+function getPagePath(pageName, ext) {
+  const prod = isProductionBuild(); // Call once to ensure consistent logging
+  // console.log(`[DEBUG] getPagePath: pageName=${pageName}, ext=${ext}, isProd=${prod}`); // Log reduced for clarity
+
+  let path;
+  if (prod) { // Production environment
+    if (ext === 'html') {
+      // HTML files are in dist/src/pages/output-page/
+      // Path relative to server root
+      path = `/src/pages/output-page/${pageName}.html`;
+    } else if (ext === 'css') {
+      // CSS files are in dist/ (e.g., dist/login.css)
+      // Path relative to server root
+      path = `/${pageName}.css`;
+    /* JS path resolution is no longer needed here for production,
+       as JS is bundled and included via script tags in the HTML. */
+    } else {
+      // Fallback for unknown extensions
+      console.warn(`[WARN] getPagePath: Unknown extension '${ext}' for page '${pageName}' in production.`);
+      // Path relative to server root
+      path = `/${pageName}.${ext}`;
+    }
+  } else { // Development environment
+    // These are already root-relative for the dev server
+    path = `/src/pages/output-page/${pageName}.${ext}`;
+  }
+  console.log(`[DEBUG] getPagePath resolved to: ${path}`);
+  return path;
+}
+
 export async function loadPage(pageName) {
   // Try to find the container with common class names
   let container =
@@ -23,8 +71,12 @@ export async function loadPage(pageName) {
   container.innerHTML = '<div class="loading">로딩 중...</div>';
 
   try {
+    // HTML 경로 가져오기
+    const htmlPath = getPagePath(pageName, 'html');
+    console.log('[DEBUG] HTML 파일 경로:', htmlPath);
+    
     // HTML 파일 로드
-    const response = await fetch(`/src/pages/output-page/${pageName}.html`);
+    const response = await fetch(htmlPath);
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
     const html = await response.text();
@@ -45,34 +97,45 @@ export async function loadPage(pageName) {
     // CSS 로드
     const cssLink = document.createElement('link');
     cssLink.rel = 'stylesheet';
-    cssLink.href = `/src/pages/output-page/${pageName}.css`;
+    cssLink.href = getPagePath(pageName, 'css');
+    console.log('[DEBUG] CSS 경로:', cssLink.href);
     document.head.appendChild(cssLink);
 
-    // JavaScript 모듈 로드 및 초기화
-    try {
-      console.log(`[DEBUG] Loading JS module: /src/pages/output-page/${pageName}.js`);
-      const module = await import(`/src/pages/output-page/${pageName}.js`);
-      console.log(`[DEBUG] Loaded module:`, module);
-      
-      if (module && typeof module.default === 'function') {
-        console.log(`[DEBUG] Initializing ${pageName} module...`);
-        // 약간의 지연을 두어 DOM이 완전히 로드되도록 함
-        setTimeout(() => {
+    // Dispatch a custom event indicating the page content is ready (after a brief timeout)
+    // This allows page-specific JS (whether dev-imported or prod-bundled) to initialize.
+    setTimeout(() => {
+      console.log(`[DEBUG] Dispatching 'pageReady' event for ${pageName} (after timeout)`);
+      const pageReadyEvent = new CustomEvent('pageReady', { 
+        detail: { pageName: pageName } 
+      });
+      document.dispatchEvent(pageReadyEvent);
+    }, 0); // Timeout to allow injected scripts to register listeners
+
+    // Handle page-specific JavaScript
+    if (isProductionBuild()) {
+      // In PROD, JS is bundled by Vite and included in the HTML entry points.
+      // The 'pageReady' event will trigger initialization if the bundled JS has a listener.
+      console.log(`[DEBUG] PROD: JavaScript for ${pageName} is expected to be bundled with its HTML. Initialization via 'pageReady' event.`);
+    } else {
+      // In DEV, explicitly import the page-specific JS module.
+      // This ensures Vite's HMR tracks the module and the module's code (event listeners) runs.
+      // The actual initialization logic within the module should still be triggered by the 'pageReady' event.
+      try {
+        // In Vite dev server, we can use an absolute path from the project root
+        const jsPath = `/src/pages/output-page/${pageName}.js`;
+        console.log(`[DEBUG] DEV: Dynamically importing JS module: ${jsPath}`);
+        
+        // Use dynamic import with the correct path
+        const module = await import(/* @vite-ignore */ jsPath);
+        console.log(`[DEBUG] DEV: Module ${pageName}.js imported successfully.`);
+        
+        // If the module has a default export, call it
+        if (module && typeof module.default === 'function') {
           module.default();
-          console.log(`[DEBUG] ${pageName} module initialized successfully`);
-          
-          // 모달이 있는지 확인하고 이벤트 리스너 다시 등록
-          const modal = document.getElementById('modalLogin') || document.getElementById('modal');
-          if (modal) {
-            console.log('[DEBUG] Modal found, re-initializing event listeners');
-            // 이미 모듈 초기화 함수에서 이벤트 리스너를 등록하므로 여기서는 로그만 남김
-          }
-        }, 50);
-      } else {
-        console.warn(`[WARN] ${pageName}.js does not export a default function. Module:`, module);
+        }
+      } catch (e) {
+        console.error(`[ERROR] DEV: Failed to dynamically import ${pageName}.js:`, e);
       }
-    } catch (e) {
-      console.error(`[ERROR] Failed to load/initialize ${pageName}.js:`, e);
     }
 
     return true;

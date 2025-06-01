@@ -17,7 +17,7 @@ function closeModal() {
 }
 
 // 로그인 페이지 초기화 함수
-function initLoginPage() {
+export default function initLoginPage() {
   // 요소 선택
   const loginButton = document.querySelector('.login__join-button:not(.--line)');
   const registerButton = document.querySelector('.login__join-button.--line');
@@ -86,5 +86,20 @@ function initLoginPage() {
   addEventListeners();
 }
 
-// 모듈 내보내기
-export default initLoginPage;
+// Initialize immediately if not in a module context
+if (typeof module !== 'undefined' && module.hot) {
+  // This runs in development with HMR
+  console.log('[DEBUG] login.js: Running in development mode with HMR');
+  initLoginPage();
+}
+
+// Also listen for pageReady event for production or when loaded directly
+document.addEventListener('pageReady', function(event) {
+  if (event.detail.pageName === 'login') {
+    console.log('[DEBUG] login.js: Received pageReady event, initializing');
+    initLoginPage();
+  }
+});
+
+// The initLoginPage function (defined elsewhere in this file) will be called by the event listener.
+// No default export is needed as the module's functions are triggered by the event.
