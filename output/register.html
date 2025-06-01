@@ -164,14 +164,20 @@
       <div class="register__checkbox-wrapper">
         <div class="register__checkbox-allagree">
           <div class="register__checkbox-text">
-            <input type="checkbox" name="terms" id="allAgreement" />
-            <label for="allAgreement">전체 동의합니다.</label>
+            <input type="checkbox" class="register__checkbox" id="allAgree" name="terms" />
+            <label for="allAgree">전체 동의합니다.</label>
             <p>선택항목에 동의하지 않은 경우도 회원가입 및 일반적인 서비스를 이용할 수 있습니다.</p>
           </div>
         </div>
         <div class="register__checkbox-agree">
           <div class="register__checkbox-text">
-            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement1" />
+            <input
+              class="register__checkbox"
+              type="checkbox"
+              name="terms"
+              id="Agreement1"
+              required
+            />
             <label for="Agreement1">이용약관 동의 (필수)</label>
           </div>
           <div class="register__checkbox-button">
@@ -183,7 +189,13 @@
         </div>
         <div class="register__checkbox-agree">
           <div class="register__checkbox-text">
-            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement2" />
+            <input
+              class="register__checkbox"
+              type="checkbox"
+              name="terms"
+              id="Agreement2"
+              required
+            />
             <label for="Agreement2">개인정보 수집 · 이용 동의 (필수)</label>
           </div>
           <div class="register__checkbox-button">
@@ -195,7 +207,7 @@
         </div>
         <div class="register__checkbox-agree">
           <div class="register__checkbox-text">
-            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement3" />
+            <input class="register__checkbox" type="checkbox" name="terms" id="Agreement3" />
             <label for="Agreement3">무료배송, 할인쿠폰 등 혜택/정보 수신 동의 (선택)</label>
           </div>
           <div class="register__checkbox-button">
@@ -207,7 +219,13 @@
         </div>
         <div class="register__checkbox-agree">
           <div class="register__checkbox-text">
-            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement4" />
+            <input
+              class="register__checkbox"
+              type="checkbox"
+              name="terms"
+              id="Agreement4"
+              required
+            />
             <label for="Agreement4">본인은 만 14세 이상입니다. (필수)</label>
           </div>
           <div class="register__checkbox-button">
@@ -219,7 +237,7 @@
         </div>
       </div>
     </div>
-    <button class="register__join-button">가입하기</button>
+    <button type="submit" class="register__join-button">가입하기</button>
   </form>
 </div>
 <div id="modalRegister" class="register__modal" hidden>

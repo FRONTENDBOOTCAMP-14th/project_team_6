@@ -23,6 +23,40 @@
     <link rel="stylesheet" href="header.css" />
     <!-- Dynamic styles will be loaded here -->
     <link id="dynamic-css" rel="stylesheet" href="" />
+    <!-- Preload scripts -->
+    <link rel="modulepreload" href="output-index.js">
+    <link rel="modulepreload" href="login.js">
+    <link rel="modulepreload" href="register.js">
+    
+    <!-- Initialize page scripts -->
+    <script type="module">
+      // Track loaded page scripts
+      window.__PAGE_SCRIPTS = {
+        'login': null,
+        'register': null
+      };
+
+      // Function to initialize a page script
+      window.initializePageScript = async (pageName) => {
+        try {
+          // If already loaded, just run the init function
+          if (window.__PAGE_SCRIPTS[pageName]) {
+            window.__PAGE_SCRIPTS[pageName]();
+            return;
+          }
+          
+          // Dynamically import and initialize
+          const module = await import(`./${pageName}.js`);
+          if (module && typeof module.default === 'function') {
+            window.__PAGE_SCRIPTS[pageName] = module.default;
+            module.default();
+          }
+        } catch (error) {
+          console.error(`Failed to initialize ${pageName}:`, error);
+        }
+      };
+    </script>
+    
     <!-- Main script -->
     <script type="module" src="output-index.js"></script>
   </head>

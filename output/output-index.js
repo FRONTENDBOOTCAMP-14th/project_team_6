@@ -66,107 +66,77 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 export async function loadPage(pageName) {
+  console.log(`Loading page: ${pageName}`);
+  
   // Try to find the container with common class names
-  let container =
-    document.querySelector('.main__container') ||
-    document.querySelector('.main__contianer') || // Fallback for typo
-    document.querySelector('main') || // Fallback to any main element
-    document.body; // Last resort: use body
-
-  // Create a container if none found
-  if (!container) {
-    container = document.createElement('main');
-    container.className = 'main__container';
-    document.body.appendChild(container);
-  }
-
-  // 로딩 중 표시 (기존 내용 저장)
+  let container = document.querySelector('.main__container') || document.body;
   const originalContent = container.innerHTML;
+  
+  // Show loading indicator
   container.innerHTML = '<div class="loading">로딩 중...</div>';
 
   try {
-    // HTML 경로 가져오기
+    // Get paths for HTML, CSS, and JS
     const htmlPath = getPagePath(pageName, 'html');
-    // HTML 파일 로드
-    const response = await fetch(htmlPath);
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-    const html = await response.text();
-
-    // HTML 파싱 및 삽입
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
+    const cssPath = getPagePath(pageName, 'css');
+    const jsPath = getPagePath(pageName, 'js');
     
-    // 기존 컨텐츠 초기화
-    container.innerHTML = '';
-    
-    // 모든 자식 요소를 순회하면서 추가
-    // 메인 컨텐츠와 모달 모두 포함
-    while (doc.body.firstChild) {
-      container.appendChild(doc.body.firstChild);
+    console.log(`Loading resources:`, { htmlPath, cssPath, jsPath });
+
+    // 1. Load HTML
+    const htmlResponse = await fetch(htmlPath);
+    if (!htmlResponse.ok) {
+      throw new Error(`Failed to load HTML: ${htmlResponse.status} ${htmlResponse.statusText}`);
     }
+    const html = await htmlResponse.text();
 
-    // CSS 로드
+    // 2. Load and inject CSS
     const cssLink = document.createElement('link');
     cssLink.rel = 'stylesheet';
-    cssLink.href = getPagePath(pageName, 'css');
+    cssLink.href = cssPath;
     document.head.appendChild(cssLink);
+    console.log('CSS injected');
 
-    // Dispatch a custom event indicating the page content is ready (after a brief timeout)
-    // This allows page-specific JS (whether dev-imported or prod-bundled) to initialize.
-    setTimeout(() => {
-      console.log(`[DEBUG] Dispatching 'pageReady' event for ${pageName} (after timeout)`);
-      const pageReadyEvent = new CustomEvent('pageReady', { 
-        detail: { pageName: pageName } 
-      });
-      document.dispatchEvent(pageReadyEvent);
-    }, 0); // Timeout to allow injected scripts to register listeners
+    // 3. Inject HTML
+    container.innerHTML = html;
+    console.log('HTML injected');
 
-        // Handle page-specific JavaScript
-    const isProd = isProductionBuild();
-    
-    if (isProd) {
-      // In PROD, we'll use the bundled version of the JS
-      // Add a small delay to ensure the bundle has time to initialize
-      // This helps with race conditions in production builds
-      setTimeout(() => {
-        try {
-          const pageReadyEvent = new CustomEvent('pageReady', { 
-            detail: { 
-              pageName: pageName,
-              isProduction: true
-            } 
-          });
-          document.dispatchEvent(pageReadyEvent);
-        } catch (e) {
-          // Silent error in production
-        }
-      }, 100);
-    } else {
-      // In DEV, explicitly import the page-specific JS module.
-      // This ensures Vite's HMR tracks the module and the module's code (event listeners) runs.
-      // The actual initialization logic within the module should still be triggered by the 'pageReady' event.
-      try {
-        // In Vite dev server, use the correct path to the output directory
-        const jsPath = `/output/${pageName}.js`;
-          // Use dynamic import with the correct path
-        const module = await import(/* @vite-ignore */ jsPath);
-        
-        // If the module has a default export, call it
-        if (module && typeof module.default === 'function') {
-          module.default();
-        }
-      } catch (e) {
-        // Silent error in production
+    // 4. Load and execute JS
+    try {
+      console.log(`Importing JS module: ${jsPath}`);
+      await import(/* @vite-ignore */ jsPath);
+      
+      // 5. Initialize the page by calling the appropriate init function
+      const initFunctionName = `init${pageName.charAt(0).toUpperCase() + pageName.slice(1)}Page`;
+      if (window[initFunctionName] && typeof window[initFunctionName] === 'function') {
+        console.log(`Calling ${initFunctionName}...`);
+        window[initFunctionName]();
+      } else {
+        console.warn(`No initialization function found: ${initFunctionName}`);
       }
+      
+      // 6. Dispatch pageReady event for any components that need it
+      const event = new CustomEvent('pageReady', { 
+        detail: { 
+          pageName: pageName,
+          timestamp: new Date().toISOString()
+        } 
+      });
+      document.dispatchEvent(event);
+      console.log(`Page ${pageName} initialized`);
+      
+    } catch (jsError) {
+      console.error('Error loading/executing page script:', jsError);
+      throw jsError;
     }
 
     return true;
   } catch (error) {
-    console.error(`페이지 로드 중 오류가 발생했습니다: ${pageName}`, error);
+    console.error('Error loading page:', error);
     container.innerHTML = `
       <div class="error-message">
         <p>페이지를 불러오는 중 오류가 발생했습니다.</p>
+        <p>${error.message}</p>
         <button onclick="location.reload()">새로고침</button>
       </div>
     `;
