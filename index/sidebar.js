@@ -7,7 +7,7 @@ window.projectStructure = {
       name: 'Members',
       type: 'directory',
       children: [
-        { name: 'dongsik.md', type: 'file', actualPath: 'src/pages/Members/dongsik.html' }
+        { name: 'dongsik.md', type: 'file', actualPath: 'src/pages/Members/dongsik.html' },
       ],
     },
     {
@@ -17,10 +17,26 @@ window.projectStructure = {
         { name: 'footer.html', type: 'file', actualPath: 'src/components/footer/footer.html' },
         { name: 'header.html', type: 'file', actualPath: 'src/components/header/header.html' },
         { name: 'login.html', type: 'file', actualPath: 'src/components/login/login.html' },
-        { name: 'register.html', type: 'file', actualPath: 'src/components/Register/Register.html' },
-        { name: 'product-list.html', type: 'file', actualPath: 'src/components/Product-list/list-category.html' },
-        { name: 'item-inquire.html', type: 'file', actualPath: 'src/components/product-detail/item-inquire.html' },
-        { name: 'item-review.html', type: 'file', actualPath: 'src/components/product-detail/item-review.html' },
+        {
+          name: 'register.html',
+          type: 'file',
+          actualPath: 'src/components/register/register.html',
+        },
+        {
+          name: 'product-list.html',
+          type: 'file',
+          actualPath: 'src/components/Product-list/list-category.html',
+        },
+        {
+          name: 'item-inquire.html',
+          type: 'file',
+          actualPath: 'src/components/product-detail/item-inquire.html',
+        },
+        {
+          name: 'item-review.html',
+          type: 'file',
+          actualPath: 'src/components/product-detail/item-review.html',
+        },
       ],
     },
   ],
@@ -39,7 +55,9 @@ export function initSidebar() {
         {
           name: 'Members',
           type: 'directory',
-          children: [{ name: 'dongsik.md', type: 'file', actualPath: 'src/pages/Members/dongsik.html' }]
+          children: [
+            { name: 'dongsik.md', type: 'file', actualPath: 'src/pages/Members/dongsik.html' },
+          ],
         },
         {
           name: 'Components',
@@ -48,10 +66,26 @@ export function initSidebar() {
             { name: 'footer.html', type: 'file', actualPath: 'src/components/footer/footer.html' },
             { name: 'header.html', type: 'file', actualPath: 'src/components/header/header.html' },
             { name: 'login.html', type: 'file', actualPath: 'src/components/login/login.html' },
-            { name: 'register.html', type: 'file', actualPath: 'src/components/Register/Register.html' },
-            { name: 'product-list.html', type: 'file', actualPath: 'src/components/Product-list/list-category.html' },
-            { name: 'item-inquire.html', type: 'file', actualPath: 'src/components/product-detail/item-inquire.html' },
-            { name: 'item-review.html', type: 'file', actualPath: 'src/components/product-detail/item-review.html' },
+            {
+              name: 'register.html',
+              type: 'file',
+              actualPath: 'src/components/Register/Register.html',
+            },
+            {
+              name: 'product-list.html',
+              type: 'file',
+              actualPath: 'src/components/Product-list/list-category.html',
+            },
+            {
+              name: 'item-inquire.html',
+              type: 'file',
+              actualPath: 'src/components/product-detail/item-inquire.html',
+            },
+            {
+              name: 'item-review.html',
+              type: 'file',
+              actualPath: 'src/components/product-detail/item-review.html',
+            },
           ],
         },
       ],
@@ -241,7 +275,7 @@ export function initSidebar() {
 
     try {
       console.log('Handling file click for:', this.dataset.path);
-      
+
       // Get the actual path from data-actual-path or use the displayed path
       const actualPath = this.dataset.actualPath || this.dataset.path;
       const fileName = actualPath.split('/').pop();
@@ -251,7 +285,7 @@ export function initSidebar() {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
+
       const content = await response.text();
       // Dispatch file selected event with actualPath
       const event = new CustomEvent('fileSelected', {
@@ -259,8 +293,8 @@ export function initSidebar() {
           path: this.dataset.path.split('/').pop(),
           type: 'file',
           content: content,
-          actualPath: this.dataset.actualPath || ''
-        }
+          actualPath: this.dataset.actualPath || '',
+        },
       });
       document.dispatchEvent(event);
     } catch (error) {
