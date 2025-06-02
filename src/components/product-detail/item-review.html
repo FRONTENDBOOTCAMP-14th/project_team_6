@@ -10,74 +10,98 @@
     <link rel="stylesheet" href="/src/common/index.css" />
   </head>
   <body>
-    <div class="container__review">
-      <div class="header__review">
-        <span class="header__review-title"
+    <div class="review">
+      <div class="review__header">
+        <span class="review__header-title"
           >상품후기
-          <ul class="header__review-description">
+          <ul class="review__header-description">
             <span>글후기 50원 적립금 혜택이 있어요.</span>
             <li>블루, 더블루는 2배 적립(100원)/주간 베스트 후기로 신청 시 5,000원 추가 적립</li>
             <li>후기 작성은 배송완료일로부터 30일 이내 가능합니다.</li>
             <li>작성하신 후기는 확인 후 적립금이 지급됩니다.(영업일 기준 평균 1~2일 소요)</li>
           </ul></span
         >
-        <button class="header__review-button">후기 작성하기</button>
+        <button class="review__header-button">후기 작성하기</button>
       </div>
-      <div class="content__review">
-        <div class="header__content">
-          <span class="header__review-count">총 23개</span>
-          <span class="header__review-order"><button class="recommend-button">추천순</button>|<button class="recent-button">최근 등록순</button></span>
+      <div class="review__content">
+        <div class="review__content-header">
+          <span class="review__content-count">총 23개</span>
+          <span class="review__content-order"
+            ><button class="review__recommend-button">추천순</button>|<button
+              class="review__recent-button"
+            >
+              최근 등록순
+            </button></span
+          >
         </div>
-        <ul class="list__content">
-          <li class="list__content--notice">금주의 베스트 후기 안내</li>
-          <li class="list__content--notice">상품 후기 적립금 정책 안내</li>
-          <li class="list__content--best">
-            <div class="list__best--info">
-              <span class="list__info-badge--best badge"></span>
-              <span class="list__info-badge--blue badge"></span>
-              <span class="list__info-name">김*진</span>
+        <ul class="review__list">
+          <li class="review__list--notice">금주의 베스트 후기 안내</li>
+          <li class="review__list--notice">상품 후기 적립금 정책 안내</li>
+          <li class="review__list--best">
+            <div class="review__best-info">
+              <span class="review__info-badge--best review__badge"></span>
+              <span class="review__info-badge--blue review__badge"></span>
+              <span class="review__info-name">김*진</span>
             </div>
-            <div class="list__best--content">
-              <div class="list__best-item">[풀무원] 탱탱쫄면 (4개입)</div>
-              <div class="list__best-comment">너무 맛있어여~<br />면이 쫄깃하고 양념도 짱맛나요!!</div>
-              <div class="list__best-date">2025.05.29</div>
-            </div>
-          </li>
-          <li class="list__content--best">
-            <div class="list__best--info">
-              <span class="list__info-badge--best badge"></span>
-              <span class="list__info-badge--blue badge"></span>
-              <span class="list__info-name">김*진</span>
-            </div>
-            <div class="list__best--content">
-              <div class="list__best-item">[풀무원] 탱탱쫄면 (4개입)</div>
-              <div class="list__best-comment">너무 맛있어여~<br />면이 쫄깃하고 양념도 짱맛나요!!</div>
-              <div class="list__best-date">2025.05.29</div>
+            <div class="review__best-content">
+              <div class="review__best-item">[풀무원] 탱탱쫄면 (4개입)</div>
+              <div class="review__best-comment">
+                너무 맛있어여~<br />면이 쫄깃하고 양념도 짱맛나요!!
+              </div>
+              <div class="review__best-date">2025.05.29</div>
             </div>
           </li>
-          <li class="list__content--best">
-            <div class="list__best--info">
-              <span class="list__info-badge--best badge"></span>
-              <span class="list__info-badge--blue badge"></span>
-              <span class="list__info-name">김*진</span>
+          <li class="review__list--best">
+            <div class="review__best-info">
+              <span class="review__info-badge--best review__badge"></span>
+              <span class="review__info-badge--blue review__badge"></span>
+              <span class="review__info-name">김*진</span>
             </div>
-            <div class="list__best--content">
-              <div class="list__best-item">[풀무원] 탱탱쫄면 (4개입)</div>
-              <div class="list__best-comment">너무 맛있어여~<br />면이 쫄깃하고 양념도 짱맛나요!!</div>
-              <div class="list__best-date">2025.05.29</div>
+            <div class="review__best-content">
+              <div class="review__best-item">[풀무원] 탱탱쫄면 (4개입)</div>
+              <div class="review__best-comment">
+                너무 맛있어여~<br />면이 쫄깃하고 양념도 짱맛나요!!
+              </div>
+              <div class="review__best-date">2025.05.29</div>
+            </div>
+          </li>
+          <li class="review__list--best">
+            <div class="review__best-info">
+              <span class="review__info-badge--best review__badge"></span>
+              <span class="review__info-badge--blue review__badge"></span>
+              <span class="review__info-name">김*진</span>
+            </div>
+            <div class="review__best-content">
+              <div class="review__best-item">[풀무원] 탱탱쫄면 (4개입)</div>
+              <div class="review__best-comment">
+                너무 맛있어여~<br />면이 쫄깃하고 양념도 짱맛나요!!
+              </div>
+              <div class="review__best-date">2025.05.29</div>
             </div>
           </li>
         </ul>
       </div>
-      <div class="button__inquire">
+      <div class="review__pagination">
         <button>
-          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width="56"
+            height="56"
+            viewBox="0 0 56 56"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <rect x="0.5" y="0.5" width="55" height="55" rx="3.5" stroke="#DDDDDD" />
             <path d="M32 36L24 28L32 20" stroke="#ABABAB" stroke-width="1.2" />
           </svg>
         </button>
         <button>
-          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width="56"
+            height="56"
+            viewBox="0 0 56 56"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <rect x="0.5" y="0.5" width="55" height="55" rx="3.5" stroke="#DDDDDD" />
             <path d="M24 20L32 28L24 36" stroke="#ABABAB" stroke-width="1.2" />
           </svg>
