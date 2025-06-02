@@ -21,12 +21,12 @@ a {
   font-weight: 600;
   line-height: 150%;
   border: 1px solid var(--primary);
-  border-bottom: none;
   span {
     font-weight: 300;
   }
   &.active {
     color: var(--primary);
+    border-bottom: none;
   }
   &.inactive {
     color: var(--black);
