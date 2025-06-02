@@ -55,21 +55,31 @@ document.addEventListener('click', (e) => {
 
 // URL 해시 변경 시 페이지 로드
 window.addEventListener('hashchange', () => {
-  const page = window.location.hash.replace('#', '') || 'login';
+  const page = window.location.hash.replace('#', '') || 'home';
   loadPage(page);
 });
 
 // 초기 페이지 로드
 document.addEventListener('DOMContentLoaded', () => {
-  const initialPage = window.location.hash.replace('#', '') || 'login';
+  const initialPage = window.location.hash.replace('#', '') || 'home';
   loadPage(initialPage);
 });
+
+// Get or create main container
+function getMainContainer() {
+  let container = document.querySelector('.main__container');
+  if (!container) {
+    container = document.createElement('main');
+    container.className = 'main__container';
+    document.body.appendChild(container);
+  }
+  return container;
+}
 
 export async function loadPage(pageName) {
   console.log(`Loading page: ${pageName}`);
   
-  // Try to find the container with common class names
-  let container = document.querySelector('.main__container') || document.body;
+  const container = getMainContainer();
   const originalContent = container.innerHTML;
   
   // Show loading indicator
@@ -91,14 +101,18 @@ export async function loadPage(pageName) {
     const html = await htmlResponse.text();
 
     // 2. Load and inject CSS
-    const cssLink = document.createElement('link');
-    cssLink.rel = 'stylesheet';
-    cssLink.href = cssPath;
-    document.head.appendChild(cssLink);
-    console.log('CSS injected');
+    const existingCss = document.querySelector(`link[href="${cssPath}"]`);
+    if (!existingCss) {
+      const cssLink = document.createElement('link');
+      cssLink.rel = 'stylesheet';
+      cssLink.href = cssPath;
+      document.head.appendChild(cssLink);
+      console.log('CSS injected');
+    }
 
     // 3. Inject HTML
-    container.innerHTML = html;
+    container.innerHTML = ''; // Clear loading
+    container.insertAdjacentHTML('afterbegin', html);
     console.log('HTML injected');
 
     // 4. Load and execute JS
@@ -150,14 +164,28 @@ export async function loadPage(pageName) {
 
 // URL 해시 기반 라우팅
 function handleRoute() {
-  const path = window.location.hash.replace('#', '') || 'login';
+  const path = window.location.hash.replace('#', '') || 'home';
   loadPage(path);
+}
+
+// 홈 버튼 클릭 핸들러
+function setupHomeButton() {
+  const homeButton = document.getElementById('homeButton');
+  if (homeButton) {
+    homeButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.hash = ''; // Clear the hash to go to home
+    });
+  }
 }
 
 // 초기화
 document.addEventListener('DOMContentLoaded', () => {
   // 라우트 이벤트 리스너 등록
   window.addEventListener('hashchange', handleRoute);
+  
+  // 홈 버튼 설정
+  setupHomeButton();
 
   // 초기 페이지 로드
   handleRoute();
