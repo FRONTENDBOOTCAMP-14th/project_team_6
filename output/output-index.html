@@ -24,27 +24,27 @@
     <!-- Dynamic styles will be loaded here -->
     <link id="dynamic-css" rel="stylesheet" href="" />
     <!-- Preload scripts -->
-    <link rel="modulepreload" href="output-index.js">
-    <link rel="modulepreload" href="login.js">
-    <link rel="modulepreload" href="register.js">
-    
+    <link rel="modulepreload" href="output-index.js" />
+    <link rel="modulepreload" href="login.js" />
+    <link rel="modulepreload" href="register.js" />
+
     <!-- Initialize page scripts -->
     <script type="module">
       // Track loaded page scripts
       window.__PAGE_SCRIPTS = {
-        'login': null,
-        'register': null
+        login: null,
+        register: null,
       };
 
       // Function to initialize a page script
-      window.initializePageScript = async (pageName) => {
+      window.initializePageScript = async pageName => {
         try {
           // If already loaded, just run the init function
           if (window.__PAGE_SCRIPTS[pageName]) {
             window.__PAGE_SCRIPTS[pageName]();
             return;
           }
-          
+
           // Dynamically import and initialize
           const module = await import(`./${pageName}.js`);
           if (module && typeof module.default === 'function') {
@@ -56,7 +56,7 @@
         }
       };
     </script>
-    
+
     <!-- Main script -->
     <script type="module" src="output-index.js"></script>
   </head>
@@ -74,15 +74,27 @@
             <button type="button">
               <img src="/src/assets/svg/cart.svg" alt="장바구니" /><span>3</span>
             </button>
-            <button type="button" data-page="login"><img src="/src/assets/svg/login.svg" alt="로그인" /></button>
+            <button type="button" data-page="login">
+              <img src="/src/assets/svg/login.svg" alt="로그인" />
+            </button>
           </div>
         </div>
         <nav class="header__nav">
           <ul class="header__menu">
-            <li><button type="button" data-page="product-list" data-category="new">신상품</button></li>
-            <li><button type="button" data-page="product-list" data-category="best">베스트</button></li>
-            <li><button type="button" data-page="product-list" data-category="sale">알뜰쇼핑</button></li>
-            <li><button type="button" data-page="product-list" data-category="event">특가/혜택</button></li>
+            <li>
+              <button type="button" data-page="product-list" data-category="new">신상품</button>
+            </li>
+            <li>
+              <button type="button" data-page="product-list" data-category="best">베스트</button>
+            </li>
+            <li>
+              <button type="button" data-page="product-list" data-category="sale">알뜰쇼핑</button>
+            </li>
+            <li>
+              <button type="button" data-page="product-list" data-category="event">
+                특가/혜택
+              </button>
+            </li>
           </ul>
           <div class="header__search-bar">
             <input type="search" aria-label="상품 검색" placeholder="검색어를 입력해주세요." />
@@ -93,9 +105,9 @@
     </header>
     <main class="main__container"></main>
     <footer>
-      <div class="footer__container">
+      <div class="container footer__container">
         <div class="footer__policy">
-          <div>
+          <div class="footer__policy-link">
             <a href="#">개인정보처리방침</a>
             <a href="#">이메일무단수집거부</a>
           </div>
@@ -125,16 +137,19 @@
             <dd>
               <label class="sr-only" for="bank">인터넷 뱅킹 바로가기</label>
               <select name="bank" id="bank">
-                <option value=""></option>
+                <option hidden>인터넷뱅킹 바로가기</option>
+                <option value="">우리은행</option>
+                <option value="">국민은행</option>
+                <option value="">하나은행</option>
               </select>
             </dd>
           </dl>
-          <dl>
+          <dl class="footer__info-shopping">
             <dt>SHOPPING MENU</dt>
             <dd><a href="">마이페이지</a></dd>
             <dd><a href=""> 주문조회</a></dd>
             <dd>
-              <a href=""> 장바구니<span>3</span></a>
+              <a href=""> 장바구니(<span>3</span>)</a>
             </dd>
             <dd><a href=""> 쿠폰 내역</a></dd>
             <dd><a href=""> 적립금 내역</a></dd>
@@ -157,6 +172,5 @@
         </div>
       </div>
     </footer>
-
   </body>
 </html>
