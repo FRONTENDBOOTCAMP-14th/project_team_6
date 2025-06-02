@@ -4,14 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!discounted) return;
 
   // ✅ 이미지 경로 상수
-  const minusOn = '/src/assets/svg/minus-on.svg';
-  const minusOff = '/src/assets/svg/minus-off.svg';
-  const plusOn = '/src/assets/svg/plus-on.svg';
-  const plusOff = '/src/assets/svg/plus-off.svg';
-  const likeOn = '/src/assets/svg/like-on.svg';
-  const likeOff = '/src/assets/svg/like-off.svg';
-  const bellOn = '/src/assets/svg/bell-on.svg';
-  const bellOff = '/src/assets/svg/bell-off.svg';
+  const minusOn = '../../assets/svg/minus-on.svg';
+  const minusOff = '../../assets/svg/minus-off.svg';
+  const plusOn = '../../assets/svg/plus-on.svg';
+  const plusOff = '../../assets/svg/plus-off.svg';
+  const likeOn = '../../assets/svg/like-on.svg';
+  const likeOff = '../../assets/svg/like-off.svg';
+  const bellOn = '../../assets/svg/bell-on.svg';
+  const bellOff = '../../assets/svg/bell-off.svg';
 
   // ✅ .detail__main-info 내부 할인 가격 전체 반영
   document.querySelectorAll('.detail__main-info .detail__discounted-price').forEach((el) => {
