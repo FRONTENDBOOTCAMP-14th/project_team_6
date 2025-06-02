@@ -39,10 +39,14 @@ function getPagePath(pageName, ext) {
   return `/output/${pageName}.${ext}`;
 }
 
-// 로그인/회원가입 링크 이벤트 처리
+// 네비게이션 링크 이벤트 처리
 document.addEventListener('click', (e) => {
+  // 로그인/회원가입 버튼 처리
   const loginBtn = e.target.closest('[data-page="login"]');
   const registerBtn = e.target.closest('[data-page="register"]');
+  
+  // 상품 목록 버튼 처리
+  const productListBtn = e.target.closest('[data-page="product-list"]');
   
   if (loginBtn) {
     e.preventDefault();
@@ -50,6 +54,10 @@ document.addEventListener('click', (e) => {
   } else if (registerBtn) {
     e.preventDefault();
     window.location.hash = 'register';
+  } else if (productListBtn) {
+    e.preventDefault();
+    const category = productListBtn.dataset.category;
+    window.location.hash = `product-list?category=${category}`;
   }
 });
 
@@ -76,8 +84,19 @@ function getMainContainer() {
   return container;
 }
 
+// Get the base path without query parameters
+function getBasePageName(fullPath) {
+  // Remove query parameters and hash
+  const basePath = fullPath.split('?')[0].split('#')[0];
+  return basePath || 'home';
+}
+
 export async function loadPage(pageName) {
   console.log(`Loading page: ${pageName}`);
+  
+  // Extract the base page name without query parameters
+  const basePageName = getBasePageName(pageName);
+  console.log(`Base page name: ${basePageName}`);
   
   const container = getMainContainer();
   const originalContent = container.innerHTML;
@@ -86,10 +105,10 @@ export async function loadPage(pageName) {
   container.innerHTML = '<div class="loading">로딩 중...</div>';
 
   try {
-    // Get paths for HTML, CSS, and JS
-    const htmlPath = getPagePath(pageName, 'html');
-    const cssPath = getPagePath(pageName, 'css');
-    const jsPath = getPagePath(pageName, 'js');
+    // Get paths for HTML, CSS, and JS using the base page name
+    const htmlPath = getPagePath(basePageName, 'html');
+    const cssPath = getPagePath(basePageName, 'css');
+    const jsPath = getPagePath(basePageName, 'js');
     
     console.log(`Loading resources:`, { htmlPath, cssPath, jsPath });
 
@@ -121,7 +140,12 @@ export async function loadPage(pageName) {
       await import(/* @vite-ignore */ jsPath);
       
       // 5. Initialize the page by calling the appropriate init function
-      const initFunctionName = `init${pageName.charAt(0).toUpperCase() + pageName.slice(1)}Page`;
+      // Convert kebab-case to PascalCase and remove query parameters
+      const normalizedPageName = basePageName
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join('');
+      const initFunctionName = `init${normalizedPageName}Page`;
       if (window[initFunctionName] && typeof window[initFunctionName] === 'function') {
         console.log(`Calling ${initFunctionName}...`);
         window[initFunctionName]();
@@ -164,8 +188,8 @@ export async function loadPage(pageName) {
 
 // URL 해시 기반 라우팅
 function handleRoute() {
-  const path = window.location.hash.replace('#', '') || 'home';
-  loadPage(path);
+  const hash = window.location.hash.replace('#', '') || 'home';
+  loadPage(hash);
 }
 
 // 홈 버튼 클릭 핸들러
