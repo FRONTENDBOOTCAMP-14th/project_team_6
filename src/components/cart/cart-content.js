@@ -1,6 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const data = JSON.parse(localStorage.getItem('productDetailData'));
-  if (!data || typeof data.discounted !== 'number') return;
+  let data = JSON.parse(localStorage.getItem('productDetailData'));
+
+  if (!data || typeof data.discounted !== 'number') {
+    // ✅ 기본값 세팅 (탱탱쫄면)
+    const price = 5900;
+    const discount = 24;
+    const discounted = Math.round(price * (1 - discount / 100));
+
+    data = {
+      name: '탱탱쫄면',
+      brand: '[풀무원]',
+      price,
+      discount,
+      discounted,
+    };
+
+    localStorage.setItem('productDetailData', JSON.stringify(data));
+  }
 
   const unitPrice = data.discounted;
 
@@ -10,18 +26,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const input = product.querySelector('.cart-product__quantity-input');
     const mirror = product.querySelector('.js-auto-width-mirror');
 
-    const minusImg = minusBtn.querySelector('img');
-    const plusImg = plusBtn.querySelector('img');
+    const minusImg = minusBtn?.querySelector('img');
+    const plusImg = plusBtn?.querySelector('img');
 
     const priceEl = product.querySelector('.cart-product__total-price');
 
     const MIN = 1;
     const MAX = 99;
 
-    const minusOn = '/src/assets/svg/minus-on.svg';
-    const minusOff = '/src/assets/svg/minus-off.svg';
-    const plusOn = '/src/assets/svg/plus-on.svg';
-    const plusOff = '/src/assets/svg/plus-off.svg';
+    const minusOn = '../../assets/svg/minus-on.svg';
+    const minusOff = '../../assets/svg/minus-off.svg';
+    const plusOn = '../../assets/svg/plus-on.svg';
+    const plusOff = '../../assets/svg/plus-off.svg';
 
     if (!minusBtn || !plusBtn || !input || !mirror || !minusImg || !plusImg || !priceEl) return;
 
