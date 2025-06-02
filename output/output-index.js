@@ -46,6 +46,9 @@ document.addEventListener('click', e => {
   const loginBtn = e.target.closest('[data-page="login"]');
   const registerBtn = e.target.closest('[data-page="register"]');
 
+  // 장바구니 버튼 처리
+  const cartBtn = e.target.closest('.header__user-action > button:first-child');
+
   // 상품 목록 버튼 처리
   const productListBtn = e.target.closest('[data-page="product-list"]');
 
@@ -55,6 +58,9 @@ document.addEventListener('click', e => {
   } else if (registerBtn) {
     e.preventDefault();
     window.location.hash = 'register';
+  } else if (cartBtn) {
+    e.preventDefault();
+    window.location.hash = 'cart';
   } else if (productListBtn) {
     e.preventDefault();
     const category = productListBtn.dataset.category;
@@ -210,7 +216,7 @@ function handleProductCardClick(e) {
   if (!linkElement) return;
 
   e.preventDefault();
-  
+
   // 해시 라우팅을 사용하여 상품 상세 페이지로 이동
   window.location.hash = 'product-detail';
 }
