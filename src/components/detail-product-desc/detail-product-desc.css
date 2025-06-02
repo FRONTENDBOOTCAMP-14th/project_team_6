@@ -1,0 +1,106 @@
+.detail-product-desc {
+  text-align: center;
+  h3 {
+    font-size: var(--font-size-XXXL);
+  }
+  .detail-product-desc__image {
+    margin-block-end: var(--spacing-XL);
+    img {
+      width: 100%;
+    }
+  }
+  .detail-product-desc__summary {
+    margin-block-end: var(--spacing-XXL);
+    h3 {
+      padding-block-end: var(--spacing-S);
+      span {
+        display: block;
+        font-size: var(--font-size-XL);
+        margin-block-end: var(--spacing-XXS);
+        font-weight: 500;
+      }
+    }
+    p {
+      border-block-start: 1px solid var(--gray-200);
+      padding-block-start: var(--spacing-S);
+      font-size: var(--font-size-S);
+      line-height: 150%;
+      font-weight: 300;
+    }
+  }
+  .detail-product-desc__point {
+    margin-block-end: var(--spacing-XXL);
+    h3 {
+      position: relative;
+      margin-block-end: var(--spacing-S);
+      z-index: 1;
+
+      &::before {
+        content: '';
+        background: var(--gray-200);
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(0, -50%);
+        z-index: -1;
+      }
+      &::after {
+        content: '';
+        background: var(--white);
+        width: 35%;
+        height: 100%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+      }
+    }
+    img {
+      width: 100%;
+    }
+  }
+  .detail-product-desc__specification {
+    margin-block-end: var(--spacing-L);
+    img {
+      width: 100%;
+    }
+  }
+  .detail-product-desc__why-karly {
+    h4 {
+      font-size: var(--font-size-XL);
+      margin-block-end: var(--spacing-XL);
+    }
+
+    .detail-product-desc__why-karly-card-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: var(--spacing-M);
+    }
+    .detail-product-desc__why-karly-card {
+      width: 33.33%;
+
+      p:nth-child(1) {
+        background: url(/src/assets/svg/why-karly01.svg) no-repeat top center;
+        padding-block-start: var(--spacing-L);
+        padding-block-end: var(--spacing-XXS);
+        font-size: var(--font-size-M);
+        color: var(--black);
+        font-weight: 600;
+
+        span {
+          color: var(--primary);
+        }
+      }
+      p:nth-child(2) {
+        font-size: var(--font-size-S);
+        line-height: 150%;
+        font-weight: 300;
+        color: var(--content);
+      }
+    }
+  }
+}

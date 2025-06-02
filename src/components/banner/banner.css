@@ -1,0 +1,117 @@
+input,
+button,
+select {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+}
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+.banner {
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
+
+  .banner__inner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .banner__image {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    min-width: fit-content;
+  }
+
+  .banner__text {
+    color: var(--black);
+    font-size: var(--font-size-XXXL);
+    font-weight: 400;
+    line-height: 120%;
+    margin-block-end: var(--spacing-M);
+
+    & p:last-child {
+      font-size: calc (var(--font-size-XXXL) + 10px);
+      font-weight: 600;
+    }
+  }
+
+  .banner__control {
+    color: var(--white);
+    block-size: 32px;
+    display: flex;
+    gap: var(--spacing-XXS);
+
+    & button {
+      height: 100%;
+      aspect-ratio: 1/1;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 16px;
+    }
+
+    .banner__control-inner {
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      border-radius: 16px;
+      overflow: hidden;
+
+      & button:first-child {
+        background-image: url(/src/assets/svg/Left.svg);
+      }
+      & button:last-child {
+        background-image: url(/src/assets/svg/Right.svg);
+      }
+
+      .banner__control-number {
+        font-size: var(--font-size-S);
+        font-weight: 400;
+        line-height: 150%;
+      }
+    }
+    .banner__control-play {
+      background-color: rgba(0, 0, 0, 0.4);
+      background-image: url(/src/assets/svg/play.svg);
+      background-position: 52% center;
+    }
+  }
+}
+.line-banner {
+  position: relative;
+  height: 200px;
+  border-radius: 20px;
+  overflow: hidden;
+  .line-banner__image {
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .line-banner__text {
+    position: absolute;
+    left: 70px;
+    top: 50%;
+    transform: translate(0, -50%);
+    color: var(--white);
+    line-height: 100%;
+    & p:nth-child(1) {
+      font-size: var(--font-size-XXL);
+      margin-block-end: var(--spacing-S);
+    }
+    & p:nth-child(2) {
+      font-size: var(--font-size-M);
+      font-weight: 300;
+    }
+  }
+}

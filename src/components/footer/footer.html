@@ -11,9 +11,9 @@
   </head>
   <body style="padding: 80px">
     <footer>
-      <div class="footer__container">
+      <div class="container footer__container">
         <div class="footer__policy">
-          <div>
+          <div class="footer__policy-link">
             <a href="#">개인정보처리방침</a>
             <a href="#">이메일무단수집거부</a>
           </div>
@@ -43,16 +43,19 @@
             <dd>
               <label class="sr-only" for="bank">인터넷 뱅킹 바로가기</label>
               <select name="bank" id="bank">
-                <option value=""></option>
+                <option hidden>인터넷뱅킹 바로가기</option>
+                <option value="">우리은행</option>
+                <option value="">국민은행</option>
+                <option value="">하나은행</option>
               </select>
             </dd>
           </dl>
-          <dl>
+          <dl class="footer__info-shopping">
             <dt>SHOPPING MENU</dt>
             <dd><a href="">마이페이지</a></dd>
             <dd><a href=""> 주문조회</a></dd>
             <dd>
-              <a href=""> 장바구니<span>3</span></a>
+              <a href=""> 장바구니(<span>3</span>)</a>
             </dd>
             <dd><a href=""> 쿠폰 내역</a></dd>
             <dd><a href=""> 적립금 내역</a></dd>
