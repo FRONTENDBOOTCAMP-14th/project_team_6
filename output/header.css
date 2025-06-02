@@ -1,20 +1,20 @@
-input,
-button {
-  appearance: none;
-  border: none;
-  background: none;
-  padding: 0;
-}
-a {
-  color: currentColor;
-  text-decoration: none;
-}
-
 .header__container {
   max-inline-size: 100%;
   position: relative;
   color: var(--black);
   border-bottom: 1px solid var(--gray-200);
+
+  input,
+  button {
+    appearance: none;
+    border: none;
+    background: none;
+    padding: 0;
+  }
+  a {
+    color: currentColor;
+    text-decoration: none;
+  }
 
   .header__top {
     max-inline-size: 1200px;
