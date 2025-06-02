@@ -133,7 +133,7 @@ function handleCommand(terminal, inputElement) {
       terminal.scrollTop = terminal.scrollHeight;
     }, 0);
   } else if (command) {
-    addOutput(terminal, "hint: type 'npm run dev' accurately");
+    addOutput(terminal, "hint: type 'npm run dev' accurately...");
   }
 
   // Add a new prompt after command execution, except for 'npm run dev'
