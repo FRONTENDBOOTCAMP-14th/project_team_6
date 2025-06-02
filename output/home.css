@@ -7,6 +7,14 @@
 }
 
 .home__container {
+  input,
+  button {
+    appearance: none;
+    border: none;
+    background: none;
+    padding: 0;
+  }
+
   width: 1920px;
   max-width: 100%;
   display: grid;

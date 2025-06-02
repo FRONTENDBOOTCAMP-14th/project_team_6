@@ -203,6 +203,18 @@ function setupHomeButton() {
   }
 }
 
+// 상품 카드 클릭 이벤트 핸들러
+function handleProductCardClick(e) {
+  // 상품 카드 링크 또는 상품명을 클릭한 경우
+  const linkElement = e.target.closest('.product-card__link, .product-card__name');
+  if (!linkElement) return;
+
+  e.preventDefault();
+  
+  // 해시 라우팅을 사용하여 상품 상세 페이지로 이동
+  window.location.hash = 'product-detail';
+}
+
 // 초기화
 document.addEventListener('DOMContentLoaded', () => {
   // 라우트 이벤트 리스너 등록
@@ -210,6 +222,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 홈 버튼 설정
   setupHomeButton();
+
+  // 상품 카드 클릭 이벤트 리스너 추가
+  document.addEventListener('click', handleProductCardClick);
 
   // 초기 페이지 로드
   handleRoute();
