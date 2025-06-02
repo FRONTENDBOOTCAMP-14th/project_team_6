@@ -12,15 +12,16 @@ function isProductionBuild() {
       // 1. Vite 환경 변수 확인 (Vite 빌드 시)
       if (typeof import.meta !== 'undefined' && import.meta.env) {
         _isProdEnvironment = import.meta.env.PROD === true;
-      } 
+      }
       // 2. Node.js 환경 변수 확인 (빌드 타임)
       else if (typeof process !== 'undefined' && process.env) {
         _isProdEnvironment = process.env.NODE_ENV === 'production';
       }
       // 3. URL을 통한 확인 (런타임)
       else if (typeof window !== 'undefined' && window.location) {
-        _isProdEnvironment = !window.location.hostname.includes('localhost') && 
-                           !window.location.hostname.includes('127.0.0.1');
+        _isProdEnvironment =
+          !window.location.hostname.includes('localhost') &&
+          !window.location.hostname.includes('127.0.0.1');
       }
       // 4. 기본값 (안전하게 개발 모드로 설정)
       else {
@@ -40,14 +41,14 @@ function getPagePath(pageName, ext) {
 }
 
 // 네비게이션 링크 이벤트 처리
-document.addEventListener('click', (e) => {
+document.addEventListener('click', e => {
   // 로그인/회원가입 버튼 처리
   const loginBtn = e.target.closest('[data-page="login"]');
   const registerBtn = e.target.closest('[data-page="register"]');
-  
+
   // 상품 목록 버튼 처리
   const productListBtn = e.target.closest('[data-page="product-list"]');
-  
+
   if (loginBtn) {
     e.preventDefault();
     window.location.hash = 'login';
@@ -93,14 +94,14 @@ function getBasePageName(fullPath) {
 
 export async function loadPage(pageName) {
   console.log(`Loading page: ${pageName}`);
-  
+
   // Extract the base page name without query parameters
   const basePageName = getBasePageName(pageName);
   console.log(`Base page name: ${basePageName}`);
-  
+
   const container = getMainContainer();
   const originalContent = container.innerHTML;
-  
+
   // Show loading indicator
   container.innerHTML = '<div class="loading">로딩 중...</div>';
 
@@ -109,7 +110,7 @@ export async function loadPage(pageName) {
     const htmlPath = getPagePath(basePageName, 'html');
     const cssPath = getPagePath(basePageName, 'css');
     const jsPath = getPagePath(basePageName, 'js');
-    
+
     console.log(`Loading resources:`, { htmlPath, cssPath, jsPath });
 
     // 1. Load HTML
@@ -138,7 +139,7 @@ export async function loadPage(pageName) {
     try {
       console.log(`Importing JS module: ${jsPath}`);
       await import(/* @vite-ignore */ jsPath);
-      
+
       // 5. Initialize the page by calling the appropriate init function
       // Convert kebab-case to PascalCase and remove query parameters
       const normalizedPageName = basePageName
@@ -152,17 +153,16 @@ export async function loadPage(pageName) {
       } else {
         console.warn(`No initialization function found: ${initFunctionName}`);
       }
-      
+
       // 6. Dispatch pageReady event for any components that need it
-      const event = new CustomEvent('pageReady', { 
-        detail: { 
+      const event = new CustomEvent('pageReady', {
+        detail: {
           pageName: pageName,
-          timestamp: new Date().toISOString()
-        } 
+          timestamp: new Date().toISOString(),
+        },
       });
       document.dispatchEvent(event);
       console.log(`Page ${pageName} initialized`);
-      
     } catch (jsError) {
       console.error('Error loading/executing page script:', jsError);
       throw jsError;
@@ -196,7 +196,7 @@ function handleRoute() {
 function setupHomeButton() {
   const homeButton = document.getElementById('homeButton');
   if (homeButton) {
-    homeButton.addEventListener('click', (e) => {
+    homeButton.addEventListener('click', e => {
       e.preventDefault();
       window.location.hash = ''; // Clear the hash to go to home
     });
@@ -207,7 +207,7 @@ function setupHomeButton() {
 document.addEventListener('DOMContentLoaded', () => {
   // 라우트 이벤트 리스너 등록
   window.addEventListener('hashchange', handleRoute);
-  
+
   // 홈 버튼 설정
   setupHomeButton();
 
