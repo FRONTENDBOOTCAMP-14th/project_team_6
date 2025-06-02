@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>list container</title>
+    <link rel="preload" as="font" href="/font/woff2/PretendardVariable.woff2" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/font/pretendardvariable.css" />
+    <link rel="stylesheet" href="/src/common/index.css" />
+    <link rel="stylesheet" href="/src/components/Product-list/list-container.css" />
+    <script src="/src/components/Product-list/list-container.js"></script>
+  </head>
+  <body>
+    <h1>list container</h1>
+    <hr />
+    <!-- 상단바 컴포넌트 -->
+    <ul class="list-container__nav">
+      <li><button class="list-container__nav-btn">추천순</button></li>
+      <li><button class="list-container__nav-btn">신상품순</button></li>
+      <li><button class="list-container__nav-btn">판매량순</button></li>
+      <li><button class="list-container__nav-btn">혜택순</button></li>
+      <li><button class="list-container__nav-btn">낮은 가격순</button></li>
+      <li><button class="list-container__nav-btn">높은 가격순</button></li>
+    </ul>
+    <hr />
+    <!-- product wrapper 컴포넌트 -->
+    <div class="list-container__items">
+      <div class="product-card" data-price="5900" data-discount="24">
+        <div class="product-card__media-container">
+          <button class="product-card__link" data-url="" tabindex="0" aria-label="탱탱쫄면 4개입 상품 페이지로 이동">
+            <picture class="product-card__image-wrapper">
+              <source srcset="/src/assets/webp/product01.webp" type="image/webp" />
+              <img src="/src/assets/png/product01.png" alt="" />
+            </picture>
+          </button>
+          <p class="product-card__discount-label"><span class="discount-rate"></span>%</p>
+          <button class="product-card__cart-button" tabindex="0" aria-label="장바구니에 담기">
+            <img src="/src/assets/svg/cart-off.svg" alt="" />
+          </button>
+          <div class="product-card__modal">
+            <div class="product-card__modal-text">장바구니에 담으시겠습니까?</div>
+            <div class="product-card__modal-buttons">
+              <button class="product-card__modal-button product-card__modal-button--cancel">취소하기</button>
+              <button class="product-card__modal-button product-card__modal-button--confirm">담기</button>
+            </div>
+          </div>
+        </div>
+        <p class="product-card__brand">[풀무원]</p>
+
+        <button class="product-card__name" data-url="" tabindex="-1" aria-hidden="true">탱탱쫄면(4개입)</button>
+        <div class="product-card__price">
+          <p class="product-card__price-discounted"><span class="discounted-price"></span>원</p>
+          <p class="product-card__price-original"><span class="original-price"></span>원</p>
+        </div>
+      </div>
+      <div class="product-card" data-price="44900" data-discount="24">
+        <div class="product-card__media-container">
+          <button class="product-card__link" data-url="" tabindex="0" aria-label="죠르디 시카 자석 선쿠션 상품 페이지로 이동">
+            <picture class="product-card__image-wrapper">
+              <source srcset="/src/assets/webp/product02.webp" type="image/webp" />
+              <img src="/src/assets/png/product02.png" alt="" />
+            </picture>
+          </button>
+          <p class="product-card__discount-label"><span class="discount-rate"></span>%</p>
+          <button class="product-card__cart-button" tabindex="0" aria-label="장바구니에 담기">
+            <img src="/src/assets/svg/cart-off.svg" alt="" />
+          </button>
+          <div class="product-card__modal">
+            <div class="product-card__modal-text">장바구니에 담으시겠습니까?</div>
+            <div class="product-card__modal-buttons">
+              <button class="product-card__modal-button product-card__modal-button--cancel">취소하기</button>
+              <button class="product-card__modal-button product-card__modal-button--confirm">담기</button>
+            </div>
+          </div>
+        </div>
+        <p class="product-card__brand">[풀무원]</p>
+
+        <button class="product-card__name" data-url="" tabindex="-1" aria-hidden="true">죠르디 시카 자석 선쿠션</button>
+        <div class="product-card__price">
+          <p class="product-card__price-discounted"><span class="discounted-price"></span>원</p>
+          <p class="product-card__price-original"><span class="original-price"></span>원</p>
+        </div>
+      </div>
+      <div class="product-card" data-price="34900" data-discount="24">
+        <div class="product-card__media-container">
+          <button class="product-card__link" data-url="" tabindex="0" aria-label="유기농 밀키퀀 현미 4키로그램 상품 페이지로 이동">
+            <picture class="product-card__image-wrapper">
+              <source srcset="/src/assets/webp/product03.webp" type="image/webp" />
+              <img src="/src/assets/png/product03.png" alt="" />
+            </picture>
+          </button>
+          <p class="product-card__discount-label"><span class="discount-rate"></span>%</p>
+          <button class="product-card__cart-button" tabindex="0" aria-label="장바구니에 담기">
+            <img src="/src/assets/svg/cart-off.svg" alt="" />
+          </button>
+          <div class="product-card__modal">
+            <div class="product-card__modal-text">장바구니에 담으시겠습니까?</div>
+            <div class="product-card__modal-buttons">
+              <button class="product-card__modal-button product-card__modal-button--cancel">취소하기</button>
+              <button class="product-card__modal-button product-card__modal-button--confirm">담기</button>
+            </div>
+          </div>
+        </div>
+        <p class="product-card__brand">[풀무원]</p>
+
+        <button class="product-card__name" data-url="" tabindex="-1" aria-hidden="true">유기농 밀키퀀 현미 4kg</button>
+        <div class="product-card__price">
+          <p class="product-card__price-discounted"><span class="discounted-price"></span>원</p>
+          <p class="product-card__price-original"><span class="original-price"></span>원</p>
+        </div>
+      </div>
+      <div class="product-card" data-price="5900" data-discount="24">
+        <div class="product-card__media-container">
+          <button class="product-card__link" data-url="" tabindex="0" aria-label="탱탱쫄면 4개입 상품 페이지로 이동">
+            <picture class="product-card__image-wrapper">
+              <source srcset="/src/assets/webp/product01.webp" type="image/webp" />
+              <img src="/src/assets/png/product01.png" alt="" />
+            </picture>
+          </button>
+          <p class="product-card__discount-label"><span class="discount-rate"></span>%</p>
+          <button class="product-card__cart-button" tabindex="0" aria-label="장바구니에 담기">
+            <img src="/src/assets/svg/cart-off.svg" alt="" />
+          </button>
+          <div class="product-card__modal">
+            <div class="product-card__modal-text">장바구니에 담으시겠습니까?</div>
+            <div class="product-card__modal-buttons">
+              <button class="product-card__modal-button product-card__modal-button--cancel">취소하기</button>
+              <button class="product-card__modal-button product-card__modal-button--confirm">담기</button>
+            </div>
+          </div>
+        </div>
+        <p class="product-card__brand">[풀무원]</p>
+
+        <button class="product-card__name" data-url="" tabindex="-1" aria-hidden="true">탱탱쫄면(4개입)</button>
+        <div class="product-card__price">
+          <p class="product-card__price-discounted"><span class="discounted-price"></span>원</p>
+          <p class="product-card__price-original"><span class="original-price"></span>원</p>
+        </div>
+      </div>
+      <div class="product-card" data-price="44900" data-discount="24">
+        <div class="product-card__media-container">
+          <button class="product-card__link" data-url="" tabindex="0" aria-label="죠르디 시카 자석 선쿠션 상품 페이지로 이동">
+            <picture class="product-card__image-wrapper">
+              <source srcset="/src/assets/webp/product02.webp" type="image/webp" />
+              <img src="/src/assets/png/product02.png" alt="" />
+            </picture>
+          </button>
+          <p class="product-card__discount-label"><span class="discount-rate"></span>%</p>
+          <button class="product-card__cart-button" tabindex="0" aria-label="장바구니에 담기">
+            <img src="/src/assets/svg/cart-off.svg" alt="" />
+          </button>
+          <div class="product-card__modal">
+            <div class="product-card__modal-text">장바구니에 담으시겠습니까?</div>
+            <div class="product-card__modal-buttons">
+              <button class="product-card__modal-button product-card__modal-button--cancel">취소하기</button>
+              <button class="product-card__modal-button product-card__modal-button--confirm">담기</button>
+            </div>
+          </div>
+        </div>
+        <p class="product-card__brand">[풀무원]</p>
+
+        <button class="product-card__name" data-url="" tabindex="-1" aria-hidden="true">죠르디 시카 자석 선쿠션</button>
+        <div class="product-card__price">
+          <p class="product-card__price-discounted"><span class="discounted-price"></span>원</p>
+          <p class="product-card__price-original"><span class="original-price"></span>원</p>
+        </div>
+      </div>
+      <div class="product-card" data-price="34900" data-discount="24">
+        <div class="product-card__media-container">
+          <button class="product-card__link" data-url="" tabindex="0" aria-label="유기농 밀키퀀 현미 4키로그램 상품 페이지로 이동">
+            <picture class="product-card__image-wrapper">
+              <source srcset="/src/assets/webp/product03.webp" type="image/webp" />
+              <img src="/src/assets/png/product03.png" alt="" />
+            </picture>
+          </button>
+          <p class="product-card__discount-label"><span class="discount-rate"></span>%</p>
+          <button class="product-card__cart-button" tabindex="0" aria-label="장바구니에 담기">
+            <img src="/src/assets/svg/cart-off.svg" alt="" />
+          </button>
+          <div class="product-card__modal">
+            <div class="product-card__modal-text">장바구니에 담으시겠습니까?</div>
+            <div class="product-card__modal-buttons">
+              <button class="product-card__modal-button product-card__modal-button--cancel">취소하기</button>
+              <button class="product-card__modal-button product-card__modal-button--confirm">담기</button>
+            </div>
+          </div>
+        </div>
+        <p class="product-card__brand">[풀무원]</p>
+
+        <button class="product-card__name" data-url="" tabindex="-1" aria-hidden="true">유기농 밀키퀀 현미 4kg</button>
+        <div class="product-card__price">
+          <p class="product-card__price-discounted"><span class="discounted-price"></span>원</p>
+          <p class="product-card__price-original"><span class="original-price"></span>원</p>
+        </div>
+      </div>
+      <div class="product-card" data-price="5900" data-discount="24">
+        <div class="product-card__media-container">
+          <button class="product-card__link" data-url="" tabindex="0" aria-label="탱탱쫄면 4개입 상품 페이지로 이동">
+            <picture class="product-card__image-wrapper">
+              <source srcset="/src/assets/webp/product01.webp" type="image/webp" />
+              <img src="/src/assets/png/product01.png" alt="" />
+            </picture>
+          </button>
+          <p class="product-card__discount-label"><span class="discount-rate"></span>%</p>
+          <button class="product-card__cart-button" tabindex="0" aria-label="장바구니에 담기">
+            <img src="/src/assets/svg/cart-off.svg" alt="" />
+          </button>
+          <div class="product-card__modal">
+            <div class="product-card__modal-text">장바구니에 담으시겠습니까?</div>
+            <div class="product-card__modal-buttons">
+              <button class="product-card__modal-button product-card__modal-button--cancel">취소하기</button>
+              <button class="product-card__modal-button product-card__modal-button--confirm">담기</button>
+            </div>
+          </div>
+        </div>
+        <p class="product-card__brand">[풀무원]</p>
+
+        <button class="product-card__name" data-url="" tabindex="-1" aria-hidden="true">탱탱쫄면(4개입)</button>
+        <div class="product-card__price">
+          <p class="product-card__price-discounted"><span class="discounted-price"></span>원</p>
+          <p class="product-card__price-original"><span class="original-price"></span>원</p>
+        </div>
+      </div>
+      <div class="product-card" data-price="44900" data-discount="24">
+        <div class="product-card__media-container">
+          <button class="product-card__link" data-url="" tabindex="0" aria-label="죠르디 시카 자석 선쿠션 상품 페이지로 이동">
+            <picture class="product-card__image-wrapper">
+              <source srcset="/src/assets/webp/product02.webp" type="image/webp" />
+              <img src="/src/assets/png/product02.png" alt="" />
+            </picture>
+          </button>
+          <p class="product-card__discount-label"><span class="discount-rate"></span>%</p>
+          <button class="product-card__cart-button" tabindex="0" aria-label="장바구니에 담기">
+            <img src="/src/assets/svg/cart-off.svg" alt="" />
+          </button>
+          <div class="product-card__modal">
+            <div class="product-card__modal-text">장바구니에 담으시겠습니까?</div>
+            <div class="product-card__modal-buttons">
+              <button class="product-card__modal-button product-card__modal-button--cancel">취소하기</button>
+              <button class="product-card__modal-button product-card__modal-button--confirm">담기</button>
+            </div>
+          </div>
+        </div>
+        <p class="product-card__brand">[풀무원]</p>
+
+        <button class="product-card__name" data-url="" tabindex="-1" aria-hidden="true">죠르디 시카 자석 선쿠션</button>
+        <div class="product-card__price">
+          <p class="product-card__price-discounted"><span class="discounted-price"></span>원</p>
+          <p class="product-card__price-original"><span class="original-price"></span>원</p>
+        </div>
+      </div>
+      <div class="product-card" data-price="34900" data-discount="24">
+        <div class="product-card__media-container">
+          <button class="product-card__link" data-url="" tabindex="0" aria-label="유기농 밀키퀀 현미 4키로그램 상품 페이지로 이동">
+            <picture class="product-card__image-wrapper">
+              <source srcset="/src/assets/webp/product03.webp" type="image/webp" />
+              <img src="/src/assets/png/product03.png" alt="" />
+            </picture>
+          </button>
+          <p class="product-card__discount-label"><span class="discount-rate"></span>%</p>
+          <button class="product-card__cart-button" tabindex="0" aria-label="장바구니에 담기">
+            <img src="/src/assets/svg/cart-off.svg" alt="" />
+          </button>
+          <div class="product-card__modal">
+            <div class="product-card__modal-text">장바구니에 담으시겠습니까?</div>
+            <div class="product-card__modal-buttons">
+              <button class="product-card__modal-button product-card__modal-button--cancel">취소하기</button>
+              <button class="product-card__modal-button product-card__modal-button--confirm">담기</button>
+            </div>
+          </div>
+        </div>
+        <p class="product-card__brand">[풀무원]</p>
+
+        <button class="product-card__name" data-url="" tabindex="-1" aria-hidden="true">유기농 밀키퀀 현미 4kg</button>
+        <div class="product-card__price">
+          <p class="product-card__price-discounted"><span class="discounted-price"></span>원</p>
+          <p class="product-card__price-original"><span class="original-price"></span>원</p>
+        </div>
+      </div>
+      <div class="product-card" data-price="5900" data-discount="24">
+        <div class="product-card__media-container">
+          <button class="product-card__link" data-url="" tabindex="0" aria-label="탱탱쫄면 4개입 상품 페이지로 이동">
+            <picture class="product-card__image-wrapper">
+              <source srcset="/src/assets/webp/product01.webp" type="image/webp" />
+              <img src="/src/assets/png/product01.png" alt="" />
+            </picture>
+          </button>
+          <p class="product-card__discount-label"><span class="discount-rate"></span>%</p>
+          <button class="product-card__cart-button" tabindex="0" aria-label="장바구니에 담기">
+            <img src="/src/assets/svg/cart-off.svg" alt="" />
+          </button>
+          <div class="product-card__modal">
+            <div class="product-card__modal-text">장바구니에 담으시겠습니까?</div>
+            <div class="product-card__modal-buttons">
+              <button class="product-card__modal-button product-card__modal-button--cancel">취소하기</button>
+              <button class="product-card__modal-button product-card__modal-button--confirm">담기</button>
+            </div>
+          </div>
+        </div>
+        <p class="product-card__brand">[풀무원]</p>
+
+        <button class="product-card__name" data-url="" tabindex="-1" aria-hidden="true">탱탱쫄면(4개입)</button>
+        <div class="product-card__price">
+          <p class="product-card__price-discounted"><span class="discounted-price"></span>원</p>
+          <p class="product-card__price-original"><span class="original-price"></span>원</p>
+        </div>
+      </div>
+      <div class="product-card" data-price="44900" data-discount="24">
+        <div class="product-card__media-container">
+          <button class="product-card__link" data-url="" tabindex="0" aria-label="죠르디 시카 자석 선쿠션 상품 페이지로 이동">
+            <picture class="product-card__image-wrapper">
+              <source srcset="/src/assets/webp/product02.webp" type="image/webp" />
+              <img src="/src/assets/png/product02.png" alt="" />
+            </picture>
+          </button>
+          <p class="product-card__discount-label"><span class="discount-rate"></span>%</p>
+          <button class="product-card__cart-button" tabindex="0" aria-label="장바구니에 담기">
+            <img src="/src/assets/svg/cart-off.svg" alt="" />
+          </button>
+          <div class="product-card__modal">
+            <div class="product-card__modal-text">장바구니에 담으시겠습니까?</div>
+            <div class="product-card__modal-buttons">
+              <button class="product-card__modal-button product-card__modal-button--cancel">취소하기</button>
+              <button class="product-card__modal-button product-card__modal-button--confirm">담기</button>
+            </div>
+          </div>
+        </div>
+        <p class="product-card__brand">[풀무원]</p>
+
+        <button class="product-card__name" data-url="" tabindex="-1" aria-hidden="true">죠르디 시카 자석 선쿠션</button>
+        <div class="product-card__price">
+          <p class="product-card__price-discounted"><span class="discounted-price"></span>원</p>
+          <p class="product-card__price-original"><span class="original-price"></span>원</p>
+        </div>
+      </div>
+      <div class="product-card" data-price="34900" data-discount="24">
+        <div class="product-card__media-container">
+          <button class="product-card__link" data-url="" tabindex="0" aria-label="유기농 밀키퀀 현미 4키로그램 상품 페이지로 이동">
+            <picture class="product-card__image-wrapper">
+              <source srcset="/src/assets/webp/product03.webp" type="image/webp" />
+              <img src="/src/assets/png/product03.png" alt="" />
+            </picture>
+          </button>
+          <p class="product-card__discount-label"><span class="discount-rate"></span>%</p>
+          <button class="product-card__cart-button" tabindex="0" aria-label="장바구니에 담기">
+            <img src="/src/assets/svg/cart-off.svg" alt="" />
+          </button>
+          <div class="product-card__modal">
+            <div class="product-card__modal-text">장바구니에 담으시겠습니까?</div>
+            <div class="product-card__modal-buttons">
+              <button class="product-card__modal-button product-card__modal-button--cancel">취소하기</button>
+              <button class="product-card__modal-button product-card__modal-button--confirm">담기</button>
+            </div>
+          </div>
+        </div>
+        <p class="product-card__brand">[풀무원]</p>
+
+        <button class="product-card__name" data-url="" tabindex="-1" aria-hidden="true">유기농 밀키퀀 현미 4kg</button>
+        <div class="product-card__price">
+          <p class="product-card__price-discounted"><span class="discounted-price"></span>원</p>
+          <p class="product-card__price-original"><span class="original-price"></span>원</p>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <!-- 하단 넘버링바 컴포넌트 -->
+    <ul class="list-container__pagination">
+      <li>
+        <button class="list-container__pagination-btn" aria-label="첫 페이지로 이동">
+          <div class="list-container__icon-wrapper">
+            <img src="/src/assets/svg/numbering-left.svg" alt="" />
+            <img src="/src/assets/svg/numbering-left.svg" alt="" />
+          </div>
+        </button>
+      </li>
+      <li>
+        <button class="list-container__pagination-btn" aria-label="이전 페이지로 이동">
+          <img src="/src/assets/svg/numbering-left.svg" alt="" />
+        </button>
+      </li>
+      <li><button class="list-container__pagination-btn">1</button></li>
+      <li><button class="list-container__pagination-btn">2</button></li>
+      <li><button class="list-container__pagination-btn">3</button></li>
+      <li>
+        <button class="list-container__pagination-btn" aria-label="다음 페이지로 이동">
+          <img src="/src/assets/svg/numbering-right.svg" alt="" />
+        </button>
+      </li>
+      <li>
+        <button class="list-container__pagination-btn" aria-label="마지막 페이지로 이동">
+          <div class="list-container__icon-wrapper">
+            <img src="/src/assets/svg/numbering-right.svg" alt="" />
+            <img src="/src/assets/svg/numbering-right.svg" alt="" />
+          </div>
+        </button>
+      </li>
+    </ul>
+  </body>
+</html>
