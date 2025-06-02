@@ -343,8 +343,6 @@
 }
 
 .detail-nav {
-  display: flex;
-  height: 54px;
   position: sticky;
   top: 0;
   left: 0;
@@ -353,45 +351,62 @@
   background-color: white;
   border-bottom: 1px solid var(--gray-200);
   width: 100%;
+  height: 54px;
+  display: flex;
+  justify-content: center;
+}
 
-  input,
-  button,
-  select {
-    appearance: none;
-    border: none;
-    background: none;
-    padding: 0;
-  }
-  a {
-    color: currentColor;
-    text-decoration: none;
-  }
+.detail-nav__inner {
+  width: 100%;
+  max-width: 1050px;
+  display: flex;
+  height: 100%;
+}
 
-  .detail-nav__button {
-    width: 100%;
-    font-size: var(--font-size-XS);
-    font-weight: 600;
-    line-height: 150%;
-    border: 1px solid var(--primary);
-    span {
-      font-weight: 300;
-    }
-    &.active {
-      color: var(--primary);
-      border-bottom: none;
-    }
-    &.inactive {
-      color: var(--black);
-      border-color: var(--gray-200);
-      background: var(--gray-100);
-    }
-  }
+.detail-nav__button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-XS);
+  font-weight: 600;
+  line-height: 150%;
+  color: var(--black);
+  text-decoration: none;
+  border: 1px solid var(--gray-200);
+  border-left: none;
+  background: var(--gray-100);
+  transition: all 0.2s ease;
+}
+
+.detail-nav__button:first-child {
+  border-left: 1px solid var(--gray-200);
+}
+
+.detail-nav__button.is-active {
+  color: var(--primary);
+  background: white;
+  border-bottom: 2px solid white;
+  margin-bottom: -1px;
+  position: relative;
+}
+
+.detail-nav__button span {
+  font-weight: 300;
+  margin-left: 4px;
+}
+
+/* Section styling */
+.detail-product-desc__section {
+  padding: 40px 0;
+  scroll-margin-top: 60px; /* Adjust based on your header height */
 }
 
 .detail-product-desc {
   margin-top: var(--spacing-M);
   margin-bottom: var(--spacing-XL);
   text-align: center;
+  scroll-margin-top: 60px; /* For the first section */
   h3 {
     font-size: var(--font-size-XXXL);
   }
@@ -506,6 +521,7 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    text-align: left;
     width: 100%;
 
     .review__header-title {
@@ -724,6 +740,7 @@
     flex-flow: row wrap;
     justify-content: space-between;
     width: 100%;
+    text-align: left;
 
     .inquire__header-title {
       font-size: var(--font-size-XL);

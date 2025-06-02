@@ -17,10 +17,17 @@ function initProductPrice() {
   const originalPrice = FIXED_PRICE;
   const discounted = FIXED_PRICE;
   const discountRate = 0;
-  
+
   console.log('Setting fixed price:', FIXED_PRICE + '원');
-  
-  console.log('Setting product prices - Original:', originalPrice, 'Discounted:', discounted, 'Rate:', discountRate);
+
+  console.log(
+    'Setting product prices - Original:',
+    originalPrice,
+    'Discounted:',
+    discounted,
+    'Rate:',
+    discountRate
+  );
 
   // Update original price (with strike-through)
   document.querySelectorAll('.detail__original-price').forEach(el => {
@@ -46,16 +53,16 @@ function initProductPrice() {
 function updateGlobalTotalPrice(discounted, qty) {
   const total = discounted * qty;
   const formattedTotal = total.toLocaleString();
-  
+
   document.querySelectorAll('.detail__total-price-value').forEach(el => {
     el.textContent = formattedTotal + '원';
   });
-  
+
   // Also update any other price displays that show the total
   document.querySelectorAll('.detail__total-amount').forEach(el => {
     el.textContent = formattedTotal + '원';
   });
-  
+
   console.log('Updated total price:', formattedTotal + '원', 'for quantity:', qty);
 }
 
@@ -261,33 +268,90 @@ function initProductData() {
   return {
     originalPrice: '4484',
     discounted: '4484',
-    discountRate: '0'
+    discountRate: '0',
   };
+}
+
+// Initialize navigation
+function initNavigation() {
+  const navButtons = document.querySelectorAll('.detail-nav__button');
+  const sections = Array.from(navButtons).map(button => {
+    const sectionId = button.getAttribute('href');
+    return {
+      button,
+      section: document.querySelector(sectionId),
+      id: sectionId,
+    };
+  });
+
+  // Smooth scroll for navigation
+  navButtons.forEach(button => {
+    button.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = button.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      if (targetSection) {
+        window.scrollTo({
+          top: targetSection.offsetTop - 100,
+          behavior: 'smooth',
+        });
+      }
+    });
+  });
+
+  // Update active state on scroll
+  function updateActiveNav() {
+    const scrollPosition = window.scrollY + 150;
+
+    sections.forEach(({ button, section, id }) => {
+      if (!section) return;
+
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionBottom = sectionTop + sectionHeight;
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+        navButtons.forEach(btn => btn.classList.remove('is-active'));
+        button.classList.add('is-active');
+      }
+    });
+  }
+
+  // Initial update
+  updateActiveNav();
+
+  // Throttle the scroll event
+  let isScrolling;
+  window.addEventListener(
+    'scroll',
+    () => {
+      window.clearTimeout(isScrolling);
+      isScrolling = setTimeout(updateActiveNav, 50);
+    },
+    false
+  );
 }
 
 // Initialize product detail page components
 function initProductDetailPage() {
   console.log('Initializing product detail page...');
+  initProductData();
+  initProductPrice();
+  initQuantityControls();
+  initLikeButtons();
+  initBellButtons();
+  initInquiryRows();
+  initPasswordInputs();
+  initNavigation();
 
-  try {
-    // Ensure product data is initialized
-    initProductData();
-    // Initialize product price and quantity
-    initProductPrice();
-    initQuantityControls();
-
-    // Initialize interactive buttons
-    initLikeButtons();
-    initBellButtons();
-
-    // Initialize inquiry section
-    initInquiryRows();
-    initPasswordInputs();
-
-    console.log('Product detail page initialized successfully');
-  } catch (error) {
-    console.error('Error initializing product detail page:', error);
-  }
+  // Auto-resize quantity input on load
+  document.querySelectorAll('.js-auto-width').forEach(input => {
+    const mirror = input.nextElementSibling;
+    if (mirror && mirror.classList.contains('js-auto-width-mirror')) {
+      mirror.textContent = input.value || ' ';
+      input.style.width = `${mirror.offsetWidth + 2}px`;
+    }
+  });
 }
 
 // Export the init function to the global scope
