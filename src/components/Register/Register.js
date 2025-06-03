@@ -16,3 +16,27 @@ consentCheckboxes.forEach(function (checkbox) {
     document.getElementById('allAgreement').checked = allChecked;
   });
 });
+
+// 가입하기 버튼 클릭 시 모달창 열기
+var registerBtn = document.querySelector('.register__join-button');
+if (registerBtn) {
+  registerBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    var modal = document.getElementById('modalRegister');
+    if (modal) {
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+  });
+}
+
+// 모달 닫기(확인, 닫기 버튼)
+document.querySelectorAll('#modalRegister .register__confirm-button, #modalRegister .register__close-button').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var modal = document.getElementById('modalRegister');
+    if (modal) {
+      modal.hidden = true;
+      document.body.style.overflow = 'auto';
+    }
+  });
+});
