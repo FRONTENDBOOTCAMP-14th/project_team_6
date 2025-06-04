@@ -3,9 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VS Code Clone</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <title>6th Sense</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <link rel="stylesheet" href="index/vscode.css" />
+    <link rel="icon" type="image/x-icon" href="/src/assets/ico/favicon.ico" />
     <style>
       #editor-container {
         width: 100%;
@@ -29,7 +33,10 @@
       <div class="vscode__main">
         <!-- 액티비티 바 -->
         <div class="vscode__activity-bar">
-          <div class="vscode__activity-bar-item vscode__activity-bar-item--active" data-view="explorer">
+          <div
+            class="vscode__activity-bar-item vscode__activity-bar-item--active"
+            data-view="explorer"
+          >
             <i class="fas fa-code"></i>
           </div>
           <div class="vscode__activity-bar-item" data-view="search">
@@ -103,7 +110,7 @@
 
       // Initialize the app
       console.log('main.js loaded, initializing app...');
-      
+
       // Initialize app asynchronously
       (async () => {
         try {
@@ -114,11 +121,11 @@
       })();
 
       // Error handling
-      window.addEventListener('error', (event) => {
+      window.addEventListener('error', event => {
         console.error('Global error:', event.error || event.message);
       });
 
-      window.addEventListener('unhandledrejection', (event) => {
+      window.addEventListener('unhandledrejection', event => {
         console.error('Unhandled promise rejection:', event.reason);
       });
     </script>
@@ -132,6 +139,8 @@
     </script>
 
     <!-- Preview Button -->
-    <button id="previewButton" class="vscode__preview-button"><i class="fas fa-eye"></i> Preview</button>
+    <button id="previewButton" class="vscode__preview-button">
+      <i class="fas fa-eye"></i> Preview
+    </button>
   </body>
 </html>

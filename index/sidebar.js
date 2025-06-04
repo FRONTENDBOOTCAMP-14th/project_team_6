@@ -102,11 +102,6 @@ window.projectStructure = {
               type: 'file',
               actualPath: 'src/components/home/product-list.html',
             },
-            {
-              name: 'product-detail-sync.js',
-              type: 'file',
-              actualPath: 'src/components/home/product-detail-sync.js',
-            },
           ],
         },
         // 9. Login
