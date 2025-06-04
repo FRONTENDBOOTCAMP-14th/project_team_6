@@ -4,12 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const resetButton = document.querySelector('.button__filter--init');
   if (resetButton) {
-    resetButton.addEventListener('click', (e) => {
+    resetButton.addEventListener('click', e => {
       e.preventDefault();
 
       const checkboxes = document.querySelectorAll('.card__category-list .checkbox-input');
 
-      checkboxes.forEach((checkbox) => {
+      checkboxes.forEach(checkbox => {
         const label = checkbox.closest('.checkbox-label');
         if (label) {
           const checkIcon = label.querySelector('.icon-check');
@@ -40,23 +40,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  accordions.forEach((accordion) => {
+  accordions.forEach(accordion => {
     const header = accordion.querySelector('.c-accordion__header');
 
-    header.addEventListener('click', (e) => {
+    header.addEventListener('click', e => {
       e.preventDefault();
 
       if (accordion === activeAccordion) {
         accordion.classList.remove('active');
         activeAccordion = null;
-        accordions.forEach((acc) => (acc.style.display = 'block'));
+        accordions.forEach(acc => (acc.style.display = 'block'));
       } else {
         if (activeAccordion) {
           activeAccordion.classList.remove('active');
         }
         accordion.classList.add('active');
         activeAccordion = accordion;
-        accordions.forEach((acc) => {
+        accordions.forEach(acc => {
           acc.style.display = acc === accordion ? 'block' : 'none';
         });
       }

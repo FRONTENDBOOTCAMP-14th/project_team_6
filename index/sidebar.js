@@ -17,57 +17,92 @@ window.projectStructure = {
       name: 'Components',
       type: 'directory',
       children: [
-        // 1. Product-list
+        // 1. Header
         {
-          name: 'Product-list',
+          name: 'header',
           type: 'directory',
           children: [
+            { name: 'header.html', type: 'file', actualPath: 'src/components/header/header.html' },
+          ],
+        },
+        // 2. Footer
+        {
+          name: 'footer',
+          type: 'directory',
+          children: [
+            { name: 'footer.html', type: 'file', actualPath: 'src/components/footer/footer.html' },
+          ],
+        },
+
+        // 3. Home
+        {
+          name: 'home',
+          type: 'directory',
+          children: [
+            {
+              name: 'banner.html',
+              type: 'file',
+              actualPath: 'src/components/home/banner.html',
+            },
+            {
+              name: 'product-list.html',
+              type: 'file',
+              actualPath: 'src/components/home/product-list.html',
+            },
+          ],
+        },
+        // 4. Login
+        {
+          name: 'login',
+          type: 'directory',
+          children: [
+            { name: 'login.html', type: 'file', actualPath: 'src/components/login/login.html' },
+          ],
+        },
+        // 5. Register
+        {
+          name: 'register',
+          type: 'directory',
+          children: [
+            {
+              name: 'register.html',
+              type: 'file',
+              actualPath: 'src/components/register/register.html',
+            },
+          ],
+        },
+        // 6. Product-list
+        {
+          name: 'product-list',
+          type: 'directory',
+          children: [
+            {
+              name: 'product-list.html',
+              type: 'file',
+              actualPath: 'src/components/Product-list/product-list.html',
+            },
             {
               name: 'list-category.html',
               type: 'file',
               actualPath: 'src/components/Product-list/list-category.html',
             },
-            {
-              name: 'list-container.html',
-              type: 'file',
-              actualPath: 'src/components/Product-list/list-container.html',
-            },
           ],
         },
-        // 2. Banner
-        {
-          name: 'banner.html',
-          type: 'file',
-          actualPath: 'src/components/banner/banner.html',
-        },
-        // 3. Cart
-        {
-          name: 'cart',
-          type: 'directory',
-          children: [
-            {
-              name: 'cart.html',
-              type: 'file',
-              actualPath: 'src/components/cart/cart.html',
-            },
-            {
-              name: 'cart-content.html',
-              type: 'file',
-              actualPath: 'src/components/cart/cart-content.html',
-            },
-          ],
-        },
-        // 4. Detail Navigation
-        {
-          name: 'detail-nav.html',
-          type: 'file',
-          actualPath: 'src/components/detail-nav/detail-nav.html',
-        },
-        // 5. Product Detail
+        // 7. Product Detail
         {
           name: 'product-detail',
           type: 'directory',
           children: [
+            {
+              name: 'detail-nav.html',
+              type: 'file',
+              actualPath: 'src/components/product-detail/detail-nav.html',
+            },
+            {
+              name: 'detail-product.html',
+              type: 'file',
+              actualPath: 'src/components/product-detail/detail-product-desc.html',
+            },
             {
               name: 'item-inquire.html',
               type: 'file',
@@ -80,41 +115,18 @@ window.projectStructure = {
             },
           ],
         },
-        // 6. Footer
+        // 8. Cart
         {
-          name: 'footer.html',
-          type: 'file',
-          actualPath: 'src/components/footer/footer.html',
-        },
-        // 7. Header
-        {
-          name: 'header.html',
-          type: 'file',
-          actualPath: 'src/components/header/header.html',
-        },
-        // 8. Home
-        {
-          name: 'home',
+          name: 'cart',
           type: 'directory',
           children: [
+            { name: 'cart.html', type: 'file', actualPath: 'src/components/cart/cart.html' },
             {
-              name: 'product-list.html',
+              name: 'cart-content.html',
               type: 'file',
-              actualPath: 'src/components/home/product-list.html',
+              actualPath: 'src/components/cart/cart-content.html',
             },
           ],
-        },
-        // 9. Login
-        {
-          name: 'login.html',
-          type: 'file',
-          actualPath: 'src/components/login/login.html',
-        },
-        // 10. Register
-        {
-          name: 'register.html',
-          type: 'file',
-          actualPath: 'src/components/register/register.html',
         },
       ],
     },
