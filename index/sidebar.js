@@ -17,57 +17,87 @@ window.projectStructure = {
       name: 'Components',
       type: 'directory',
       children: [
-        // 1. Product-list
+        // 1. Header
         {
-          name: 'Product-list',
+          name: 'header',
+          type: 'directory',
+          children: [
+            { name: 'header.html', type: 'file', actualPath: 'src/components/header/header.html' },
+          ],
+        },
+        // 2. Footer
+        {
+          name: 'footer',
+          type: 'directory',
+          children: [
+            { name: 'footer.html', type: 'file', actualPath: 'src/components/footer/footer.html' },
+          ],
+        },
+
+        // 3. Home
+        {
+          name: 'home',
           type: 'directory',
           children: [
             {
-              name: 'list-category.html',
+              name: 'banner.html',
               type: 'file',
-              actualPath: 'src/components/Product-list/list-category.html',
+              actualPath: 'src/components/home/banner.html',
             },
             {
-              name: 'list-container.html',
+              name: 'product-card.html',
               type: 'file',
-              actualPath: 'src/components/Product-list/list-container.html',
+              actualPath: 'src/components/home/product-card.html',
             },
           ],
         },
-        // 2. Banner
+        // 4. Login
         {
-          name: 'banner.html',
-          type: 'file',
-          actualPath: 'src/components/banner/banner.html',
+          name: 'login',
+          type: 'directory',
+          children: [
+            { name: 'login.html', type: 'file', actualPath: 'src/components/login/login.html' },
+          ],
         },
-        // 3. Cart
+        // 5. Register
         {
-          name: 'cart',
+          name: 'register',
           type: 'directory',
           children: [
             {
-              name: 'cart.html',
+              name: 'register.html',
               type: 'file',
-              actualPath: 'src/components/cart/cart.html',
-            },
-            {
-              name: 'cart-content.html',
-              type: 'file',
-              actualPath: 'src/components/cart/cart-content.html',
+              actualPath: 'src/components/register/register.html',
             },
           ],
         },
-        // 4. Detail Navigation
+        // 6. Product-list
         {
-          name: 'detail-nav.html',
-          type: 'file',
-          actualPath: 'src/components/detail-nav/detail-nav.html',
+          name: 'product-list',
+          type: 'directory',
+          children: [
+            {
+              name: 'product-list.html',
+              type: 'file',
+              actualPath: 'src/components/Product-list/product-list.html',
+            },
+          ],
         },
-        // 5. Product Detail
+        // 7. Product Detail
         {
           name: 'product-detail',
           type: 'directory',
           children: [
+            {
+              name: 'detail-nav.html',
+              type: 'file',
+              actualPath: 'src/components/product-detail/detail-nav.html',
+            },
+            {
+              name: 'detail-product.html',
+              type: 'file',
+              actualPath: 'src/components/product-detail/detail-product-desc.html',
+            },
             {
               name: 'item-inquire.html',
               type: 'file',
@@ -80,41 +110,18 @@ window.projectStructure = {
             },
           ],
         },
-        // 6. Footer
+        // 8. Cart
         {
-          name: 'footer.html',
-          type: 'file',
-          actualPath: 'src/components/footer/footer.html',
-        },
-        // 7. Header
-        {
-          name: 'header.html',
-          type: 'file',
-          actualPath: 'src/components/header/header.html',
-        },
-        // 8. Home
-        {
-          name: 'home',
+          name: 'cart',
           type: 'directory',
           children: [
+            { name: 'cart.html', type: 'file', actualPath: 'src/components/cart/cart.html' },
             {
-              name: 'product-list.html',
+              name: 'cart-content.html',
               type: 'file',
-              actualPath: 'src/components/home/product-list.html',
+              actualPath: 'src/components/cart/cart-content.html',
             },
           ],
-        },
-        // 9. Login
-        {
-          name: 'login.html',
-          type: 'file',
-          actualPath: 'src/components/login/login.html',
-        },
-        // 10. Register
-        {
-          name: 'register.html',
-          type: 'file',
-          actualPath: 'src/components/register/register.html',
         },
       ],
     },

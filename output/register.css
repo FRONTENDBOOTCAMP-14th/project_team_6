@@ -1,3 +1,11 @@
+input,
+button {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
 /* 타이틀 컴포넌트 */
 .register__title {
   font-size: 18px;

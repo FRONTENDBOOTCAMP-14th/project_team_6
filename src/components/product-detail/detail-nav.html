@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>detail-nav | component</title>
+    <link rel="icon" type="image/x-icon" href="/src/assets/ico/favicon.ico" />
+    <link rel="stylesheet" href="/src/common/index.css" />
+    <link rel="stylesheet" href="./detail-nav.css" />
+  </head>
+  <body style="padding: 80px">
+    <h1>detail-nav</h1>
+    <div class="component_wrap">
+      <h6>nav__active-btn</h6>
+      <button class="detail-nav__button active" type="button">NAME</button>
+    </div>
+    <div class="component_wrap">
+      <h6>nav__inactive-btn</h6>
+      <button class="detail-nav__button inactive" type="button">NAME</button>
+    </div>
+    <div class="component_wrap">
+      <h6>nav__bar</h6>
+      <div class="detail-nav">
+        <button class="detail-nav__button active" type="button">상품설명</button>
+        <button class="detail-nav__button inactive" type="button">상세정보</button>
+        <button class="detail-nav__button inactive" type="button">후기 <span>(1,000)</span></button>
+        <button class="detail-nav__button inactive" type="button">문의</button>
+      </div>
+    </div>
+  </body>
+</html>
