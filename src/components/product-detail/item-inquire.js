@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const titleButtons = document.querySelectorAll('.inquire__row button');
 
-  titleButtons.forEach((button) => {
-    button.addEventListener('click', (e) => {
+  titleButtons.forEach(button => {
+    button.addEventListener('click', e => {
       e.preventDefault();
 
       const currentRow = e.target.closest('tr');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (detailRow) {
         const isAlreadyOpen = !detailRow.hidden;
 
-        document.querySelectorAll('.inquire__detail-row').forEach((row) => {
+        document.querySelectorAll('.inquire__detail-row').forEach(row => {
           row.hidden = true;
         });
 
@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const passwordInputs = document.querySelectorAll('input.inquire__password-input');
 
-  passwordInputs.forEach((input) => {
-    input.addEventListener('keydown', (e) => {
+  passwordInputs.forEach(input => {
+    input.addEventListener('keydown', e => {
       if (e.key === 'Enter') {
         e.preventDefault();
         input.value = '';
