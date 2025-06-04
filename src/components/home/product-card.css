@@ -6,6 +6,48 @@
   color: var(--black);
 }
 
+body {
+  background: #f5f7fa;
+
+  .container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: var(--spacing-L);
+
+    @media (width <= 1040px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  h1 {
+    margin-bottom: 40px;
+    color: var(--black);
+  }
+
+  .component_wrap {
+    width: 100%;
+    display: block;
+    padding: var(--spacing-S);
+    border-radius: 16px;
+    margin-block-end: var(--spacing-L);
+    background: var(--white);
+
+    h6 {
+      color: var(--gray-400);
+      font-size: 16px;
+      margin: 0 0 var(--spacing-S) 0;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      display: inline-block;
+      padding: var(--spacing-XXS) var(--spacing-XS);
+      border-radius: 8px;
+    }
+  }
+}
+
 button {
   all: unset;
   cursor: pointer;
@@ -15,7 +57,7 @@ button {
 
 .product-card {
   --rounded-img: 20px;
-  display: inline-flex;
+  display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
 

@@ -4,14 +4,54 @@
   line-height: 100%;
 }
 body {
+  background: #f5f7fa;
+
+  .container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: var(--spacing-L);
+
+    @media (width <= 1340px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  h1 {
+    margin-bottom: 40px;
+    color: var(--black);
+  }
+
+  .component_wrap {
+    color: var(--gray-400);
+    width: 100%;
+    display: block;
+    padding: var(--spacing-S);
+    border-radius: 16px;
+    margin-block-end: var(--spacing-L);
+    background: var(--white);
+
+    h6 {
+      font-size: 16px;
+      margin: 0 0 var(--spacing-S) 0;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      display: inline-block;
+      padding: var(--spacing-XXS) var(--spacing-XS);
+      border-radius: 8px;
+    }
+  }
 }
+
 /* 타이틀 컴포넌트 */
 .register__title {
+  color: var(--black);
   font-size: 18px;
   font-style: normal;
   font-weight: 600; /* 18px */
   letter-spacing: 0.54px;
-  text-align: center;
 }
 /* 아이템 컴포넌트 */
 .register__item {
