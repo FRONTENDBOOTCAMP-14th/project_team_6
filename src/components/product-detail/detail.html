@@ -3,135 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>detail</title>
-    <link rel="preload" as="font" href="/font/woff2/PretendardVariable.woff2" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/font/pretendardvariable.css" />
-    <link rel="stylesheet" href="../../common/index.css" />
+    <title>detail | component</title>
+    <link rel="icon" type="image/x-icon" href="/src/assets/ico/favicon.ico" />
+    <link rel="stylesheet" href="/src/common/index.css" />
     <link rel="stylesheet" href="./detail.css" />
-    <script src="./detail.js" defer></script>
-    <script src="../home/product-detail-sync.js"></script>
   </head>
-  <body>
+  <body style="padding: 80px">
     <h1>detail</h1>
-    <hr />
-    <!-- 주요 정보 컴포넌트 -->
-    <div class="detail__main-info">
-      <p class="detail__delivery">샛별배송</p>
-      <div class="detail__heading">
-        <p class="detail__title">
-          <span class="detail__brand">[풀무원]</span>
-          <span class="detail__name">탱탱쫄면 (4개입)</span>
-        </p>
-        <p class="detail__description">튀기지 않아 부담 없는 매콤함</p>
-      </div>
-      <p class="detail__price"><span class="detail__discounted-price"></span><span class="detail__price-unit">원</span></p>
-      <button class="detail__benefit-btn">로그인 후, 적립 혜택이 제공됩니다.</button>
-    </div>
-    <hr />
-    <!-- 추가 정보 블럭 컴포넌트 -->
-    <dl class="detail__info-block">
-      <dt class="detail__label">레이블</dt>
-      <dd class="detail__value">
-        <p class="detail__value--primary">핵심 정보</p>
-        <p class="detail__value--note">추가 설명</p>
-      </dd>
-    </dl>
-    <hr />
-    <!-- 추가 정보 컴포넌트 -->
-    <div class="detail__add-info">
-      <dl class="detail__info-block">
-        <dt class="detail__label">배송</dt>
-        <dd class="detail__value">
-          <p class="detail__value--primary">샛별배송</p>
-          <p class="detail__value--note">23시 전 주문 시 내일 아침 7시 전 도착</p>
-          <p class="detail__value--note">(대구 부산 울산 샛별배송 운영시간 별도 확인)</p>
-        </dd>
-      </dl>
-      <dl class="detail__info-block">
-        <dt class="detail__label">판매자</dt>
-        <dd class="detail__value">
-          <p class="detail__value--primary">블루몰</p>
-        </dd>
-      </dl>
-      <dl class="detail__info-block">
-        <dt class="detail__label">포장타입</dt>
-        <dd class="detail__value">
-          <p class="detail__value--primary">상온 (종이포장)</p>
-          <p class="detail__value--note">택배배송은 에코 포장이 스티로폼으로 대체됩니다.</p>
-        </dd>
-      </dl>
-      <dl class="detail__info-block">
-        <dt class="detail__label">판매단위</dt>
-        <dd class="detail__value">
-          <p class="detail__value--primary">1봉</p>
-        </dd>
-      </dl>
-      <dl class="detail__info-block">
-        <dt class="detail__label">중량/용량</dt>
-        <dd class="detail__value">
-          <p class="detail__value--primary">123g*4봉</p>
-        </dd>
-      </dl>
-      <dl class="detail__info-block">
-        <dt class="detail__label">원산지</dt>
-        <dd class="detail__value">
-          <p class="detail__value--primary">상세페이지 별도표기</p>
-        </dd>
-      </dl>
-      <dl class="detail__info-block">
-        <dt class="detail__label">알레르기정보</dt>
-        <dd class="detail__value">
-          <p class="detail__value--note">-대두, 밀, 쇠고기 함유</p>
-          <p class="detail__value--note">-계란, 우유, 메밀, 땅콩, 고등어, 게, 돼지고기, 새우, 복숭아, 토마토, 아황산류, 호두, 잣, 닭고기, 오징어, 조개류(굴, 전복, 홍합 포함)를 사용한 제품과 같은 제조시설에서 제조</p>
-        </dd>
-      </dl>
-    </div>
-    <hr />
-    <!-- 상품 선택 컴포넌트 -->
-    <dl class="detail__info-block">
-      <dt class="detail__label">상품선택</dt>
-      <dd class="detail__value">
-        <div class="detail__quantity-box">
-          <div class="detail__quantity">
-            <p class="detail__value--primary">[풀무원] 탱탱쫄면 (4개입)</p>
-            <div class="detail__quantity-btn-wrapper">
-              <div class="detail__quantity-btn">
-                <button type="button" class="detail__quantity-btn--minus" aria-label="수량 감소"><img src="../../assets/svg/minus-off.svg" alt="" /></button>
-                <input type="text" class="detail__quantity-input js-auto-width" value="1" readonly />
-                <span class="mirror-helper js-auto-width-mirror"></span>
-                <button type="button" class="detail__quantity-btn--plus" aria-label="수량 증가"><img src="../../assets/svg/plus-on.svg" alt="" /></button>
-              </div>
-            </div>
-          </div>
-          <p class="detail__quantity-price"><span class="detail__discounted-price"></span><span class="detail__price-unit">원</span></p>
-        </div>
-      </dd>
-    </dl>
-    <hr />
-    <!-- 상품 금액 컴포넌트 -->
-    <div class="detail__total">
-      <div class="detail__total-row">
-        <p class="detail__total-label">총 상품금액:</p>
-        <p class="detail__total-price">
-          <span class="detail__discounted-price detail__total-price-value"></span>
-          <span class="detail__price-unit detail__total-price-unit">원</span>
-        </p>
-      </div>
-      <div class="detail__reward">
-        <span class="detail__reward-icon">적립</span>
-        <button type="button" class="detail__reward-btn">로그인 후, 적립 혜택 제공</button>
-      </div>
-    </div>
-    <hr />
-    <!-- 액션 버튼 그룹 컴포넌트 -->
-    <div class="detail__action-group">
-      <button type="button" class="detail__action-btn detail__action-btn--like"><img src="../../assets/svg/like-off.svg" alt="" /></button>
-      <button type="button" class="detail__action-btn detail__action-btn--bell"><img src="../../assets/svg/bell-off.svg" alt="" /></button>
-      <button type="button" class="detail__action-btn detail__action-btn--cart"><span>장바구니 담기</span></button>
-    </div>
-    <hr />
-    <!-- detail 컴포넌트(조합) -->
-    <div class="detail">
+
+    <div class="component_wrap">
+      <!-- 주요 정보 컴포넌트 -->
+      <h6>detail__main-info</h6>
       <div class="detail__main-info">
         <p class="detail__delivery">샛별배송</p>
         <div class="detail__heading">
@@ -141,9 +23,28 @@
           </p>
           <p class="detail__description">튀기지 않아 부담 없는 매콤함</p>
         </div>
-        <p class="detail__price"><span class="detail__discounted-price"></span><span class="detail__price-unit">원</span></p>
+        <p class="detail__price">
+          <span class="detail__discounted-price"></span><span class="detail__price-unit">원</span>
+        </p>
         <button class="detail__benefit-btn">로그인 후, 적립 혜택이 제공됩니다.</button>
       </div>
+    </div>
+    <hr />
+    <div class="component_wrap">
+      <!-- 추가 정보 블럭 컴포넌트 -->
+      <h6>detail__info-block</h6>
+      <dl class="detail__info-block">
+        <dt class="detail__label">레이블</dt>
+        <dd class="detail__value">
+          <p class="detail__value--primary">핵심 정보</p>
+          <p class="detail__value--note">추가 설명</p>
+        </dd>
+      </dl>
+    </div>
+
+    <div class="component_wrap">
+      <!-- 추가 정보 컴포넌트 -->
+      <h6>detail__add-info</h6>
       <div class="detail__add-info">
         <dl class="detail__info-block">
           <dt class="detail__label">배송</dt>
@@ -188,10 +89,17 @@
           <dt class="detail__label">알레르기정보</dt>
           <dd class="detail__value">
             <p class="detail__value--note">-대두, 밀, 쇠고기 함유</p>
-            <p class="detail__value--note">-계란, 우유, 메밀, 땅콩, 고등어, 게, 돼지고기, 새우, 복숭아, 토마토, 아황산류, 호두, 잣, 닭고기, 오징어, 조개류(굴, 전복, 홍합 포함)를 사용한 제품과 같은 제조시설에서 제조</p>
+            <p class="detail__value--note">
+              -계란, 우유, 메밀, 땅콩, 고등어, 게, 돼지고기, 새우, 복숭아, 토마토, 아황산류, 호두,
+              잣, 닭고기, 오징어, 조개류(굴, 전복, 홍합 포함)를 사용한 제품과 같은 제조시설에서 제조
+            </p>
           </dd>
         </dl>
       </div>
+    </div>
+    <!-- 상품 선택 컴포넌트 -->
+    <div class="component_wrap">
+      <h6>detail__info-block</h6>
       <dl class="detail__info-block">
         <dt class="detail__label">상품선택</dt>
         <dd class="detail__value">
@@ -200,17 +108,34 @@
               <p class="detail__value--primary">[풀무원] 탱탱쫄면 (4개입)</p>
               <div class="detail__quantity-btn-wrapper">
                 <div class="detail__quantity-btn">
-                  <button type="button" class="detail__quantity-btn--minus" aria-label="수량 감소"><img src="../../assets/svg/minus-off.svg" alt="" /></button>
-                  <input type="text" class="detail__quantity-input js-auto-width" value="1" readonly />
+                  <button type="button" class="detail__quantity-btn--minus" aria-label="수량 감소">
+                    <img src="../../assets/svg/minus-off.svg" alt="" />
+                  </button>
+                  <input
+                    type="text"
+                    class="detail__quantity-input js-auto-width"
+                    value="1"
+                    readonly
+                  />
                   <span class="mirror-helper js-auto-width-mirror"></span>
-                  <button type="button" class="detail__quantity-btn--plus" aria-label="수량 증가"><img src="../../assets/svg/plus-on.svg" alt="" /></button>
+                  <button type="button" class="detail__quantity-btn--plus" aria-label="수량 증가">
+                    <img src="../../assets/svg/plus-on.svg" alt="" />
+                  </button>
                 </div>
               </div>
             </div>
-            <p class="detail__quantity-price"><span class="detail__discounted-price"></span><span class="detail__price-unit">원</span></p>
+            <p class="detail__quantity-price">
+              <span class="detail__discounted-price"></span
+              ><span class="detail__price-unit">원</span>
+            </p>
           </div>
         </dd>
       </dl>
+    </div>
+
+    <!-- 상품 금액 컴포넌트 -->
+    <div class="component_wrap">
+      <h6>detail__total-price</h6>
       <div class="detail__total">
         <div class="detail__total-row">
           <p class="detail__total-label">총 상품금액:</p>
@@ -221,14 +146,26 @@
         </div>
         <div class="detail__reward">
           <span class="detail__reward-icon">적립</span>
-          <button type="button" class="detail__reward-btn" aria-label="로그인 페이지로 이동">로그인 후, 적립 혜택 제공</button>
+          <button type="button" class="detail__reward-btn">로그인 후, 적립 혜택 제공</button>
         </div>
       </div>
+    </div>
+
+    <!-- 액션 버튼 그룹 컴포넌트 -->
+    <div class="component_wrap">
+      <h6>detail__action-group</h6>
       <div class="detail__action-group">
-        <button type="button" class="detail__action-btn detail__action-btn--like" aria-label="찜하기"><img src="../../assets/svg/like-off.svg" alt="" /></button>
-        <button type="button" class="detail__action-btn detail__action-btn--bell" aria-label="재고 알림 설정하기"><img src="../../assets/svg/bell-off.svg" alt="" /></button>
-        <button type="button" class="detail__action-btn detail__action-btn--cart" aria-label="장바구니 담기"><span aria-hidden="true">장바구니 담기</span></button>
+        <button type="button" class="detail__action-btn detail__action-btn--like">
+          <img src="../../assets/svg/like-off.svg" alt="" />
+        </button>
+        <button type="button" class="detail__action-btn detail__action-btn--bell">
+          <img src="../../assets/svg/bell-off.svg" alt="" />
+        </button>
+        <button type="button" class="detail__action-btn detail__action-btn--cart">
+          <span>장바구니 담기</span>
+        </button>
       </div>
     </div>
+    <script type="module" src="./detail.js"></script>
   </body>
 </html>

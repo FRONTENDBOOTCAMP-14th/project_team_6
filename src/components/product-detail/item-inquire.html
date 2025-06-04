@@ -3,144 +3,150 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
-    <link rel="preload" as="font" href="/font/woff2/PretendardVariable.woff2" />
-    <link rel="stylesheet" href="/font/pretendardvariable.css" />
-    <link rel="stylesheet" href="./item-inquire.css" />
+    <title>item-inquire | component</title>
+    <link rel="icon" type="image/x-icon" href="/src/assets/ico/favicon.ico" />
     <link rel="stylesheet" href="/src/common/index.css" />
+    <link rel="stylesheet" href="./item-inquire.css" />
   </head>
-  <body>
+  <body style="padding: 80px">
+    <h1>item-inquire</h1>
     <div class="inquire">
-      <div class="inquire__header">
-        <span class="inquire__header-title"
-          >상품문의
-          <ul class="inquire__header-description">
-            <li>
-              상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이
-              담당게시판으로 이동될 수 있습니다.
-            </li>
-            <li>
-              배송관련, 주분(취소/교환/환불)관련 문의 및 요청사항은 마이페이지 내 1:1 문의에
-              남겨주세요.
-            </li>
-          </ul></span
-        >
-        <button class="inquire__header-button">문의하기</button>
+      <div class="component_wrap">
+        <h6>inquire__header</h6>
+        <div class="inquire__header">
+          <span class="inquire__header-title"
+            >상품문의
+            <ul class="inquire__header-description">
+              <li>
+                상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과 다른 글은 사전동의 없이
+                담당게시판으로 이동될 수 있습니다.
+              </li>
+              <li>
+                배송관련, 주분(취소/교환/환불)관련 문의 및 요청사항은 마이페이지 내 1:1 문의에
+                남겨주세요.
+              </li>
+            </ul></span
+          >
+          <button class="inquire__header-button">문의하기</button>
+        </div>
       </div>
-      <table class="inquire__table">
-        <tr class="inquire__table-header">
-          <th>제목</th>
-          <th>작성자</th>
-          <th>작성일</th>
-          <th>답변상태</th>
-        </tr>
-        <tr class="inquire__row">
-          <td>
-            <span class="inquire__badge">공지</span
-            ><button>판매(일시)중단 제품 안내 (22.11.10 업데이트)</button>
-          </td>
-          <td>블루몰</td>
-          <td>2017.02.01</td>
-          <td>-</td>
-        </tr>
-        <tr class="inquire__detail-row" hidden>
-          <td colspan="4" class="inquire__detail-content">
-            <div class="inquire__detail-content-box">
-              <div class="inquire__question">
-                <p>
-                  안녕하세요. 블루몰입니다.<br />믿고 찾아주신 상품에 불편을 드려 정말
-                  죄송합니다.<br /><br />더불어, 해당 게시판은 실시간으로 상담이 어려워 순차적으로
-                  답변드리고 있는 관계로 신속하게 답변 드리지 못하여 대단히 죄송합니다.<br /><br />다행히도
-                  고객님의 불편하셨던 사항은 고객행복센터를 통해 안내 받으신 점 확인하였습니다.<br /><br />불편을
-                  드려 죄송할 따름이며, 고객님께 늘 신선하고 최상의 상품을 불편 없이 전달드리기 위해
-                  최선을 다하는 블루몰이 되겠습니다.<br /><br />블루몰 드림.<br /><br />2022.11.11
-                </p>
+      <div class="component_wrap">
+        <h6>inquire__table</h6>
+        <table class="inquire__table">
+          <tr class="inquire__table-header">
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>답변상태</th>
+          </tr>
+          <tr class="inquire__row">
+            <td>
+              <span class="inquire__badge">공지</span
+              ><button>판매(일시)중단 제품 안내 (22.11.10 업데이트)</button>
+            </td>
+            <td>블루몰</td>
+            <td>2017.02.01</td>
+            <td>-</td>
+          </tr>
+          <tr class="inquire__detail-row" hidden>
+            <td colspan="4" class="inquire__detail-content">
+              <div class="inquire__detail-content-box">
+                <div class="inquire__question">
+                  <p>
+                    안녕하세요. 블루몰입니다.<br />믿고 찾아주신 상품에 불편을 드려 정말
+                    죄송합니다.<br /><br />더불어, 해당 게시판은 실시간으로 상담이 어려워 순차적으로
+                    답변드리고 있는 관계로 신속하게 답변 드리지 못하여 대단히 죄송합니다.<br /><br />다행히도
+                    고객님의 불편하셨던 사항은 고객행복센터를 통해 안내 받으신 점 확인하였습니다.<br /><br />불편을
+                    드려 죄송할 따름이며, 고객님께 늘 신선하고 최상의 상품을 불편 없이 전달드리기
+                    위해 최선을 다하는 블루몰이 되겠습니다.<br /><br />블루몰 드림.<br /><br />2022.11.11
+                  </p>
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
-        <tr class="inquire__row">
-          <td><button>팩이 터져서 왔어요</button></td>
-          <td>김*식</td>
-          <td>2025.05.29</td>
-          <td class="inquire__answer--not">답변대기</td>
-        </tr>
-        <tr class="inquire__detail-row" hidden>
-          <td colspan="4" class="inquire__detail-content">
-            <div class="inquire__detail-content-box">
-              <div class="inquire__question">
-                <img src="/src/assets/svg/question.svg" alt="question" />
-                <p>스티로폼 박스도 손상되어 있어 포장이 터져 엉망이네요.<br />환불 요청합니다.</p>
+            </td>
+          </tr>
+          <tr class="inquire__row">
+            <td><button>팩이 터져서 왔어요</button></td>
+            <td>김*식</td>
+            <td>2025.05.29</td>
+            <td class="inquire__answer--not">답변대기</td>
+          </tr>
+          <tr class="inquire__detail-row" hidden>
+            <td colspan="4" class="inquire__detail-content">
+              <div class="inquire__detail-content-box">
+                <div class="inquire__question">
+                  <img src="/src/assets/svg/question.svg" alt="question" />
+                  <p>스티로폼 박스도 손상되어 있어 포장이 터져 엉망이네요.<br />환불 요청합니다.</p>
+                </div>
+                <div class="inquire__answer">
+                  <img src="/src/assets/svg/answer.svg" alt="answer" />
+                  <p>
+                    안녕하세요. 블루몰입니다.<br />믿고 찾아주신 상품에 불편을 드려 정말
+                    죄송합니다.<br /><br />더불어, 해당 게시판은 실시간으로 상담이 어려워 순차적으로
+                    답변드리고 있는 관계로 신속하게 답변 드리지 못하여 대단히 죄송합니다.<br /><br />다행히도
+                    고객님의 불편하셨던 사항은 고객행복센터를 통해 안내 받으신 점 확인하였습니다.<br /><br />불편을
+                    드려 죄송할 따름이며, 고객님께 늘 신선하고 최상의 상품을 불편 없이 전달드리기
+                    위해 최선을 다하는 블루몰이 되겠습니다.<br /><br />블루몰 드림.<br /><br />2022.11.11
+                  </p>
+                </div>
               </div>
-              <div class="inquire__answer">
-                <img src="/src/assets/svg/answer.svg" alt="answer" />
-                <p>
-                  안녕하세요. 블루몰입니다.<br />믿고 찾아주신 상품에 불편을 드려 정말
-                  죄송합니다.<br /><br />더불어, 해당 게시판은 실시간으로 상담이 어려워 순차적으로
-                  답변드리고 있는 관계로 신속하게 답변 드리지 못하여 대단히 죄송합니다.<br /><br />다행히도
-                  고객님의 불편하셨던 사항은 고객행복센터를 통해 안내 받으신 점 확인하였습니다.<br /><br />불편을
-                  드려 죄송할 따름이며, 고객님께 늘 신선하고 최상의 상품을 불편 없이 전달드리기 위해
-                  최선을 다하는 블루몰이 되겠습니다.<br /><br />블루몰 드림.<br /><br />2022.11.11
-                </p>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr class="inquire__row">
-          <td><button class="inquire__secret">비밀글입니다.</button></td>
-          <td>김*식</td>
-          <td>2025.05.29</td>
-          <td class="inquire__answer--not">답변대기</td>
-        </tr>
-        <tr class="inquire__detail-row" hidden>
-          <td colspan="4" class="inquire__detail-content">
-            <input
-              type="password"
-              class="inquire__password-input"
-              placeholder="비밀번호를 입력해주세요."
-            />
-          </td>
-        </tr>
-        <tr class="inquire__row">
-          <td><button class="inquire__secret">비밀글입니다.</button></td>
-          <td>김*식</td>
-          <td>2025.05.29</td>
-          <td class="inquire__answer--complete">답변완료</td>
-        </tr>
-        <tr class="inquire__row">
-          <td><button class="inquire__secret">비밀글입니다.</button></td>
-          <td>김*식</td>
-          <td>2025.05.29</td>
-          <td class="inquire__answer--complete">답변완료</td>
-        </tr>
-      </table>
-      <div class="inquire__pagination">
-        <button>
-          <svg
-            width="56"
-            height="56"
-            viewBox="0 0 56 56"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect x="0.5" y="0.5" width="55" height="55" rx="3.5" stroke="#DDDDDD" />
-            <path d="M32 36L24 28L32 20" stroke="#ABABAB" stroke-width="1.2" />
-          </svg>
-        </button>
-        <button>
-          <svg
-            width="56"
-            height="56"
-            viewBox="0 0 56 56"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect x="0.5" y="0.5" width="55" height="55" rx="3.5" stroke="#DDDDDD" />
-            <path d="M24 20L32 28L24 36" stroke="#ABABAB" stroke-width="1.2" />
-          </svg>
-        </button>
+            </td>
+          </tr>
+          <tr class="inquire__row">
+            <td><button class="inquire__secret">비밀글입니다.</button></td>
+            <td>김*식</td>
+            <td>2025.05.29</td>
+            <td class="inquire__answer--not">답변대기</td>
+          </tr>
+          <tr class="inquire__detail-row" hidden>
+            <td colspan="4" class="inquire__detail-content">
+              <input
+                type="password"
+                class="inquire__password-input"
+                placeholder="비밀번호를 입력해주세요."
+              />
+            </td>
+          </tr>
+          <tr class="inquire__row">
+            <td><button class="inquire__secret">비밀글입니다.</button></td>
+            <td>김*식</td>
+            <td>2025.05.29</td>
+            <td class="inquire__answer--complete">답변완료</td>
+          </tr>
+          <tr class="inquire__row">
+            <td><button class="inquire__secret">비밀글입니다.</button></td>
+            <td>김*식</td>
+            <td>2025.05.29</td>
+            <td class="inquire__answer--complete">답변완료</td>
+          </tr>
+        </table>
+        <div class="inquire__pagination">
+          <button>
+            <svg
+              width="56"
+              height="56"
+              viewBox="0 0 56 56"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect x="0.5" y="0.5" width="55" height="55" rx="3.5" stroke="#DDDDDD" />
+              <path d="M32 36L24 28L32 20" stroke="#ABABAB" stroke-width="1.2" />
+            </svg>
+          </button>
+          <button>
+            <svg
+              width="56"
+              height="56"
+              viewBox="0 0 56 56"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect x="0.5" y="0.5" width="55" height="55" rx="3.5" stroke="#DDDDDD" />
+              <path d="M24 20L32 28L24 36" stroke="#ABABAB" stroke-width="1.2" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
-    <script src="item-inquire.js"></script>
+    <script type="module" src="item-inquire.js"></script>
   </body>
 </html>

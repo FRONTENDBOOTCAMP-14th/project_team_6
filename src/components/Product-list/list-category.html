@@ -3,381 +3,713 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
-    <link rel="preload" as="font" href="/font/woff2/PretendardVariable.woff2" />
-    <link rel="stylesheet" href="/font/pretendardvariable.css" />
-    <link rel="stylesheet" href="./list-category.css" />
+    <title>list-category | component</title>
+    <link rel="icon" type="image/x-icon" href="/src/assets/ico/favicon.ico" />
     <link rel="stylesheet" href="/src/common/index.css" />
+    <link rel="stylesheet" href="./list-category.css" />
   </head>
-  <body>
-    <hr />
-    <div class="card__category-list">
-      <div class="button__filter">
-        <div class="button__filter--text">필터</div>
-        <div class="button__filter--init">초기화</div>
-      </div>
-      <div class="c-accordion" data-accordion>
-        <button type="button" class="c-accordion__header" aria-expanded="false" aria-controls="category-content">
-          <span class="c-accordion__title">카테고리</span>
-          <span class="c-accordion__icon" aria-hidden="true">
-            <img src="/src/assets/svg/direction-down.svg" alt="toggle" />
-          </span>
-        </button>
-        <div id="category-content" class="c-accordion__content" hidden>
-          <div class="c-accordion__panel">
-            <ul>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">샐러드 · 간편식</span>
-                  <span class="checkbox-count">86</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">국 · 반찬 · 메인요리</span>
-                  <span class="checkbox-count">52</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">정육 · 계란</span>
-                  <span class="checkbox-count">41</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">과일 · 견과 · 쌀</span>
-                  <span class="checkbox-count">30</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">간식 · 과자 · 떡</span>
-                  <span class="checkbox-count">18</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">생수 · 음료 · 커피</span>
-                  <span class="checkbox-count">17</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">수산 · 해산 · 건어물</span>
-                  <span class="checkbox-count">10</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">베이커리 · 치즈 · 델리</span>
-                  <span class="checkbox-count">13</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">건강식품</span>
-                  <span class="checkbox-count">10</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">생활용품 · 리빙 · 캠핑</span>
-                  <span class="checkbox-count">10</span>
-                </label>
-              </li>
-              <li>
-                <button>카테고리 더보기</button>
-              </li>
-            </ul>
+  <body style="padding: 80px">
+    <h1>list-category</h1>
+    <div class="component_wrap">
+      <h6>filter__category</h6>
+      <div class="card__category-list">
+        <div class="button__filter">
+          <div class="button__filter--text">필터</div>
+          <div class="button__filter--init">초기화</div>
+        </div>
+        <div class="c-accordion" data-accordion>
+          <button
+            type="button"
+            class="c-accordion__header"
+            aria-expanded="false"
+            aria-controls="category-content"
+          >
+            <span class="c-accordion__title">카테고리</span>
+            <span class="c-accordion__icon" aria-hidden="true">
+              <img src="/src/assets/svg/direction-down.svg" alt="toggle" />
+            </span>
+          </button>
+          <div id="category-content" class="c-accordion__content" hidden>
+            <div class="c-accordion__panel">
+              <ul>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">샐러드 · 간편식</span>
+                    <span class="checkbox-count">86</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">국 · 반찬 · 메인요리</span>
+                    <span class="checkbox-count">52</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">정육 · 계란</span>
+                    <span class="checkbox-count">41</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">과일 · 견과 · 쌀</span>
+                    <span class="checkbox-count">30</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">간식 · 과자 · 떡</span>
+                    <span class="checkbox-count">18</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">생수 · 음료 · 커피</span>
+                    <span class="checkbox-count">17</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">수산 · 해산 · 건어물</span>
+                    <span class="checkbox-count">10</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">베이커리 · 치즈 · 델리</span>
+                    <span class="checkbox-count">13</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">건강식품</span>
+                    <span class="checkbox-count">10</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">생활용품 · 리빙 · 캠핑</span>
+                    <span class="checkbox-count">10</span>
+                  </label>
+                </li>
+                <li>
+                  <button>카테고리 더보기</button>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="c-accordion" data-accordion>
-        <button type="button" class="c-accordion__header" aria-expanded="false" aria-controls="brand-content">
-          <span class="c-accordion__title">브랜드</span>
-          <span class="c-accordion__icon" aria-hidden="true">
-            <img src="/src/assets/svg/direction-down.svg" alt="toggle" />
-          </span>
-        </button>
-        <div id="brand-content" class="c-accordion__content" hidden>
-          <div class="c-accordion__panel">
-            <ul>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">신세계푸드</span>
-                  <span class="checkbox-count">86</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">이마트</span>
-                  <span class="checkbox-count">52</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">CJ제일제당</span>
-                  <span class="checkbox-count">41</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">삼립</span>
-                  <span class="checkbox-count">30</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">오뚜기</span>
-                  <span class="checkbox-count">18</span>
-                </label>
-              </li>
-              <li>
-                <button>브랜드 더보기</button>
-              </li>
-            </ul>
+        <div class="c-accordion" data-accordion>
+          <button
+            type="button"
+            class="c-accordion__header"
+            aria-expanded="false"
+            aria-controls="brand-content"
+          >
+            <span class="c-accordion__title">브랜드</span>
+            <span class="c-accordion__icon" aria-hidden="true">
+              <img src="/src/assets/svg/direction-down.svg" alt="toggle" />
+            </span>
+          </button>
+          <div id="brand-content" class="c-accordion__content" hidden>
+            <div class="c-accordion__panel">
+              <ul>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">신세계푸드</span>
+                    <span class="checkbox-count">86</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">이마트</span>
+                    <span class="checkbox-count">52</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">CJ제일제당</span>
+                    <span class="checkbox-count">41</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">삼립</span>
+                    <span class="checkbox-count">30</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">오뚜기</span>
+                    <span class="checkbox-count">18</span>
+                  </label>
+                </li>
+                <li>
+                  <button>브랜드 더보기</button>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="c-accordion" data-accordion>
-        <button type="button" class="c-accordion__header" aria-expanded="false" aria-controls="price-content">
-          <span class="c-accordion__title">가격</span>
-          <span class="c-accordion__icon" aria-hidden="true">
-            <img src="/src/assets/svg/direction-down.svg" alt="toggle" />
-          </span>
-        </button>
-        <div id="price-content" class="c-accordion__content" hidden>
-          <div class="c-accordion__panel">
-            <ul class="price-range-list">
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" name="price" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">1만원 이하</span>
-                  <span class="checkbox-count">1,234</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" name="price" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">1만원대</span>
-                  <span class="checkbox-count">2,345</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" name="price" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">2만원대</span>
-                  <span class="checkbox-count">3,456</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" name="price" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">3만원대</span>
-                  <span class="checkbox-count">2,987</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" name="price" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">4만원 이상</span>
-                  <span class="checkbox-count">1,876</span>
-                </label>
-              </li>
-            </ul>
+        <div class="c-accordion" data-accordion>
+          <button
+            type="button"
+            class="c-accordion__header"
+            aria-expanded="false"
+            aria-controls="price-content"
+          >
+            <span class="c-accordion__title">가격</span>
+            <span class="c-accordion__icon" aria-hidden="true">
+              <img src="/src/assets/svg/direction-down.svg" alt="toggle" />
+            </span>
+          </button>
+          <div id="price-content" class="c-accordion__content" hidden>
+            <div class="c-accordion__panel">
+              <ul class="price-range-list">
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" name="price" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">1만원 이하</span>
+                    <span class="checkbox-count">1,234</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" name="price" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">1만원대</span>
+                    <span class="checkbox-count">2,345</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" name="price" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">2만원대</span>
+                    <span class="checkbox-count">3,456</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" name="price" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">3만원대</span>
+                    <span class="checkbox-count">2,987</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" name="price" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">4만원 이상</span>
+                    <span class="checkbox-count">1,876</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="c-accordion" data-accordion>
-        <button type="button" class="c-accordion__header" aria-expanded="false" aria-controls="benefit-content">
-          <span class="c-accordion__title">혜택</span>
-          <span class="c-accordion__icon" aria-hidden="true">
-            <img src="/src/assets/svg/direction-down.svg" alt="toggle" />
-          </span>
-        </button>
-        <div id="category-content" class="c-accordion__content" hidden>
-          <div class="c-accordion__panel">
-            <ul>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">할인상품</span>
-                  <span class="checkbox-count">86</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">한정수량</span>
-                  <span class="checkbox-count">52</span>
-                </label>
-              </li>
-            </ul>
+        <div class="c-accordion" data-accordion>
+          <button
+            type="button"
+            class="c-accordion__header"
+            aria-expanded="false"
+            aria-controls="benefit-content"
+          >
+            <span class="c-accordion__title">혜택</span>
+            <span class="c-accordion__icon" aria-hidden="true">
+              <img src="/src/assets/svg/direction-down.svg" alt="toggle" />
+            </span>
+          </button>
+          <div id="category-content" class="c-accordion__content" hidden>
+            <div class="c-accordion__panel">
+              <ul>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">할인상품</span>
+                    <span class="checkbox-count">86</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">한정수량</span>
+                    <span class="checkbox-count">52</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="c-accordion" data-accordion>
-        <button type="button" class="c-accordion__header" aria-expanded="false" aria-controls="type-content">
-          <span class="c-accordion__title">유형</span>
-          <span class="c-accordion__icon" aria-hidden="true">
-            <img src="/src/assets/svg/direction-down.svg" alt="toggle" />
-          </span>
-        </button>
-        <div id="category-content" class="c-accordion__content" hidden>
-          <div class="c-accordion__panel">
-            <ul>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">희소가치 프로젝트</span>
-                  <span class="checkbox-count">86</span>
-                </label>
-              </li>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">희소가치 프로젝트</span>
-                  <span class="checkbox-count">52</span>
-                </label>
-              </li>
-            </ul>
+        <div class="c-accordion" data-accordion>
+          <button
+            type="button"
+            class="c-accordion__header"
+            aria-expanded="false"
+            aria-controls="type-content"
+          >
+            <span class="c-accordion__title">유형</span>
+            <span class="c-accordion__icon" aria-hidden="true">
+              <img src="/src/assets/svg/direction-down.svg" alt="toggle" />
+            </span>
+          </button>
+          <div id="category-content" class="c-accordion__content" hidden>
+            <div class="c-accordion__panel">
+              <ul>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">희소가치 프로젝트</span>
+                    <span class="checkbox-count">86</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">희소가치 프로젝트</span>
+                    <span class="checkbox-count">52</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="c-accordion" data-accordion>
-        <button type="button" class="c-accordion__header" aria-expanded="false" aria-controls="exclude-content">
-          <span class="c-accordion__title">특정상품 제외</span>
-          <span class="c-accordion__icon" aria-hidden="true">
-            <img src="/src/assets/svg/direction-down.svg" alt="toggle" />
-          </span>
-        </button>
-        <div id="category-content" class="c-accordion__content" hidden>
-          <div class="c-accordion__panel">
-            <ul>
-              <li>
-                <label class="checkbox-label">
-                  <input type="checkbox" class="checkbox-input" hidden />
-                  <span class="checkbox-custom">
-                    <img src="/src/assets/svg/check-off.svg" class="icon-check" alt="unchecked" width="16" height="16" />
-                    <img src="/src/assets/svg/check-on.svg" class="icon-checked" alt="checked" width="16" height="16" />
-                  </span>
-                  <span class="checkbox-text">반려동물 상품</span>
-                  <span class="checkbox-count">3</span>
-                </label>
-              </li>
-            </ul>
+        <div class="c-accordion" data-accordion>
+          <button
+            type="button"
+            class="c-accordion__header"
+            aria-expanded="false"
+            aria-controls="exclude-content"
+          >
+            <span class="c-accordion__title">특정상품 제외</span>
+            <span class="c-accordion__icon" aria-hidden="true">
+              <img src="/src/assets/svg/direction-down.svg" alt="toggle" />
+            </span>
+          </button>
+          <div id="category-content" class="c-accordion__content" hidden>
+            <div class="c-accordion__panel">
+              <ul>
+                <li>
+                  <label class="checkbox-label">
+                    <input type="checkbox" class="checkbox-input" hidden />
+                    <span class="checkbox-custom">
+                      <img
+                        src="/src/assets/svg/check-off.svg"
+                        class="icon-check"
+                        alt="unchecked"
+                        width="16"
+                        height="16"
+                      />
+                      <img
+                        src="/src/assets/svg/check-on.svg"
+                        class="icon-checked"
+                        alt="checked"
+                        width="16"
+                        height="16"
+                      />
+                    </span>
+                    <span class="checkbox-text">반려동물 상품</span>
+                    <span class="checkbox-count">3</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
