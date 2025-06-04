@@ -3,18 +3,18 @@
   --font-weight-400: 400;
 }
 
-button {
-  all: unset;
-  cursor: pointer;
-  display: inline-block;
-  user-select: none;
-}
-
 .list-container__nav {
   --line-height: 150%;
 
   display: inline-flex;
   flex-flow: row nowrap;
+
+  button {
+    all: unset;
+    cursor: pointer;
+    display: inline-block;
+    user-select: none;
+  }
 
   button:focus-visible {
     outline: 2px solid var(--primary);
@@ -47,6 +47,13 @@ button {
 }
 
 .product-card {
+  button {
+    all: unset;
+    cursor: pointer;
+    display: inline-block;
+    user-select: none;
+  }
+
   --rounded-img: 20px;
   display: inline-flex;
   flex-flow: column nowrap;
@@ -230,6 +237,13 @@ button {
 }
 
 .list-container__items {
+  button {
+    all: unset;
+    cursor: pointer;
+    display: inline-block;
+    user-select: none;
+  }
+
   --card-width: 285px;
 
   display: grid;
@@ -240,6 +254,12 @@ button {
 }
 
 .list-container__pagination {
+  button {
+    all: unset;
+    cursor: pointer;
+    display: inline-block;
+    user-select: none;
+  }
   display: flex;
   flex-flow: row nowrap;
 

@@ -69,3 +69,51 @@ function updateCheckedCount() {
 
 // 페이지 로드 시 개수 초기화
 updateCheckedCount();
+
+// 배송지 변경 버튼 클릭 시 모달 열기
+var addressBtn = document.querySelector('.cart__button.--line');
+if (addressBtn) {
+  addressBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    var modal = document.getElementById('modalCart');
+    if (modal) {
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+  });
+}
+
+// 배송지 변경 모달 닫기
+document.querySelectorAll('#modalCart .location__confirm-button, #modalCart .location__close-button').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var modal = document.getElementById('modalCart');
+    if (modal) {
+      modal.hidden = true;
+      document.body.style.overflow = 'auto';
+    }
+  });
+});
+
+// 주문하기 버튼 클릭 시 모달 열기
+var orderBtn = document.querySelector('.cart__button:not(.--line)');
+if (orderBtn) {
+  orderBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    var modal = document.getElementById('modalOrder');
+    if (modal) {
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+  });
+}
+
+// 주문하기 모달 닫기
+document.querySelectorAll('#modalOrder .location__confirm-button, #modalOrder .location__close-button').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var modal = document.getElementById('modalOrder');
+    if (modal) {
+      modal.hidden = true;
+      document.body.style.overflow = 'auto';
+    }
+  });
+});

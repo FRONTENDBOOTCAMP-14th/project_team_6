@@ -1,0 +1,56 @@
+/* Menu Bar */
+.vscode__menubar {
+  grid-column: 1 / -1;
+  background-color: var(--color-bg-tertiary);
+  display: flex;
+  align-items: center;
+  padding: 0 12px; /* Increased from 10px */
+  -webkit-app-region: drag;
+  user-select: none;
+  height: 2.5rem; /* Increased height */
+  z-index: var(--z-menubar);
+  font-size: 0.9375rem; /* Base font size */
+}
+
+.vscode__menubar-item {
+  padding: 0 12px; /* Increased from 8px */
+  font-size: 0.9375rem; /* Increased from 12px */
+  color: var(--color-text);
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  line-height: 1.5;
+}
+
+.vscode__menubar-item:hover {
+  background-color: var(--color-hover);
+}
+
+.vscode__window-controls {
+  margin-left: auto;
+  display: flex;
+  height: 100%;
+  -webkit-app-region: no-drag;
+}
+
+.vscode__window-btn {
+  width: 3.5rem; /* Increased from 46px */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.vscode__window-btn:hover {
+  background-color: var(--color-hover);
+}
+
+.vscode__window-close:hover {
+  background-color: #e81123;
+  color: white;
+}
