@@ -15,6 +15,16 @@ a {
   position: relative;
   color: var(--black);
 
+  &::before {
+    content: '';
+    inline-size: 100%;
+    block-size: 1px;
+    background: var(--gray-200);
+    position: absolute;
+    top: 120px;
+    left: 0;
+  }
+
   .header__top {
     max-inline-size: 1200px;
     display: flex;
@@ -22,17 +32,6 @@ a {
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-
-    &::before {
-      content: '';
-      inline-size: 100%;
-      block-size: 1px;
-      background: var(--gray-200);
-      position: absolute;
-      top: 120px;
-      left: 0;
-    }
-
     .header__user-action {
       button {
         margin-inline-start: 40px;
@@ -104,5 +103,33 @@ a {
         }
       }
     }
+  }
+}
+body {
+  background: #f5f7fa;
+}
+h1 {
+  margin-bottom: 40px;
+  color: var(--black);
+}
+.component_wrap {
+  color: var(--gray-400);
+  width: 100%;
+  display: block;
+  padding: var(--spacing-S);
+
+  border-radius: 16px;
+  margin-block-end: var(--spacing-L);
+  background: var(--white);
+  h6 {
+    font-size: 16px;
+    margin: 0 0 var(--spacing-S) 0;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    display: inline-block;
+    padding: var(--spacing-XXS) var(--spacing-XS);
+    border-radius: 8px;
   }
 }
