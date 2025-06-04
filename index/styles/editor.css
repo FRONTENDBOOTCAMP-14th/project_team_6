@@ -1,3 +1,39 @@
+/* README Content Styling */
+.vscode__editor-content.readme-content .monaco-editor .view-lines,
+.vscode__editor-content.readme-content .monaco-editor .view-line,
+.vscode__editor-content.readme-content .monaco-editor .mtk1,
+.vscode__editor-content.readme-content .monaco-editor .mtk2,
+.vscode__editor-content.readme-content .monaco-editor .mtk3,
+.vscode__editor-content.readme-content .monaco-editor .mtk4,
+.vscode__editor-content.readme-content .monaco-editor .mtk5,
+.vscode__editor-content.readme-content .monaco-editor .mtk6,
+.vscode__editor-content.readme-content .monaco-editor .mtk7,
+.vscode__editor-content.readme-content .monaco-editor .mtk8,
+.vscode__editor-content.readme-content .monaco-editor .mtk9,
+.vscode__editor-content.readme-content .monaco-editor .mtk10,
+.vscode__editor-content.readme-content .monaco-editor .mtk11,
+.vscode__editor-content.readme-content .monaco-editor .mtk12,
+.vscode__editor-content.readme-content .monaco-editor .mtk13,
+.vscode__editor-content.readme-content .monaco-editor .mtk14,
+.vscode__editor-content.readme-content .monaco-editor .mtk15,
+.vscode__editor-content.readme-content .monaco-editor .mtk16,
+.vscode__editor-content.readme-content .monaco-editor .mtk17,
+.vscode__editor-content.readme-content .monaco-editor .mtk18,
+.vscode__editor-content.readme-content .monaco-editor .mtk19,
+.vscode__editor-content.readme-content .monaco-editor .mtk20,
+.vscode__editor-content.readme-content .monaco-editor .mtk21,
+.vscode__editor-content.readme-content .monaco-editor .mtk22,
+.vscode__editor-content.readme-content .monaco-editor .mtk23,
+.vscode__editor-content.readme-content .monaco-editor .mtk24,
+.vscode__editor-content.readme-content .monaco-editor .mtk25,
+.vscode__editor-content.readme-content .monaco-editor .mtk26,
+.vscode__editor-content.readme-content .monaco-editor .mtk27,
+.vscode__editor-content.readme-content .monaco-editor .mtk28,
+.vscode__editor-content.readme-content .monaco-editor .mtk29,
+.vscode__editor-content.readme-content .monaco-editor .mtk30 {
+  color: #ffffff !important;
+}
+
 /* Preview Button */
 .vscode__preview-button {
   position: fixed;
