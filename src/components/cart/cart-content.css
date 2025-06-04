@@ -1,16 +1,15 @@
-button {
-  all: unset;
-  cursor: pointer;
-  display: inline-flex;
-  user-select: none;
-
-  &:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-  }
-}
-
 .cart-product {
+  button {
+    all: unset;
+    cursor: pointer;
+    display: inline-flex;
+    user-select: none;
+
+    &:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+  }
   display: flex;
   flex-flow: row nowrap;
   width: 742px;
@@ -94,6 +93,17 @@ button {
 }
 
 .order-content {
+  button {
+    all: unset;
+    cursor: pointer;
+    display: inline-flex;
+    user-select: none;
+
+    &:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+  }
   display: flex;
   flex-flow: column nowrap;
   padding: var(--spacing-XS);
@@ -210,5 +220,34 @@ button {
         line-height: 150%;
       }
     }
+  }
+}
+
+body {
+  background: #f5f7fa;
+}
+h1 {
+  margin-bottom: 40px;
+  color: var(--black);
+}
+.component_wrap {
+  color: var(--gray-400);
+  width: 100%;
+  display: block;
+  padding: var(--spacing-S);
+
+  border-radius: 16px;
+  margin-block-end: var(--spacing-L);
+  background: var(--white);
+  h6 {
+    font-size: 16px;
+    margin: 0 0 var(--spacing-S) 0;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    display: inline-block;
+    padding: var(--spacing-XXS) var(--spacing-XS);
+    border-radius: 8px;
   }
 }

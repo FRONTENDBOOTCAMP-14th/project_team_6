@@ -3,132 +3,145 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>장바구니</title>
-    <link rel="preload" as="font" href="/font/woff2/PretendardVariable.woff2" />
-    <link rel="stylesheet" href="/font/pretendardvariable.css" />
-    <link rel="stylesheet" href="/src/components/cart/cart.css" />
+    <title>cart | component</title>
+    <link rel="icon" type="image/x-icon" href="/src/assets/ico/favicon.ico" />
     <link rel="stylesheet" href="/src/common/index.css" />
+    <link rel="stylesheet" href="./cart.css" />
   </head>
-  <body>
+  <body style="padding: 80px">
+    <h1>cart</h1>
     <!-- 전체선택 / 전체삭제 -->
-    <div class="cart__checkbox-allagree">
-      <div class="cart__checkbox-content">
-        <input type="checkbox" name="terms" id="allAgreement" />
-        <label for="allAgreement"
-          >전체 선택 <span>(<span id="checkedCount">3</span>/<span id="totalCount">3</span>)</span></label
-        >
-        <div class="line"></div>
-        <button>선택삭제</button>
+    <div class="component_wrap">
+      <h6>cart__checkbox-allagree</h6>
+      <div class="cart__checkbox-allagree">
+        <div class="cart__checkbox-content">
+          <input type="checkbox" name="terms" id="allAgreement" />
+          <label for="allAgreement"
+            >전체 선택
+            <span>(<span id="checkedCount">3</span>/<span id="totalCount">3</span>)</span></label
+          >
+          <div class="line"></div>
+          <button>선택삭제</button>
+        </div>
+      </div>
+      <!-- 아코디언 -->
+      <div class="cart__accordion">
+        <div class="cart__accordion-item">
+          <button class="cart__accordion-header" aria-expanded="false" type="button">
+            <img src="/src/assets/svg/fridge.svg" alt="" />
+            <span>냉장 식품</span>
+            <img class="button__down" src="/src/assets/svg/Down.svg" alt="" />
+          </button>
+          <div class="cart__accordion-content hidden">
+            <div class="cart__checkbox-content">
+              <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement1" />
+              <label for="Agreement1">내용1</label>
+            </div>
+            <div class="cart__checkbox-content">
+              <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement2" />
+              <label for="Agreement2">내용2</label>
+            </div>
+            <div class="cart__checkbox-content">
+              <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement3" />
+              <label for="Agreement3">내용3</label>
+            </div>
+          </div>
+        </div>
+        <div class="cart__accordion-item">
+          <button class="cart__accordion-header" aria-expanded="false" type="button">
+            <img src="/src/assets/svg/freeze.svg" alt="" />
+            <span>냉동 식품</span>
+            <img class="button__down" src="/src/assets/svg/Down.svg" alt="" />
+          </button>
+          <div class="cart__accordion-content hidden">
+            <div class="cart__checkbox-content">
+              <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement1" />
+              <label for="Agreement1">내용1</label>
+            </div>
+            <div class="cart__checkbox-content">
+              <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement2" />
+              <label for="Agreement2">내용2</label>
+            </div>
+            <div class="cart__checkbox-content">
+              <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement3" />
+              <label for="Agreement3">내용3</label>
+            </div>
+          </div>
+        </div>
+        <div class="cart__accordion-item">
+          <button class="cart__accordion-header" aria-expanded="false" type="button">
+            <img src="/src/assets/svg/room.svg" alt="" />
+            <span>상온 식품</span>
+            <img class="button__down" src="/src/assets/svg/Down.svg" alt="" />
+          </button>
+          <div class="cart__accordion-content hidden">
+            <div class="cart__checkbox-content">
+              <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement1" />
+              <label for="Agreement1">내용1</label>
+            </div>
+            <div class="cart__checkbox-content">
+              <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement2" />
+              <label for="Agreement2">내용2</label>
+            </div>
+            <div class="cart__checkbox-content">
+              <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement3" />
+              <label for="Agreement3">내용3</label>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- 아코디언 -->
-    <div class="cart__accordion">
-      <div class="cart__accordion-item">
-        <button class="cart__accordion-header" aria-expanded="false" type="button">
-          <img src="/src/assets/svg/fridge.svg" alt="" />
-          <span>냉장 식품</span>
-          <img class="button__down" src="/src/assets/svg/Down.svg" alt="" />
-        </button>
-        <div class="cart__accordion-content hidden">
-          <div class="cart__checkbox-content">
-            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement1" />
-            <label for="Agreement1">내용1</label>
-          </div>
-          <div class="cart__checkbox-content">
-            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement2" />
-            <label for="Agreement2">내용2</label>
-          </div>
-          <div class="cart__checkbox-content">
-            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement3" />
-            <label for="Agreement3">내용3</label>
-          </div>
+
+    <div class="component_wrap">
+      <h6>order__location</h6>
+      <!-- 배송지 변경-->
+      <div class="cart__location">
+        <div class="cart__location-title">
+          <img src="/src/assets/svg/Location.svg" alt="" />
+          <h2>배송지</h2>
         </div>
-      </div>
-      <div class="cart__accordion-item">
-        <button class="cart__accordion-header" aria-expanded="false" type="button">
-          <img src="/src/assets/svg/freeze.svg" alt="" />
-          <span>냉동 식품</span>
-          <img class="button__down" src="/src/assets/svg/Down.svg" alt="" />
-        </button>
-        <div class="cart__accordion-content hidden">
-          <div class="cart__checkbox-content">
-            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement1" />
-            <label for="Agreement1">내용1</label>
-          </div>
-          <div class="cart__checkbox-content">
-            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement2" />
-            <label for="Agreement2">내용2</label>
-          </div>
-          <div class="cart__checkbox-content">
-            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement3" />
-            <label for="Agreement3">내용3</label>
-          </div>
-        </div>
-      </div>
-      <div class="cart__accordion-item">
-        <button class="cart__accordion-header" aria-expanded="false" type="button">
-          <img src="/src/assets/svg/room.svg" alt="" />
-          <span>상온 식품</span>
-          <img class="button__down" src="/src/assets/svg/Down.svg" alt="" />
-        </button>
-        <div class="cart__accordion-content hidden">
-          <div class="cart__checkbox-content">
-            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement1" />
-            <label for="Agreement1">내용1</label>
-          </div>
-          <div class="cart__checkbox-content">
-            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement2" />
-            <label for="Agreement2">내용2</label>
-          </div>
-          <div class="cart__checkbox-content">
-            <input class="consentcheckbox" type="checkbox" name="terms" id="Agreement3" />
-            <label for="Agreement3">내용3</label>
+        <p class="cart__location-content">서울 중랑구 면목로 42길 11 (행운빌딩) 603호</p>
+        <p class="cart__location-text">샛별배송</p>
+        <!-- 버튼 컴포넌트 -->
+        <button type="button" class="cart__button --line">배송지 변경</button>
+        <!-- 버튼 클릭 시 모달팝업 -->
+        <div class="location__button-modal" id="modalCart" hidden>
+          <div class="location__button-modal-content">
+            <h2>배송지 변경 기능은 준비중입니다.</h2>
+            <button class="location__confirm-button">확인</button>
+            <button class="location__close-button">닫기</button>
           </div>
         </div>
       </div>
     </div>
-    <hr />
-    <!-- 배송지 변경-->
-    <div class="cart__location">
-      <div class="cart__location-title">
-        <img src="/src/assets/svg/Location.svg" alt="" />
-        <h2>배송지</h2>
-      </div>
-      <p class="cart__location-content">서울 중랑구 면목로 42길 11 (행운빌딩) 603호</p>
-      <p class="cart__location-text">샛별배송</p>
+
+    <div class="component_wrap">
+      <h6>order__button</h6>
       <!-- 버튼 컴포넌트 -->
-      <a class="cart__button --line" href="#modalCart">배송지 변경</a>
+      <button type="button" class="cart__button cart__button-order">주문하기</button>
       <!-- 버튼 클릭 시 모달팝업 -->
-      <div class="location__button-modal" id="modalCart">
+      <div class="location__button-modal" id="modalOrder" hidden>
         <div class="location__button-modal-content">
-          <h2>배송지 변경 기능은 준비중입니다.</h2>
-          <p>조금만 기다려주시면 자바스크립트 배우고 돌아오겠습니다.</p>
-          <a href="#" class="location__confirm-button">확인</a>
-          <a href="#" class="location__close-button">닫기</a>
+          <h2>주문하기 기능은 준비중입니다.</h2>
+          <button class="location__confirm-button">확인</button>
+          <button class="location__close-button">닫기</button>
         </div>
       </div>
     </div>
-    <hr />
-    <!-- 버튼 컴포넌트 -->
-    <a class="cart__button" href="#modalOder">주문하기</a>
-    <!-- 버튼 클릭 시 모달팝업 -->
-    <div class="location__button-modal" id="modalOder">
-      <div class="location__button-modal-content">
-        <h2>주문하기 기능은 준비중입니다.</h2>
-        <p>조금만 기다려주시면 자바스크립트 배우고 돌아오겠습니다.</p>
-        <a href="#" class="location__confirm-button">확인</a>
-        <a href="#" class="location__close-button">닫기</a>
-      </div>
+
+    <div class="component_wrap">
+      <h6>order__info</h6>
+      <!-- 주문 안내 사항 -->
+      <ul class="cart__order-info">
+        <li>쿠폰/적립금은 주문서에서 사용 가능합니다</li>
+        <li>[주문완료] 상태일 경우에만 주문 취소 가능합니다.</li>
+        <li>[마이컬리 > 주문내역 상세페이지] 에서 직접 취소하실 수 있습니다.</li>
+        <li>쿠폰, 적립금 사용 금액을 제외한 실 결제 금액 기준으로 최종 산정됩니다.</li>
+        <li>
+          상품별로 적립금 지급 기준이 다를 수 있습니다. (상품 상세 페이지에서 확인 가능합니다)
+        </li>
+      </ul>
     </div>
-    <hr />
-    <!-- 주문 안내 사항 -->
-    <ul class="cart__order-info">
-      <li>쿠폰/적립금은 주문서에서 사용 가능합니다</li>
-      <li>[주문완료] 상태일 경우에만 주문 취소 가능합니다.</li>
-      <li>[마이컬리 > 주문내역 상세페이지] 에서 직접 취소하실 수 있습니다.</li>
-      <li>쿠폰, 적립금 사용 금액을 제외한 실 결제 금액 기준으로 최종 산정됩니다.</li>
-      <li>상품별로 적립금 지급 기준이 다를 수 있습니다. (상품 상세 페이지에서 확인 가능합니다)</li>
-    </ul>
     <script src="/src/components/cart/cart.js"></script>
   </body>
 </html>

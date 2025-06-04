@@ -3,77 +3,100 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
-    <link rel="preload" as="font" href="/font/woff2/PretendardVariable.woff2" />
-    <link rel="stylesheet" href="/font/pretendardvariable.css" />
+    <title>footer | component</title>
+    <link rel="icon" type="image/x-icon" href="/src/assets/ico/favicon.ico" />
     <link rel="stylesheet" href="/src/common/index.css" />
     <link rel="stylesheet" href="./footer.css" />
   </head>
   <body style="padding: 80px">
-    <footer>
-      <div class="container footer__container">
-        <div class="footer__policy">
-          <div class="footer__policy-link">
-            <a href="#">개인정보처리방침</a>
-            <a href="#">이메일무단수집거부</a>
+    <h1>footer</h1>
+    <div class="component_wrap">
+      <h6>top button</h6>
+      <button type="button">
+        <span class="sr-only">위로 올라가는 버튼</span>
+        <img src="/src/assets/svg/top.svg" alt="" />
+      </button>
+    </div>
+    <div class="component_wrap">
+      <h6>dropdown</h6>
+      <label class="sr-only" for="bank">인터넷 뱅킹 바로가기</label>
+      <select name="bank" id="bank">
+        <option hidden>인터넷뱅킹 바로가기</option>
+        <option value="">우리은행</option>
+        <option value="">국민은행</option>
+        <option value="">하나은행</option>
+      </select>
+    </div>
+    <div class="component_wrap">
+      <h6>footer</h6>
+      <footer>
+        <div class="container footer__container">
+          <div class="footer__policy">
+            <div class="footer__policy-link">
+              <a href="#">개인정보처리방침</a>
+              <a href="#">이메일무단수집거부</a>
+            </div>
+            <button type="button">
+              <span class="sr-only">위로 올라가는 버튼</span>
+              <img src="/src/assets/svg/top.svg" alt="" />
+            </button>
           </div>
-          <button type="button">
-            <span class="sr-only">위로 올라가는 버튼</span>
-            <img src="/src/assets/svg/top.svg" alt="" />
-          </button>
+          <div class="footer__info">
+            <dl>
+              <dt>CUSTOMER CENTER</dt>
+              <dd>
+                <a href="tel:0262140857" class="tel">02-6214-0857</a>
+              </dd>
+              <dd>
+                평일 10:00 ~ 17:00 (점심시간 12:00 - 13:00)<br />
+                통화량이 많을 경우 문의게시판을 이용해주세요.<br />
+                토요일 / 일요일 / 공휴일 휴무
+              </dd>
+            </dl>
+            <dl>
+              <dt>BANK ACCOUNT</dt>
+              <dd>
+                우리은행 1005-105-100005 <br />
+                예금주 : 주식회사 블루
+              </dd>
+              <dd>
+                <label class="sr-only" for="bank">인터넷 뱅킹 바로가기</label>
+                <select name="bank" id="bank">
+                  <option hidden>인터넷뱅킹 바로가기</option>
+                  <option value="">우리은행</option>
+                  <option value="">국민은행</option>
+                  <option value="">하나은행</option>
+                </select>
+              </dd>
+            </dl>
+            <dl class="footer__info-shopping">
+              <dt>SHOPPING MENU</dt>
+              <dd><a href="">마이페이지</a></dd>
+              <dd><a href=""> 주문조회</a></dd>
+              <dd>
+                <a href=""> 장바구니(<span>3</span>)</a>
+              </dd>
+              <dd><a href=""> 쿠폰 내역</a></dd>
+              <dd><a href=""> 적립금 내역</a></dd>
+            </dl>
+            <dl>
+              <dt>RETURN / EXCHANGE</dt>
+              <dd>
+                반품주소 : 서울특별시 강남구 테헤란로 5004, 28층(역삼동)
+                <br /><br />
+                교환 및 반품시 전화를 통해 먼저 접수해주세요.
+              </dd>
+            </dl>
+          </div>
+          <div class="footer__compony">
+            <p>
+              상호명 : 주식회사 블루 주소 : 서울특별시 강남구 테헤란로 5004, 28층(역삼동)<br />대표
+              : 심선범 사업자등록번호 : 111-11-22222 통신판매업신고 : 제 2005-서울강남-00000 호
+            </p>
+            <p>Copyright ⓒ 2025 BLUE-MALL. All Right Reserved.</p>
+          </div>
         </div>
-        <div class="footer__info">
-          <dl>
-            <dt>CUSTOMER CENTER</dt>
-            <dd>
-              <a href="tel:0262140857" class="tel">02-6214-0857</a>
-            </dd>
-            <dd>
-              평일 10:00 ~ 17:00 (점심시간 12:00 - 13:00)<br />
-              통화량이 많을 경우 문의게시판을 이용해주세요.<br />
-              토요일 / 일요일 / 공휴일 휴무
-            </dd>
-          </dl>
-          <dl>
-            <dt>BANK ACCOUNT</dt>
-            <dd>
-              우리은행 1005-105-100005 <br />
-              예금주 : 주식회사 블루
-            </dd>
-            <dd>
-              <label class="sr-only" for="bank">인터넷 뱅킹 바로가기</label>
-              <select name="bank" id="bank">
-                <option hidden>인터넷뱅킹 바로가기</option>
-                <option value="">우리은행</option>
-                <option value="">국민은행</option>
-                <option value="">하나은행</option>
-              </select>
-            </dd>
-          </dl>
-          <dl class="footer__info-shopping">
-            <dt>SHOPPING MENU</dt>
-            <dd><a href="">마이페이지</a></dd>
-            <dd><a href=""> 주문조회</a></dd>
-            <dd>
-              <a href=""> 장바구니(<span>3</span>)</a>
-            </dd>
-            <dd><a href=""> 쿠폰 내역</a></dd>
-            <dd><a href=""> 적립금 내역</a></dd>
-          </dl>
-          <dl>
-            <dt>RETURN / EXCHANGE</dt>
-            <dd>
-              반품주소 : 서울특별시 강남구 테헤란로 5004, 28층(역삼동)
-              <br /><br />
-              교환 및 반품시 전화를 통해 먼저 접수해주세요.
-            </dd>
-          </dl>
-        </div>
-        <div class="footer__compony">
-          <p>상호명 : 주식회사 블루 주소 : 서울특별시 강남구 테헤란로 5004, 28층(역삼동)<br />대표 : 심선범 사업자등록번호 : 111-11-22222 통신판매업신고 : 제 2005-서울강남-00000 호</p>
-          <p>Copyright ⓒ 2025 BLUE-MALL. All Right Reserved.</p>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </body>
 </html>

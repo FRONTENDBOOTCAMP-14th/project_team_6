@@ -1,0 +1,57 @@
+/* CSS Variables */
+:root {
+  /* Base Colors */
+  --color-bg: #1e1e1e;
+  --color-bg-secondary: #252526;
+  --color-bg-tertiary: #2d2d2d;
+  --color-text: #cccccc;
+  --color-text-secondary: #858585;
+  --color-accent: #007acc;
+  --color-border: #1b1b1b;
+  --color-active: #37373d;
+  --color-hover: #2a2d2e;
+  --color-black: #000000;
+
+  /* Component Colors */
+  --color-activitybar-bg: #33373a;
+  --color-sidebar-bg: #252526;
+  --color-sidebar-foreground: #cccccc;
+  --color-editor-bg: #1e1e1e;
+  --color-editor-foreground: #d4d4d4;
+  --color-editor-tab-bg: #2d2d2d;
+  --color-editor-border: #1e1e1e;
+  --color-panel-bg: #1e1e1e;
+  --color-panel-tab-bg: #2d2d2d;
+  --color-panel-border: #3c3c3c;
+  --color-tab-active: #ffffff;
+  --color-tab-inactive: #858585;
+
+  /* Terminal Colors */
+  --terminal-bg: #1e1e1e;
+  --terminal-foreground: #f0f0f0;
+  --terminal-cursor: #4ec9b0;
+  --terminal-path: #9cdcfe;
+
+  /* Sizes */
+  --header-height: 24px;
+  --statusbar-height: 22px;
+  --activitybar-width: 50px;
+  --sidebar-width: 250px;
+
+  /* Z-index */
+  --z-menubar: 1000;
+  --z-activitybar: 900;
+  --z-sidebar: 800;
+  --z-editor: 100;
+  --z-statusbar: 1000;
+  --z-panel: 200;
+
+  /* Transitions */
+  --transition-speed: 0.2s;
+  --transition-easing: ease;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}

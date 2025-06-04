@@ -1,0 +1,234 @@
+/* README Content Styling */
+.vscode__editor-content.readme-content .monaco-editor .view-lines,
+.vscode__editor-content.readme-content .monaco-editor .view-line,
+.vscode__editor-content.readme-content .monaco-editor .mtk1,
+.vscode__editor-content.readme-content .monaco-editor .mtk2,
+.vscode__editor-content.readme-content .monaco-editor .mtk3,
+.vscode__editor-content.readme-content .monaco-editor .mtk4,
+.vscode__editor-content.readme-content .monaco-editor .mtk5,
+.vscode__editor-content.readme-content .monaco-editor .mtk6,
+.vscode__editor-content.readme-content .monaco-editor .mtk7,
+.vscode__editor-content.readme-content .monaco-editor .mtk8,
+.vscode__editor-content.readme-content .monaco-editor .mtk9,
+.vscode__editor-content.readme-content .monaco-editor .mtk10,
+.vscode__editor-content.readme-content .monaco-editor .mtk11,
+.vscode__editor-content.readme-content .monaco-editor .mtk12,
+.vscode__editor-content.readme-content .monaco-editor .mtk13,
+.vscode__editor-content.readme-content .monaco-editor .mtk14,
+.vscode__editor-content.readme-content .monaco-editor .mtk15,
+.vscode__editor-content.readme-content .monaco-editor .mtk16,
+.vscode__editor-content.readme-content .monaco-editor .mtk17,
+.vscode__editor-content.readme-content .monaco-editor .mtk18,
+.vscode__editor-content.readme-content .monaco-editor .mtk19,
+.vscode__editor-content.readme-content .monaco-editor .mtk20,
+.vscode__editor-content.readme-content .monaco-editor .mtk21,
+.vscode__editor-content.readme-content .monaco-editor .mtk22,
+.vscode__editor-content.readme-content .monaco-editor .mtk23,
+.vscode__editor-content.readme-content .monaco-editor .mtk24,
+.vscode__editor-content.readme-content .monaco-editor .mtk25,
+.vscode__editor-content.readme-content .monaco-editor .mtk26,
+.vscode__editor-content.readme-content .monaco-editor .mtk27,
+.vscode__editor-content.readme-content .monaco-editor .mtk28,
+.vscode__editor-content.readme-content .monaco-editor .mtk29,
+.vscode__editor-content.readme-content .monaco-editor .mtk30 {
+  color: #ffffff !important;
+}
+
+/* Preview Button */
+.vscode__preview-button {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: var(--font-family);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.vscode__preview-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Editor Tabs */
+.vscode__editor-tabs {
+  display: flex;
+  background-color: var(--color-panel-tab-bg);
+  height: 2.5rem;
+  min-height: 2.5rem;
+  align-items: flex-end;
+  padding: 0 0.5rem 0 0.75rem;
+  user-select: none;
+  font-size: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  z-index: 2;
+  border-bottom: 1px solid var(--color-panel-border);
+  box-sizing: border-box;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin; /* Firefox에서 얇은 스크롤바 */
+  scrollbar-color: rgba(121, 121, 121, 0.4) transparent; /* Firefox에서 스크롤바 색상 */
+}
+
+.vscode__editor-tabs::-webkit-scrollbar {
+  height: 6px; /* 스크롤바 높이 */
+}
+
+.vscode__editor-tabs::-webkit-scrollbar-track {
+  background: transparent; /* 트랙 배경 투명 */
+}
+
+.vscode__editor-tabs::-webkit-scrollbar-thumb {
+  background-color: rgba(121, 121, 121, 0.4); /* 스크롤바 색상 */
+  border-radius: 3px; /* 모서리 둥글기 */
+  border: 1px solid transparent; /* 테두리 투명 */
+  background-clip: content-box; /* 배경이 테두리 안쪽에만 표시되도록 */
+}
+
+.vscode__editor-tabs::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 100, 100, 0.5); /* 호버 시 색상 변경 */
+}
+
+@-moz-document url-prefix() {
+  .vscode__editor-tabs {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(121, 121, 121, 0.4) transparent;
+  }
+}
+
+.vscode__tab {
+  padding: 0 1.25rem;
+  height: calc(100% - 1px);
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-tab-inactive);
+  font-size: 0.8rem;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.vscode__tab--active {
+  color: var(--color-tab-active);
+  background-color: var(--color-panel-bg);
+  border-color: var(--color-panel-border);
+  border-bottom: 1px solid var(--color-panel-bg);
+  margin-bottom: -1px;
+  z-index: 2;
+  height: calc(100% - 1px);
+  position: relative;
+  top: 1px;
+}
+
+.vscode__tab-close {
+  margin-left: 8px;
+  display: none;
+  color: var(--color-text-secondary);
+}
+
+.vscode__tab:hover .vscode__tab-close {
+  display: block;
+}
+
+.vscode__tab-close:hover {
+  color: var(--color-text);
+}
+
+/* Editor Container */
+.vscode__editor {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: var(--color-panel-bg);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Editor Content */
+.vscode__editor-content {
+  position: relative;
+  flex: 1;
+  overflow: auto;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: 1.8;
+  padding: 0;
+  white-space: pre;
+  tab-size: 2;
+  outline: none;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Editor Line */
+.vscode__editor-line {
+  min-height: 1.8rem;
+  line-height: 1.8;
+  position: relative;
+  padding: 0 1rem 0 4rem;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+}
+
+/* Editor Line Numbers */
+.vscode__editor-line-numbers {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3rem;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  text-align: right;
+  padding: 0.75rem 0.5rem;
+  user-select: none;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 1rem;
+  line-height: 1.8;
+  counter-reset: line;
+}
+
+.vscode__editor-line-number {
+  height: 1.8rem;
+  display: block;
+  padding-right: 0.75rem;
+  line-height: 1.8;
+  counter-increment: line;
+}
+
+.vscode__editor-line-number::before {
+  content: counter(line);
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+}
+
+/* Ensure content starts after line numbers */
+.vscode__editor-content {
+  margin-left: 3rem;
+  padding-top: 0.5rem;
+}
+
+/* Make sure first two lines are visible */
+.vscode__editor-line:first-child,
+.vscode__editor-line:nth-child(2) {
+  display: block !important;
+  visibility: visible !important;
+  height: auto !important;
+  min-height: 1.8rem;
+}

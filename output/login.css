@@ -1,0 +1,197 @@
+input,
+button {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+/* 타이틀 컴포넌트 */
+.login__title {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.54px;
+  text-align: center;
+}
+
+/* 입력 필드 컨테이너 */
+.login__item {
+  position: relative;
+  margin-bottom: 0;
+  transition: margin-bottom 0.2s ease;
+}
+
+/* 기본 인풋 */
+.login__input {
+  width: 340px;
+  height: 48px;
+  padding: 12px 20px;
+  border: 1px solid var(--gray-200);
+  border-radius: 4px;
+}
+
+.login__input::placeholder {
+  color: var(--gray-400);
+  font-size: var(--font-size-S);
+  font-weight: 400;
+}
+
+.login__input:focus {
+  border: 2px solid var(--primary);
+  outline: none;
+}
+
+/* 에러 메시지 공통 스타일 */
+.login__error-message {
+  position: absolute;
+  color: var(--error, #f03f40);
+  font-size: 12px;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+/* Show error message only when touched and invalid */
+.login__input.touched:invalid + .login__error-message {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Add margin when error message is shown */
+.login__item:has(.login__input.touched:invalid) {
+  margin-bottom: 20px;
+}
+
+/* 아이디 에러 메시지 위치 조정 */
+#error-1 {
+  bottom: -18px;
+}
+
+/* 비밀번호 에러 메시지 위치 조정 */
+#error-2 {
+  bottom: -22px;
+}
+
+/* 아이디 에러 메시지 위치 조정 */
+#error-1 {
+  bottom: -15px;
+}
+
+/* 비밀번호 에러 메시지 위치 조정 */
+#error-2 {
+  bottom: -30px;
+}
+
+/* 아이디 / 비밀번호 찾기 */
+.login__recovery {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 18px;
+
+  .recovery-link {
+    text-decoration: none;
+    color: var(--black);
+    font-size: var(--font-size-XXS);
+    font-weight: 400;
+  }
+}
+/* 로그인 버튼 컴포넌트 */
+.login__join-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  width: 340px;
+  height: 56px;
+  background: var(--primary);
+  border-radius: 4px;
+  border: 0;
+  color: var(--white);
+  font-size: var(--font-size-XS);
+  font-weight: 600;
+}
+
+.login__join-button:active {
+  transform: scale(0.95);
+}
+
+.login__join-button:focus {
+  border: 2px solid var(--primary);
+  outline: none;
+}
+
+.--line {
+  background: var(--white);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+
+  &:hover {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+}
+
+/* 로그인 버튼 클릭 시 모달팝업 */
+.login__modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.login__modal[hidden] {
+  display: none;
+}
+
+.login__modal-content {
+  background: white;
+  padding: 40px 80px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.login__confirm-button,
+.login__close-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 16px 28px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.login__confirm-button {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.login__close-button {
+  background: gray;
+  color: white;
+}
+
+/* 로그인 페이지 */
+.login {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 44px;
+  margin-top: 80px;
+  margin-bottom: 130px;
+
+  .login__container {
+    width: 340px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 12px;
+  }
+}

@@ -1,0 +1,2 @@
+# Ignore all HTML files in Members directory
+src/pages/Members/*.html

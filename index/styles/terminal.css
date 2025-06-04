@@ -1,0 +1,207 @@
+/* Terminal Panel */
+.vscode__panel {
+  display: flex;
+  flex-direction: column;
+  height: 15rem; /* Increased from 12.5rem for better visibility */
+  background-color: var(--color-panel-bg);
+  border-top: 1px solid var(--color-panel-border);
+  font-family: 'Consolas', 'Courier New', monospace;
+  color: var(--terminal-foreground);
+  z-index: var(--z-panel);
+  font-size: 1rem; /* Increased from 0.875rem for better readability */
+  line-height: 1.6; /* Improved line spacing */
+}
+
+.vscode__panel-tabs {
+  display: flex;
+  background-color: var(--color-panel-tab-bg);
+  border-bottom: 1px solid var(--color-panel-border);
+  height: 2.5rem; /* Increased from 2.1875rem for better touch targets */
+  align-items: center;
+  padding: 0 0.75rem; /* Increased from 0.5rem for better spacing */
+  user-select: none;
+  font-size: 1rem; /* Increased from 0.75rem */
+}
+
+.vscode__panel-tab {
+  padding: 0 1.125rem; /* Increased from 0.9375rem */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: var(--color-tab-inactive);
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-bottom: none;
+  margin-right: 0.25rem; /* Increased from 0.125rem */
+  background: transparent;
+  transition: all var(--transition-speed) var(--transition-easing);
+  font-size: 0.875rem; /* Increased from 0.75rem */
+  white-space: nowrap;
+  line-height: 1.5; /* Improved line height */
+}
+
+.vscode__panel-tab--active {
+  color: var(--color-tab-active);
+  background-color: var(--color-panel-bg);
+  border-color: var(--color-panel-border);
+  border-bottom-color: var(--color-panel-bg);
+}
+
+/* Terminal Content */
+.vscode__terminal {
+  flex: 1;
+  padding: 0.5rem 1rem; /* 8px 16px / 16px = 0.5rem 1rem */
+  overflow-y: auto;
+  font: 0.875rem/1.5 'Consolas', monospace; /* 14px / 16px = 0.875rem */
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--terminal-foreground);
+  background: var(--terminal-bg);
+  margin: 0;
+}
+
+/* Terminal output */
+.vscode__terminal-output {
+  margin: 4px 0;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+/* URL Button */
+.vscode__terminal-url-button {
+  display: inline-block;
+  background: transparent;
+  color: #4d9bf1;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font: inherit;
+  text-decoration: underline;
+  outline: none;
+}
+
+.vscode__terminal-url-button:hover {
+  color: #7ab7ff;
+}
+
+.vscode__terminal-url-button:focus {
+  outline: 1px solid #4d9bf1;
+  outline-offset: 1px;
+}
+
+.vscode__terminal-line {
+  margin: 0 0 20px 0;
+  padding: 0;
+  color: inherit;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vscode__terminal-user {
+  color: var(--terminal-cursor);
+  font-weight: bold;
+}
+
+.vscode__terminal-path {
+  color: var(--terminal-path);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.vscode__terminal-command-line {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  align-items: center;
+  gap: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vscode__terminal-command {
+  display: inline;
+  white-space: nowrap;
+}
+
+.vscode__terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--terminal-foreground);
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+.vscode__terminal-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.vscode__terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: var(--terminal-cursor);
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  from,
+  to {
+    background-color: transparent;
+  }
+  50% {
+    background-color: var(--terminal-cursor);
+  }
+}
+
+/* Terminal prompt */
+.vscode__terminal-prompt {
+  display: flex;
+  align-items: center;
+}
+
+.vscode__terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--terminal-foreground);
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Scrollbar styling */
+.vscode__terminal::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.vscode__terminal::-webkit-scrollbar-thumb {
+  background-color: var(--color-bg-tertiary);
+  border-radius: 5px;
+}
+
+.vscode__terminal::-webkit-scrollbar-track {
+  background-color: var(--color-bg);
+}

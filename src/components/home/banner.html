@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>banner | component</title>
+    <link rel="icon" type="image/x-icon" href="/src/assets/ico/favicon.ico" />
+    <link rel="stylesheet" href="/src/common/index.css" />
+    <link rel="stylesheet" href="./banner.css" />
+  </head>
+  <body style="padding: 80px">
+    <h1>banner</h1>
+    <div class="component_wrap">
+      <h6>banner__main--slide</h6>
+      <div class="banner">
+        <img class="banner__image" src="/src/assets/webp/main-visual03.webp" alt="" />
+        <div class="container banner__inner">
+          <div class="banner__text">
+            <p>블루몰 장보기의 특권</p>
+            <p>이 주의 특가 한 눈에 보기</p>
+          </div>
+          <div class="banner__control">
+            <div class="banner__control-inner">
+              <button type="button" class="banner__control-prev" aria-label="이전 배너">
+                <span class="sr-only">이전 배너</span>
+              </button>
+
+              <div class="banner__control-number" aria-live="polite">
+                <span class="now">1</span>
+                <span class="divider">/</span>
+                <span class="all">5</span>
+              </div>
+
+              <button type="button" class="banner__control-next" aria-label="다음 배너">
+                <span class="sr-only">다음 배너</span>
+              </button>
+            </div>
+
+            <button
+              type="button"
+              class="banner__control-play"
+              aria-label="배너 자동 재생 정지"
+              aria-pressed="false"
+            >
+              <span class="sr-only">자동 재생 정지</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="component_wrap">
+      <h6>banner__line</h6>
+      <div class="line-banner">
+        <img class="line-banner__image" src="/src/assets/webp/mid-banner.webp" alt="" />
+        <div class="line-banner__text">
+          <p>더 풍성해진 10월의 블루위크</p>
+          <p>적립률 UP + 3종 쿠폰팩</p>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/components/banner/banner.js"></script>
+  </body>
+</html>
