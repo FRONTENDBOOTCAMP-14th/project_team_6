@@ -45,9 +45,9 @@ window.projectStructure = {
               actualPath: 'src/components/home/banner.html',
             },
             {
-              name: 'product-list.html',
+              name: 'product-card.html',
               type: 'file',
-              actualPath: 'src/components/home/product-list.html',
+              actualPath: 'src/components/home/product-card.html',
             },
           ],
         },
@@ -80,11 +80,6 @@ window.projectStructure = {
               name: 'product-list.html',
               type: 'file',
               actualPath: 'src/components/Product-list/product-list.html',
-            },
-            {
-              name: 'list-category.html',
-              type: 'file',
-              actualPath: 'src/components/Product-list/list-category.html',
             },
           ],
         },
