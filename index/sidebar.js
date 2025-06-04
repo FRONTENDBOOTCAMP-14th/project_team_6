@@ -8,34 +8,118 @@ window.projectStructure = {
       type: 'directory',
       children: [
         { name: 'dongsik.md', type: 'file', actualPath: 'src/pages/Members/dongsik.html' },
+        { name: 'esther.md', type: 'file', actualPath: 'src/pages/Members/esther.html' },
+        { name: 'hyenbo.md', type: 'file', actualPath: 'src/pages/Members/hyenbo.html' },
+        { name: 'sujin.md', type: 'file', actualPath: 'src/pages/Members/sujin.html' },
       ],
     },
     {
       name: 'Components',
       type: 'directory',
       children: [
-        { name: 'footer.html', type: 'file', actualPath: 'src/components/footer/footer.html' },
-        { name: 'header.html', type: 'file', actualPath: 'src/components/header/header.html' },
-        { name: 'login.html', type: 'file', actualPath: 'src/components/login/login.html' },
+        // 1. Product-list
+        {
+          name: 'Product-list',
+          type: 'directory',
+          children: [
+            {
+              name: 'list-category.html',
+              type: 'file',
+              actualPath: 'src/components/Product-list/list-category.html',
+            },
+            {
+              name: 'list-container.html',
+              type: 'file',
+              actualPath: 'src/components/Product-list/list-container.html',
+            },
+          ],
+        },
+        // 2. Banner
+        {
+          name: 'banner.html',
+          type: 'file',
+          actualPath: 'src/components/banner/banner.html',
+        },
+        // 3. Cart
+        {
+          name: 'cart',
+          type: 'directory',
+          children: [
+            {
+              name: 'cart.html',
+              type: 'file',
+              actualPath: 'src/components/cart/cart.html',
+            },
+            {
+              name: 'cart-content.html',
+              type: 'file',
+              actualPath: 'src/components/cart/cart-content.html',
+            },
+          ],
+        },
+        // 4. Detail Navigation
+        {
+          name: 'detail-nav.html',
+          type: 'file',
+          actualPath: 'src/components/detail-nav/detail-nav.html',
+        },
+        // 5. Product Detail
+        {
+          name: 'product-detail',
+          type: 'directory',
+          children: [
+            {
+              name: 'item-inquire.html',
+              type: 'file',
+              actualPath: 'src/components/product-detail/item-inquire.html',
+            },
+            {
+              name: 'item-review.html',
+              type: 'file',
+              actualPath: 'src/components/product-detail/item-review.html',
+            },
+          ],
+        },
+        // 6. Footer
+        {
+          name: 'footer.html',
+          type: 'file',
+          actualPath: 'src/components/footer/footer.html',
+        },
+        // 7. Header
+        {
+          name: 'header.html',
+          type: 'file',
+          actualPath: 'src/components/header/header.html',
+        },
+        // 8. Home
+        {
+          name: 'home',
+          type: 'directory',
+          children: [
+            {
+              name: 'product-list.html',
+              type: 'file',
+              actualPath: 'src/components/home/product-list.html',
+            },
+            {
+              name: 'product-detail-sync.js',
+              type: 'file',
+              actualPath: 'src/components/home/product-detail-sync.js',
+            },
+          ],
+        },
+        // 9. Login
+        {
+          name: 'login.html',
+          type: 'file',
+          actualPath: 'src/components/login/login.html',
+        },
+        // 10. Register
         {
           name: 'register.html',
           type: 'file',
           actualPath: 'src/components/register/register.html',
-        },
-        {
-          name: 'product-list.html',
-          type: 'file',
-          actualPath: 'src/components/Product-list/list-category.html',
-        },
-        {
-          name: 'item-inquire.html',
-          type: 'file',
-          actualPath: 'src/components/product-detail/item-inquire.html',
-        },
-        {
-          name: 'item-review.html',
-          type: 'file',
-          actualPath: 'src/components/product-detail/item-review.html',
         },
       ],
     },
@@ -44,9 +128,8 @@ window.projectStructure = {
 
 // Main sidebar initialization
 export function initSidebar() {
-
   // Initialize project structure if not already set
-  if (!window.projectStructure.name) {
+  if (!window.projectStructure) {
     window.projectStructure = {
       name: '6th Sense',
       type: 'directory',
@@ -56,6 +139,9 @@ export function initSidebar() {
           type: 'directory',
           children: [
             { name: 'dongsik.md', type: 'file', actualPath: 'src/pages/Members/dongsik.html' },
+            { name: 'esther.md', type: 'file', actualPath: 'src/pages/Members/esther.html' },
+            { name: 'hyenbo.md', type: 'file', actualPath: 'src/pages/Members/hyenbo.html' },
+            { name: 'sujin.md', type: 'file', actualPath: 'src/pages/Members/sujin.html' },
           ],
         },
         {
