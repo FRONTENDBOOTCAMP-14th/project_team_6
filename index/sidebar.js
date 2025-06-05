@@ -89,6 +89,11 @@ window.projectStructure = {
           type: 'directory',
           children: [
             {
+              name: 'detail.html',
+              type: 'file',
+              actualPath: 'src/components/product-detail/detail.html',
+            },
+            {
               name: 'detail-nav.html',
               type: 'file',
               actualPath: 'src/components/product-detail/detail-nav.html',
