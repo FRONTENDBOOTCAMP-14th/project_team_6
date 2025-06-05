@@ -25,8 +25,6 @@
     <!-- Header/Footer styles -->
     <link rel="stylesheet" href="footer.css" />
     <link rel="stylesheet" href="header.css" />
-    <!-- Dynamic styles will be loaded here -->
-    <link id="dynamic-css" rel="stylesheet" href="" />
     <!-- Preload scripts -->
     <link rel="modulepreload" href="output-index.js" />
     <link rel="modulepreload" href="login.js" />
@@ -91,26 +89,6 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       }
     </style>
-
-    <!-- Modal HTML -->
-    <div id="noticeModal" class="modal-overlay" style="display: none">
-      <div class="modal-content">
-        이 페이지는 학습 용도로 제작된 페이지이며, 실제 상업용 페이지가 아님을 안내드립니다.
-      </div>
-    </div>
-
-    <script>
-      // Show modal when page loads
-      document.addEventListener('DOMContentLoaded', function () {
-        const modal = document.getElementById('noticeModal');
-        modal.style.display = 'flex';
-
-        // Close modal when clicking anywhere
-        modal.addEventListener('click', function () {
-          modal.style.display = 'none';
-        });
-      });
-    </script>
   </head>
   <body>
     <header>
@@ -224,5 +202,24 @@
         </div>
       </div>
     </footer>
+    <!-- Modal HTML -->
+    <div id="noticeModal" class="modal-overlay" style="display: none">
+      <div class="modal-content">
+        이 페이지는 학습 용도로 제작된 페이지이며, 실제 상업용 페이지가 아님을 안내드립니다.
+      </div>
+    </div>
+
+    <script>
+      // Show modal when page loads
+      document.addEventListener('DOMContentLoaded', function () {
+        const modal = document.getElementById('noticeModal');
+        modal.style.display = 'flex';
+
+        // Close modal when clicking anywhere
+        modal.addEventListener('click', function () {
+          modal.style.display = 'none';
+        });
+      });
+    </script>
   </body>
 </html>
