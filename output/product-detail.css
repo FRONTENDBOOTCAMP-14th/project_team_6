@@ -476,39 +476,48 @@
       width: 100%;
     }
   }
-  .detail-product-desc__why-karly {
-    h4 {
-      font-size: var(--font-size-XL);
-      margin-block-end: var(--spacing-XL);
-    }
+}
 
-    .detail-product-desc__why-karly-card-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      row-gap: var(--spacing-M);
-    }
-    .detail-product-desc__why-karly-card {
-      width: 33.33%;
+.detail-product-desc__why-karly {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  h4 {
+    font-size: var(--font-size-XL);
+    margin-block-end: var(--spacing-XL);
+    justify-self: center;
+  }
 
-      p:nth-child(1) {
-        background: url(/src/assets/svg/why-karly01.svg) no-repeat top center;
-        padding-block-start: var(--spacing-L);
-        padding-block-end: var(--spacing-XXS);
-        font-size: var(--font-size-M);
-        color: var(--black);
-        font-weight: 600;
+  .detail-product-desc__why-karly-card-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: var(--spacing-M);
+  }
+  .detail-product-desc__why-karly-card {
+    width: 33.33%;
 
-        span {
-          color: var(--primary);
-        }
+    p:nth-child(1) {
+      background: url(/src/assets/svg/why-karly01.svg) no-repeat top center;
+      padding-block-start: var(--spacing-L);
+      padding-block-end: var(--spacing-XXS);
+      font-size: var(--font-size-M);
+      color: var(--black);
+      font-weight: 600;
+      justify-self: center;
+      text-align: center;
+
+      span {
+        color: var(--primary);
       }
-      p:nth-child(2) {
-        font-size: var(--font-size-S);
-        line-height: 150%;
-        font-weight: 300;
-        color: var(--content);
-      }
+    }
+    p:nth-child(2) {
+      font-size: var(--font-size-S);
+      line-height: 150%;
+      font-weight: 300;
+      color: var(--content);
+      justify-self: center;
+      text-align: center;
     }
   }
 }
