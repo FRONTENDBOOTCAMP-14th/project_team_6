@@ -1,5 +1,7 @@
 # 🛍️ Blue Mall - 식스센스(6조) UI 프로젝트
 
+### 🔗 [👉 배포 페이지로 이동 (Netlify)](https://6th-sense-bootcamp.netlify.app/)
+
 (https://github.com/FRONTENDBOOTCAMP-14th/project_team_6/)
 
 > 마켓컬리 사이트를 참조하여, 컴포넌트 기반의 Blue Mall 쇼핑몰 UI 웹페이지를 구현하였습니다.  
